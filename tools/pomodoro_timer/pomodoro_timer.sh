@@ -1,7 +1,7 @@
 #!/bin/bash
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-FILE="$SCRIPT_DIR/timer"
+TIMER_FILE="$SCRIPT_DIR/timer"
 
 current_date=$(date '+%Y-%m-%d')
 DATA_FILE="$SCRIPT_DIR/working_$current_date.txt"
@@ -10,10 +10,10 @@ if ! test -f "$DATA_FILE"; then
     echo "start_date,desk_minutes" > $DATA_FILE
 fi
 
-if test -f "$FILE"; then
+if test -f "$TIMER_FILE"; then
     echo "Stop timer"
-    START=$(cat $FILE)
-    rm $FILE
+    START=$(cat $TIMER_FILE)
+    rm $TIMER_FILE
     END=$(date +%s)
     secs=$((END-START))
     working_time=$(( secs/60 ))
@@ -28,5 +28,5 @@ if test -f "$FILE"; then
 else
     echo "Start timer"
     START=$(date +%s)
-    echo $START > $FILE
+    echo $START > $TIMER_FILE
 fi
