@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-REPO_DIR=""
+cd "$(dirname "$0")"
+
+source source.env
+
+test $REPO_DIR
+
 SHORTCUT_KATA_DIRECTORY="$REPO_DIR/shortcut-kata"
 COMMAND_KATA_DIRECTORY="$REPO_DIR/command-kata"
 
