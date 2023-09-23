@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-PROJECT=$(basename $(pwd))
-
 set -eu
+
+PROJECT=$(basename $(pwd))
 
 source ../gitlab.env
 
