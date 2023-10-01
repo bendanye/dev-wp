@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export PYTHONWARNINGS="ignore:Unverified HTTPS request"
+
 set -eu
 
 PROJECT=$(basename $(pwd))
