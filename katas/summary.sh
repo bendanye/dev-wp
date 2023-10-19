@@ -23,7 +23,7 @@ function check() {
         secs=${result##*,}
         echo -e "[\xE2\x9C\x94] $dir - $secs"
     else
-        echo -e "[] $dir"
+        echo -e "[ ] $dir"
     fi
 }
 
