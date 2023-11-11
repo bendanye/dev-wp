@@ -25,6 +25,9 @@ if test -f "$TIMER_FILE"; then
 
     START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
     echo "$START_FORMATTED,$working_time" >> $DATA_FILE
+
+    cd $SCRIPT_DIR
+    sh ../stopwatch/stopwatch.sh
 else
     echo "Start timer"
     START=$(date +%s)
