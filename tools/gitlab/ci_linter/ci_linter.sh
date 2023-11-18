@@ -7,6 +7,7 @@ set -eu
 PROJECT=$(basename $(pwd))
 
 BASEDIR=$(dirname "$0")
+cd $BASEDIR
 
 source ../../gitlab.env
 

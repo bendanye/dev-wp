@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+set -eu
+
 PROJECT=$(basename $(pwd))
 
-set -eu
+SCRIPT_DIR=$( dirname -- "$0"; )
+cd $SCRIPT_DIR
 
 source ../gitlab.env
 
