@@ -4,8 +4,7 @@ set -eu
 
 PROJECT=$(basename $(pwd))
 
-SCRIPT_DIR=$( dirname -- "$0"; )
-cd $SCRIPT_DIR
+cd "$(dirname "$0")"
 
 source ../gitlab.env
 
