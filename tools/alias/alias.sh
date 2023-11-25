@@ -13,5 +13,8 @@ alias jbw="$TOOLS_DIR/../jira/jira_board_web.sh"
 alias glint="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
 alias gop="$TOOLS_DIR/../gitlab/open_project.sh"
 alias gopp="$TOOLS_DIR/../gitlab/open_project_pipeline.sh"
+alias gpst="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
 
 alias pomot="$TOOLS_DIR/../pomodoro_timer/pomodoro_timer.sh"
+
+alias devwp="cd $TOOLS_DIR/../../"
