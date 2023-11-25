@@ -1,20 +1,23 @@
 #!/bin/sh
 
 # Change to your own regext
-commit_regex='(????-[0-9])'
+PREFIX="????"
+COMMIT_REGEX='(????-[0-9])'
 
 INPUT_FILE=$1
-commit_message=`head -n1 $INPUT_FILE`
-current_branch="$(git rev-parse --abbrev-ref HEAD)"
+COMMIT_MESSAGE=`head -n1 $INPUT_FILE`
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
-if [[ ! "$commit_message" =~ $commit_regex ]]; then
-   echo "Aborting commit. Your commit message does not start with JIRA Issue"
-   exit 1
+if [[ $CURRENT_BRANCH =~ $PREFIX ]]; then
+   if [[ ! "$COMMIT_MESSAGE" =~ "$CURRENT_BRANCH" ]]; then
+      echo "Aborting commit. Your commit message is not the same as your branch"
+      exit 1
+   fi
 fi
 
-if [[ $current_branch != "dev" && $current_branch != "main" && $current_branch != "master" ]]; then
-   if [[ ! "$commit_message" =~ "$current_branch" ]]; then
-      echo "Aborting commit. Your commit message is not the same as your branch"
+if [[ $CURRENT_BRANCH == "dev" || $CURRENT_BRANCH == "main" || $CURRENT_BRANCH != "master" ]]; then
+   if [[ ! "$COMMIT_MESSAGE" =~ $COMMIT_REGEX ]]; then
+      echo "Aborting commit. Your commit message does not start with JIRA Issue"
       exit 1
    fi
 fi
