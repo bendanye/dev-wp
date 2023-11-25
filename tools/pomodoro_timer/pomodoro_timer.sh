@@ -32,4 +32,5 @@ else
     echo "Start timer"
     START=$(date +%s)
     echo $START > $TIMER_FILE
+    sh "$SCRIPT_DIR/status.sh"
 fi
