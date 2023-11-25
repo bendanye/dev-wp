@@ -6,6 +6,7 @@ TOOLS_DIR="$(dirname "$0")"
 alias cs="$TOOLS_DIR/../copy_screenshots/copy_screenshots.sh"
 alias nc="$TOOLS_DIR/../new_card/new_card.sh"
 alias od="$TOOLS_DIR/../open_directory/open.sh"
+alias zcte="$TOOLS_DIR/../zip/zip_card_evidences.sh"
 
 alias jc="$TOOLS_DIR/../jira/jira_card.sh"
 alias jbw="$TOOLS_DIR/../jira/jira_board_web.sh"
