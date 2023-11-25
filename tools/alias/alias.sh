@@ -3,6 +3,8 @@ alias dpsa="docker ps -a"
 
 TOOLS_DIR="$(dirname "$0")"
 
+alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
+
 alias cs="$TOOLS_DIR/../copy_screenshots/copy_screenshots.sh"
 alias nc="$TOOLS_DIR/../new_card/new_card.sh"
 alias od="$TOOLS_DIR/../open_directory/open.sh"
