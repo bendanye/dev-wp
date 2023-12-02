@@ -19,5 +19,7 @@ alias gopp="$TOOLS_DIR/../gitlab/open_project_pipeline.sh"
 alias gpst="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
 
 alias pomot="$TOOLS_DIR/../pomodoro_timer/pomodoro_timer.sh"
+alias pomotst="$TOOLS_DIR/../pomodoro_timer/status.sh"
+alias pomotsum="$TOOLS_DIR/../pomodoro_timer/summary.sh"
 
 alias devwp="cd $TOOLS_DIR/../../"
