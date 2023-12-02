@@ -1,12 +1,14 @@
 #!/bin/bash
 
+SCRIPT_DIR=$( dirname -- "$0"; )
+
 if [[ $1 ]]; then
     current_date=$1
 else
     current_date=$(date '+%Y-%m-%d')
 fi
 
-total_minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' ./tools/pomodoro_timer/working_$current_date.txt)
+total_minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $SCRIPT_DIR/working_$current_date.txt)
 
 hour=$(( total_minutes/60 ))
 min=$(( total_minutes-$hour*60 ))
