@@ -8,7 +8,7 @@ pomodoro-timer:
 	./tools/pomodoro_timer/pomodoro_timer.sh
 
 pomodoro-timer-summary:
-	./tools/pomodoro_timer/summary.sh
+	./tools/pomodoro_timer/day_summary.sh
 
 pomodoro-timer-status:
 	./tools/pomodoro_timer/status.sh
