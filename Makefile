@@ -7,7 +7,7 @@ focus-solo:
 pomodoro-timer:
 	./tools/pomodoro_timer/pomodoro_timer.sh
 
-pomodoro-timer-summary:
+pomodoro-timer-today-summary:
 	./tools/pomodoro_timer/day_summary.sh
 
 pomodoro-timer-status:
