@@ -10,7 +10,7 @@ fi
 
 FILE="$SCRIPT_DIR/working_$current_date.txt"
 
-if [[ ! -e $FILE ]]; then
+if ! test -f "$FILE"; then
     echo "$current_date does not exist!"
     exit 1
 fi
