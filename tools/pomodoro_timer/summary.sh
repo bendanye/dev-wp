@@ -8,7 +8,14 @@ else
     current_date=$(date '+%Y-%m-%d')
 fi
 
-total_minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $SCRIPT_DIR/working_$current_date.txt)
+FILE="$SCRIPT_DIR/working_$current_date.txt"
+
+if [[ ! -e $FILE ]]; then
+    echo "$current_date does not exist!"
+    exit 1
+fi
+
+total_minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $FILE)
 
 hour=$(( total_minutes/60 ))
 min=$(( total_minutes-$hour*60 ))
