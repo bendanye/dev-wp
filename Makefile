@@ -10,6 +10,9 @@ pomodoro-timer:
 pomodoro-timer-today-summary:
 	./tools/pomodoro_timer/day_summary.sh
 
+pomodoro-timer-weekly-summary:
+	./tools/pomodoro_timer/weekly_summary.sh
+
 pomodoro-timer-status:
 	./tools/pomodoro_timer/status.sh
 
