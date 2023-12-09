@@ -35,4 +35,4 @@ average_working_minutes=$(( total_minutes / total_working_days ))
 average_hour=$(( average_working_minutes/60 ))
 average_min=$(( average_working_minutes-$average_hour*60 ))
 
-echo "On average ($total_working_days working days), I am on my desk for $average_hour hours, $average_min minutes" 
+echo "On average ($total_working_days days), I am on my desk for $average_hour hours, $average_min minutes" 
