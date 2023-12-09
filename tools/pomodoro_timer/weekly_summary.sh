@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
@@ -15,11 +15,17 @@ end_of_week=$(date -v +$((6 - current_day + 1))d "+%Y-%m-%d")
 current_date=$start_of_week
 while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$end_of_week" "+%Y%m%d") ]]; do
     file="$SCRIPT_DIR/working_$current_date.txt"
-
     if test -f "$file"; then
         minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
         total_minutes=$(( total_minutes + minutes ))
         total_working_days=$(( total_working_days + 1 ))
+    else
+        file="$SCRIPT_DIR/working_h_$current_date.txt"
+        if test -f "$file"; then
+            minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
+            total_minutes=$(( total_minutes + minutes ))
+            total_working_days=$(( total_working_days + .5 ))
+        fi
     fi
 
     # Add one day to the current date
@@ -31,7 +37,12 @@ if [ -z $total_working_days ]; then
     exit 0
 fi
 
-average_working_minutes=$(( total_minutes / total_working_days ))
+if (( total_working_days > 1 )); then
+   average_working_minutes=$(( total_minutes / total_working_days ))
+else
+    average_working_minutes=$total_minutes
+fi
+
 average_hour=$(( average_working_minutes/60 ))
 average_min=$(( average_working_minutes-$average_hour*60 ))
 
