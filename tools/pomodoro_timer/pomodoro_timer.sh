@@ -1,15 +1,25 @@
 #!/bin/bash
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-TIMER_FILE="$SCRIPT_DIR/timer"
-
 current_date=$(date '+%Y-%m-%d')
-DATA_FILE="$SCRIPT_DIR/working_$current_date.txt"
 
-if ! test -f "$DATA_FILE"; then
-    echo "start_date,desk_minutes" > $DATA_FILE
-fi
+get_file() {
+    local file="$SCRIPT_DIR/working_$current_date.txt"
+    if test -f "$file"; then
+        echo $file
+    else
+        file="$SCRIPT_DIR/working_h_$current_date.txt"
+        if test -f "$file"; then
+            echo $file
+        else
+            echo "start_date,desk_minutes" > "$SCRIPT_DIR/working_$current_date.txt"
+        fi
+    fi
+}
 
+DATA_FILE=$(get_file)
+
+TIMER_FILE="$SCRIPT_DIR/timer"
 if test -f "$TIMER_FILE"; then
     echo "Stop timer"
     START=$(cat $TIMER_FILE)
