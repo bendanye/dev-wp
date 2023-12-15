@@ -12,12 +12,15 @@ get_file() {
         if test -f "$file"; then
             echo $file
         else
-            echo "start_date,desk_minutes" > "$SCRIPT_DIR/working_$current_date.txt"
+            echo "$SCRIPT_DIR/working_$current_date.txt"
         fi
     fi
 }
 
 DATA_FILE=$(get_file)
+if ! test -f "$DATA_FILE"; then
+    echo "start_date,desk_minutes" > $DATA_FILE
+fi
 
 TIMER_FILE="$SCRIPT_DIR/timer"
 if test -f "$TIMER_FILE"; then
