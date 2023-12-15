@@ -43,6 +43,9 @@ else
     average_working_minutes=$total_minutes
 fi
 
+# Remove decimal place
+average_working_minutes=${average_working_minutes%.*}
+
 average_hour=$(( average_working_minutes/60 ))
 average_min=$(( average_working_minutes-$average_hour*60 ))
 
