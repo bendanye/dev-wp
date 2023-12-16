@@ -37,11 +37,20 @@ function open_ide() {
     code .
 }
 
+function backup_pomodoro_timer_files() {
+    local script_dir=$( dirname -- "$0"; )
+    cd $script_dir
+    sh ../pomodoro_timer/backup.sh
+}
+
 open_communication
 open_fav_tabs
 open_daily_reading_tabs
 open_freq_used_apps
 open_ide
 sleep 2
+
+backup_pomodoro_timer_files
+
 
 # colima start --cpu 4 --memory 8 --disk 100
