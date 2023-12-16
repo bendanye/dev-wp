@@ -2,9 +2,11 @@
 
 export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
-set -eu
-
-PROJECT=$(basename $(pwd))
+if [ -n "$1" ]; then
+    PROJECT=$1
+else
+    PROJECT=$(basename $(pwd))
+fi
 
 BASEDIR=$(dirname "$0")
 cd $BASEDIR

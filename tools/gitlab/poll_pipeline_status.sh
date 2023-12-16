@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-set -eu
-
-PROJECT=$(basename $(pwd))
+if [ -n "$1" ]; then
+    PROJECT=$1
+else
+    PROJECT=$(basename $(pwd))
+fi
 
 cd "$(dirname "$0")"
 
