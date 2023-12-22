@@ -5,7 +5,7 @@ export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 if [ -n "$1" ]; then
     PROJECT=$1
 else
-    PROJECT=$(basename $(pwd))
+    PROJECT=$(basename `git rev-parse --show-toplevel`)
 fi
 
 BASEDIR=$(dirname "$0")

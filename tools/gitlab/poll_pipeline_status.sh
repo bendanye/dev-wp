@@ -3,7 +3,7 @@
 if [ -n "$1" ]; then
     PROJECT=$1
 else
-    PROJECT=$(basename $(pwd))
+    PROJECT=$(basename `git rev-parse --show-toplevel`)
 fi
 
 cd "$(dirname "$0")"
