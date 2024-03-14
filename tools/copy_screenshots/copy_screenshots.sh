@@ -10,4 +10,4 @@ test "$1"
 ID=$1
 
 cd /Users/benjamin.ng/Desktop
-mv *.png "$WORKING_DIR/$ID/test_evidences"
+mv *.png "$WORKING_DIR/$ID/$SUBFOLDER_NAME"

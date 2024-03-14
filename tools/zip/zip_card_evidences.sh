@@ -12,4 +12,4 @@ ID=$1
 NEW_DIR="$WORKING_DIR/$ID"
 
 cd $NEW_DIR
-zip -r test_evidences.zip test_evidences
+zip -r $SUBFOLDER_NAME.zip $SUBFOLDER_NAME
