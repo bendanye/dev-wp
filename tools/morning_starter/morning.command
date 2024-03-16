@@ -43,6 +43,11 @@ function backup_pomodoro_timer_files() {
     sh ../pomodoro_timer/backup.sh
 }
 
+function open_daily_tech_note() {
+    cd ~/IdeaProjects/renotes
+    sh open_random.sh tech
+}
+
 open_communication
 open_fav_tabs
 open_daily_reading_news_tabs
@@ -54,3 +59,4 @@ backup_pomodoro_timer_files
 
 # colima start --cpu 4 --memory 8 --disk 100
 
+open_daily_tech_note
