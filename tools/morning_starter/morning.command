@@ -16,7 +16,7 @@ function open_communication() {
     sleep 1
 }
 
-function open_daily_reading_tabs() {
+function open_daily_reading_news_tabs() {
     open  -a "Google Chrome" "https://www.espn.com.sg/football"
     sleep 1
     open  -a "Google Chrome" "https://www.channelnewsasia.com/singapore"
@@ -45,12 +45,12 @@ function backup_pomodoro_timer_files() {
 
 open_communication
 open_fav_tabs
-open_daily_reading_tabs
+open_daily_reading_news_tabs
 open_freq_used_apps
 open_ide
 sleep 2
 
 backup_pomodoro_timer_files
 
-
 # colima start --cpu 4 --memory 8 --disk 100
+
