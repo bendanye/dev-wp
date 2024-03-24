@@ -60,3 +60,5 @@ backup_pomodoro_timer_files
 # colima start --cpu 4 --memory 8 --disk 100
 
 open_daily_tech_note
+
+open  -a "xbar"
