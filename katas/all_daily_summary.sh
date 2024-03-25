@@ -2,8 +2,6 @@
 
 cd "$(dirname "$0")"
 
-source source.env
-
 if [[ $1 ]]; then
     specified_date=$1
 else

@@ -2,8 +2,6 @@
 
 cd "$(dirname "$0")"
 
-source source.env
-
 kata_found="false"
 
 day_of_week=$(date +%w)
