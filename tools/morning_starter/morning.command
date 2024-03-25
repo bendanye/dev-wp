@@ -48,6 +48,12 @@ function open_daily_tech_note() {
     sh open_random.sh tech
 }
 
+function show_today_kata() {
+    local script_dir=$( dirname -- "$0"; )
+    cd $script_dir
+    sh ../../katas/daily_summary.sh
+}
+
 open_communication
 open_fav_tabs
 open_daily_reading_news_tabs
@@ -62,3 +68,5 @@ backup_pomodoro_timer_files
 open_daily_tech_note
 
 open  -a "xbar"
+
+show_today_kata
