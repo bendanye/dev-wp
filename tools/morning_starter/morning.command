@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+SCRIPT_DIR=$( dirname -- "$0"; )
+
 function open_fav_tabs() {
     open  -a "Google Chrome" "https://www.youtube.com/playlist?list=PLv4wZaT1eIwVdqdt6ROKj5k4VNAOqli3k"
     sleep 1
@@ -31,15 +33,13 @@ function open_freq_used_apps() {
 function open_ide() {
     open -a "IntelliJ IDEA CE"
 
-    local script_dir=$( dirname -- "$0"; )
-    cd $script_dir
+    cd $SCRIPT_DIR
     cd ../../
     code .
 }
 
 function backup_pomodoro_timer_files() {
-    local script_dir=$( dirname -- "$0"; )
-    cd $script_dir
+    cd $SCRIPT_DIR
     sh ../pomodoro_timer/backup.sh
 }
 
@@ -49,8 +49,7 @@ function open_daily_tech_note() {
 }
 
 function show_today_kata() {
-    local script_dir=$( dirname -- "$0"; )
-    cd $script_dir
+    cd $SCRIPT_DIR
     sh ../../katas/daily_summary.sh
 }
 
