@@ -19,12 +19,20 @@ while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-
         minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
         total_minutes=$(( total_minutes + minutes ))
         total_working_days=$(( total_working_days + 1 ))
+
+        hours=$(( minutes/60 ))
+        min=$(( minutes-$hours*60 ))
+        echo "$current_date - $hours hours, $min minutes"
     else
         file="$SCRIPT_DIR/working_h_$current_date.txt"
         if test -f "$file"; then
             minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
             total_minutes=$(( total_minutes + minutes ))
             total_working_days=$(( total_working_days + .5 ))
+
+            hours=$(( minutes/60 ))
+            min=$(( minutes-$hours*60 ))
+            echo "$current_date (0.5) - $hours hours, $min minutes"
         fi
     fi
 
