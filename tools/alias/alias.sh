@@ -12,6 +12,7 @@ alias zcte="$TOOLS_DIR/../zip/zip_card_evidences.sh"
 
 alias jc="$TOOLS_DIR/../jira/jira_card.sh"
 alias jbw="$TOOLS_DIR/../jira/jira_board_web.sh"
+alias jcua="$TOOLS_DIR/../jira/jira_upload_attachment.sh"
 
 alias glint="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
 alias gop="$TOOLS_DIR/../gitlab/open_project.sh"

@@ -27,5 +27,5 @@ Run the following command to upload attachment to a Jira issue.
 ID="<<the issue number>>"
 ATTACHMENT="<<The absolute path of the file to upload>>"
 
-python3.8 jira_upload_attachment.py "$ID" "$ATTACHMENT"
+./jira_upload.attachment.sh "$ID" "$ATTACHMENT"
 ```
