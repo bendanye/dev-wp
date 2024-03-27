@@ -29,13 +29,13 @@ EOT
 
 function stop_communication_for_solo() {
     echo "Stop Communication to solo"
-    killall Slack
+    # killall Slack
     stop_communication_from_browser
 }
 
 function stop_communication_for_pairing() {
     echo "Stop Communication to pair"
-    killall Slack
+    # killall Slack
     stop_communication_from_browser
     stop_music
 }
