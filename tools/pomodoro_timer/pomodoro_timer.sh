@@ -3,6 +3,13 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 current_date=$(date '+%Y-%m-%d')
 
+start_timer() {
+    echo "Start timer"
+    START=$(date +%s)
+    echo $START > $TIMER_FILE
+    sh "$SCRIPT_DIR/status.sh"
+}
+
 get_file() {
     local file="$SCRIPT_DIR/working_$current_date.txt"
     if test -f "$file"; then
@@ -39,11 +46,9 @@ if test -f "$TIMER_FILE"; then
     START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
     echo "$START_FORMATTED,$working_time" >> $DATA_FILE
 
-    cd $SCRIPT_DIR
-    sh ../stopwatch/stopwatch.sh
+    read -p "Press any keys to start timer"
+
+    start_timer
 else
-    echo "Start timer"
-    START=$(date +%s)
-    echo $START > $TIMER_FILE
-    sh "$SCRIPT_DIR/status.sh"
+    start_timer
 fi
