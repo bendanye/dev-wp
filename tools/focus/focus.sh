@@ -1,13 +1,21 @@
 #!/bin/bash
 
+communications=("google")
+
 function start_communication() {
-    open  -a "Google Chrome" "https://mail.google.com/mail/u/0/?tab=rm&ogbl"
-    sleep 1
-    open  -a "Google Chrome" "https://mail.google.com/chat/u/0/"
-    sleep 1
-    open  -a "Google Chrome" "https://calendar.google.com/calendar/u/0/r"
-    # sleep 1
-    # open  -a "Slack"
+    for communication in ${communications[@]}; do
+        if [[ $communication == "google" ]] ; then
+            open  -a "Google Chrome" "https://mail.google.com/mail/u/0/?tab=rm&ogbl"
+            sleep 1
+            open  -a "Google Chrome" "https://mail.google.com/chat/u/0/"
+            sleep 1
+            open  -a "Google Chrome" "https://calendar.google.com/calendar/u/0/r"
+            sleep 1
+
+        elif if [[ $communication == "slack" ]] ; then
+            open  -a "Slack"
+        fi
+    done
 }
 
 function stop_communication_from_browser() {
@@ -21,14 +29,24 @@ EOT
 
 function stop_communication_for_solo() {
     echo "Stop Communication to solo"
-    # killall Slack
-    stop_communication_from_browser
+    for communication in ${communications[@]}; do
+        if [[ $communication == "google" ]] ; then
+            stop_communication_from_browser
+        elif if [[ $communication == "slack" ]] ; then
+            killall Slack
+        fi
+    done
 }
 
 function stop_communication_for_pairing() {
     echo "Stop Communication to pair"
-    # killall Slack
-    stop_communication_from_browser
+    for communication in ${communications[@]}; do
+        if [[ $communication == "google" ]] ; then
+            stop_communication_from_browser
+        elif if [[ $communication == "slack" ]] ; then
+            killall Slack
+        fi
+    done
 }
 
 if [[ $1 ]]; then
