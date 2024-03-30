@@ -6,8 +6,8 @@ function start_communication() {
     open  -a "Google Chrome" "https://mail.google.com/chat/u/0/"
     sleep 1
     open  -a "Google Chrome" "https://calendar.google.com/calendar/u/0/r"
-    sleep 1
-    open  -a "Slack"
+    # sleep 1
+    # open  -a "Slack"
 }
 
 function stop_communication_from_browser() {
@@ -19,14 +19,6 @@ function stop_communication_from_browser() {
 EOT
 } 
 
-function stop_music() {
-    osascript <<EOT
-    tell windows of application "Google Chrome"
-        close (tabs whose URL contain "https://www.youtube.com")
-    end tell
-EOT
-}
-
 function stop_communication_for_solo() {
     echo "Stop Communication to solo"
     # killall Slack
@@ -37,7 +29,6 @@ function stop_communication_for_pairing() {
     echo "Stop Communication to pair"
     # killall Slack
     stop_communication_from_browser
-    stop_music
 }
 
 if [[ $1 ]]; then
