@@ -2,19 +2,10 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+source $SCRIPT_DIR/../focus/communications.sh
+
 function open_fav_tabs() {
     open  -a "Google Chrome" "https://www.youtube.com/playlist?list=PLv4wZaT1eIwVdqdt6ROKj5k4VNAOqli3k"
-    sleep 1
-}
-
-function open_communication() {
-    open  -a "Google Chrome" "https://mail.google.com/mail/u/0/?tab=rm&ogbl"
-    sleep 1
-    open  -a "Google Chrome" "https://mail.google.com/chat/u/0/"
-    sleep 1
-    open  -a "Google Chrome" "https://calendar.google.com/calendar/u/0/r"
-    sleep 1
-    open  -a "Slack"
     sleep 1
 }
 
@@ -53,7 +44,7 @@ function show_today_kata() {
     sh ../../katas/daily_summary.sh
 }
 
-open_communication
+start_communication
 open_fav_tabs
 open_daily_reading_news_tabs
 open_freq_used_apps
