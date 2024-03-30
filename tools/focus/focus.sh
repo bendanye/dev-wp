@@ -66,4 +66,4 @@ fi
 
 cd $SCRIPT_DIR
 cd ../
-sh pomodoro_timer/pomodoro_timer.sh
+sh pomodoro_timer/pomodoro_timer.sh "END_IF_STOPPED"

@@ -1,6 +1,12 @@
 #!/bin/bash
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+if [[ -z $1 ]]; then
+    ACTION="REPEAT"
+else
+    ACTION=$1
+fi
+
 current_date=$(date '+%Y-%m-%d')
 
 start_timer() {
@@ -46,9 +52,11 @@ if test -f "$TIMER_FILE"; then
     START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
     echo "$START_FORMATTED,$working_time" >> $DATA_FILE
 
-    read -p "Press any keys to start timer"
+    if [[ $ACTION == "REPEAT" ]]; then
+        read -p "Press any keys to start timer"
 
-    start_timer
+        start_timer
+    fi
 else
     start_timer
 fi
