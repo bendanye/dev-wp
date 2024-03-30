@@ -27,19 +27,8 @@ function stop_communication_from_browser() {
 EOT
 } 
 
-function stop_communication_for_solo() {
+function stop_communication() {
     echo "Stop Communication to solo"
-    for communication in ${communications[@]}; do
-        if [[ $communication == "google" ]] ; then
-            stop_communication_from_browser
-        elif if [[ $communication == "slack" ]] ; then
-            killall Slack
-        fi
-    done
-}
-
-function stop_communication_for_pairing() {
-    echo "Stop Communication to pair"
     for communication in ${communications[@]}; do
         if [[ $communication == "google" ]] ; then
             stop_communication_from_browser
@@ -66,11 +55,7 @@ if test -f "$FILE"; then
 else
     echo "Start focus mode"
     touch "$FILE"
-    if [[ $mode == "solo" ]]; then
-        stop_communication_for_solo
-    else
-        stop_communication_for_pairing
-    fi
+    stop_communication
 fi
 
 cd $SCRIPT_DIR
