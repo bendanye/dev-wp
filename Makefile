@@ -1,8 +1,5 @@
-focus-pairing:
+focus:
 	./tools/focus/focus.sh
-
-focus-solo:
-	./tools/focus/focus.sh solo
 
 pomodoro-timer:
 	./tools/pomodoro_timer/pomodoro_timer.sh
@@ -24,3 +21,6 @@ kata-daily-all-summary:
 
 kata-daily-summary:
 	./katas/daily_summary.sh
+
+kata-weekly-all-summary:
+	./katas/all_weekly_summary.sh
