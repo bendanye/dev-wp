@@ -13,7 +13,7 @@ for kata in $katas; do
     name=$(jq -r '.name' <<< "$kata")
     day=$(jq -r '.["day-of-week"]' <<< "$kata")
 
-    if [[ $day == $day_of_week ]]; then
+    if [[ $day == $day_of_week ]] || [[ $day == "*" ]]; then
         kata_found="true"
         echo "There is planned kata, '$name' on $day_of_week"
     fi
