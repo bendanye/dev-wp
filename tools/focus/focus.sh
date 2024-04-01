@@ -4,12 +4,6 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 source $SCRIPT_DIR/communication.sh
 
-if [[ $1 ]]; then
-    mode=$1
-else
-    mode="pairing"
-fi
-
 FILE="$SCRIPT_DIR/focus"
 
 if test -f "$FILE"; then
