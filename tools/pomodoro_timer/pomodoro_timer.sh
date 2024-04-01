@@ -49,7 +49,7 @@ if test -f "$TIMER_FILE"; then
     echo "Total at my desk time: $working_time minutes"
     echo "Please check your communication tools and take a break for $resting_time minutes until $rest_until"
     
-    sh $SCRIPT_DIR/summary.sh
+    sh $SCRIPT_DIR/day_summary.sh
 
     START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
     echo "$START_FORMATTED,$working_time" >> $DATA_FILE
