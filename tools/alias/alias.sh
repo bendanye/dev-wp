@@ -25,6 +25,7 @@ alias gopmra="$TOOLS_DIR/../gitlab/open_project_mr_assigned.sh"
 alias gopmrr="$TOOLS_DIR/../gitlab/open_project_mr_reviewed.sh"
 alias gpst="$TOOLS_DIR/../gitlab/poll_pipeline_status.sh"
 
+alias focus="$TOOLS_DIR/../focus/focus.sh"
 alias pomot="$TOOLS_DIR/../pomodoro_timer/pomodoro_timer.sh"
 alias pomotst="$TOOLS_DIR/../pomodoro_timer/status.sh"
 alias pomotdsum="$TOOLS_DIR/../pomodoro_timer/day_summary.sh"
