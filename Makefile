@@ -13,9 +13,6 @@ pomodoro-timer-weekly-summary:
 pomodoro-timer-status:
 	./tools/pomodoro_timer/status.sh
 
-pomodoro-timer-backup:
-	./tools/pomodoro_timer/backup.sh
-
 kata-daily-all-summary:
 	./katas/all_daily_summary.sh
 
