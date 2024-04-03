@@ -37,6 +37,7 @@ fi
 
 TIMER_FILE="$SCRIPT_DIR/timer"
 if test -f "$TIMER_FILE"; then
+    clear
     echo "Stop timer"
     START=$(cat $TIMER_FILE)
     rm $TIMER_FILE
