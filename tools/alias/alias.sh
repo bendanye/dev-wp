@@ -5,7 +5,7 @@ TOOLS_DIR="$(dirname "$0")"
 
 alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
-alias timer="$TOOLS_DIR/../timer/timer.sh"
+alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
 
 alias cs="$TOOLS_DIR/../copy_screenshots/copy_screenshots.sh"
 alias nc="$TOOLS_DIR/../new_card/new_card.sh"
