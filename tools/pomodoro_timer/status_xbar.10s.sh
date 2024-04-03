@@ -15,7 +15,7 @@ if test -f "$FILE"; then
     DURATION=$((END-START))
     MINUTES=$(($DURATION / 60))
     if [[ $MINUTES -ge 50 ]]; then
-        echo "$MINUTES | color=red"
+        echo "$MINUTES | color=darkred"
     elif [[ $MINUTES -ge 25 ]]; then
         echo "$MINUTES | color=yellow"
     else
