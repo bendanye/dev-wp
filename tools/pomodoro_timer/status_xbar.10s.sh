@@ -14,8 +14,10 @@ if test -f "$FILE"; then
     END=$(date +%s)
     DURATION=$((END-START))
     MINUTES=$(($DURATION / 60))
-    if [[ $MINUTES -ge 25 ]]; then
+    if [[ $MINUTES -ge 50 ]]; then
         echo "$MINUTES | color=red"
+    elif [[ $MINUTES -ge 25 ]]; then
+        echo "$MINUTES | color=yellow"
     else
         echo "🍅"
     fi
