@@ -31,7 +31,7 @@ hour=$(( total_minutes/60 ))
 min=$(( total_minutes-$hour*60 ))
 
 if [[ $1 ]]; then
-    echo "On ($current_date), I am on my desk for $hour hours, $min minutes" 
+    echo "On ($current_date), I am at my desk for $hour hours, $min minutes" 
 else
-    echo "Today ($current_date), I am on my desk for $hour hours, $min minutes" 
+    echo "Today ($current_date), I am at my desk for $hour hours, $min minutes" 
 fi
