@@ -48,7 +48,7 @@ if test -f "$TIMER_FILE"; then
     rest_until=$(date "-v+$resting_time"M '+%H:%M')
 
     echo "Total minutes at my desk time: $working_time"
-    echo "Please check your communication tools and take a break for $resting_time minutes until $rest_until"
+    echo "Please check the communication tools and take a break for $resting_time minutes until $rest_until"
     
     START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
     echo "$START_FORMATTED,$working_time" >> $DATA_FILE
