@@ -17,7 +17,7 @@ if test -f "$FILE"; then
     if [[ $MINUTES -ge 50 ]]; then
         echo "$MINUTES | color=darkred"
     elif [[ $MINUTES -ge 25 ]]; then
-        echo "$MINUTES | color=yellow"
+        echo "$MINUTES | color=darkgreen"
     else
         echo "🍅"
     fi
