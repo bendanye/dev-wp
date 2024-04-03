@@ -55,7 +55,7 @@ if test -f "$TIMER_FILE"; then
     sh $SCRIPT_DIR/day_summary.sh
 
     if [[ $ACTION == "REPEAT" ]]; then
-        read -p "Press any keys to start timer"
+        read -p "Press return to start timer"
 
         start_timer
     fi
