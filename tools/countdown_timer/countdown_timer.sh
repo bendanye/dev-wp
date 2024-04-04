@@ -2,13 +2,26 @@
 
 ALERTME_MAIN_FILE=""
 
-if [[ -z $1 ]]; then
-    minutes=0
-else
-    minutes=$1
+while getopts ":m:s:" opt; do
+  case $opt in
+    m) minutes="$OPTARG"
+    ;;
+    s) seconds="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
+if [[ -z $minutes ]]; then
+    echo "Default minutes to 1"
+    minutes=1
 fi
 
-seconds=0
+if [[ -z $seconds ]]; then
+    echo "Default seconds to 0"
+    seconds=0
+fi
 
 while true; do
     printf "\r%02d:%02d" $minutes $seconds
