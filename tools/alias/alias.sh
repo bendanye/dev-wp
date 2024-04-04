@@ -1,5 +1,6 @@
 alias drma='docker rm $(docker ps -aq) --force'
 alias dpsa="docker ps -a"
+alias caf="caffeinate -dims"
 
 TOOLS_DIR="$(dirname "$0")"
 
