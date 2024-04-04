@@ -22,7 +22,7 @@ while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-
 
         hours=$(( minutes/60 ))
         min=$(( minutes-$hours*60 ))
-        echo "$current_date - $hours hours, $min minutes"
+        echo "$current_date (1)  - $hours hours, $min minutes"
     else
         file="$SCRIPT_DIR/working_h_$current_date.txt"
         if test -f "$file"; then
@@ -32,7 +32,7 @@ while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-
 
             hours=$(( minutes/60 ))
             min=$(( minutes-$hours*60 ))
-            echo "$current_date (0.5) - $hours hours, $min minutes"
+            echo "$current_date (.5) - $hours hours, $min minutes"
         fi
     fi
 
