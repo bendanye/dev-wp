@@ -11,10 +11,12 @@ fi
 current_date=$(date '+%Y-%m-%d')
 
 start_timer() {
+    clear
     echo "Start timer"
     START=$(date +%s)
     echo $START > $TIMER_FILE
     cd $SCRIPT_DIR
+    ./day_summary.sh
     ./status.sh
 }
 
