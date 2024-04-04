@@ -19,4 +19,4 @@ fi
 mkdir "$NEW_DIR"
 echo "Created new folder, $NEW_DIR"
 
-mkdir "$NEW_DIR/$CARD_WORKING_DIR"
+mkdir "$NEW_DIR/$CARD_TEST_EVIDENCES"

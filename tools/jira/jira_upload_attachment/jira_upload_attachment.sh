@@ -9,7 +9,7 @@ source ../../source.env
 ID=$1
 
 if [[ "$2" == "" ]]; then
-    ATTACHMENT="$CARD_WORKING_DIR.zip"
+    ATTACHMENT="$CARD_TEST_EVIDENCES.zip"
 else
     ATTACHMENT=$2
 fi
