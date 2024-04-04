@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ALERTME_MAIN_FILE=""
+
 if [[ -z $1 ]]; then
     minutes=0
 else
@@ -27,3 +29,7 @@ done
 
 echo ""
 echo "Timer stopped"
+
+if [[ $ALERTME_MAIN_FILE != "" ]]; then
+    sh $ALERTME_MAIN_FILE
+fi
