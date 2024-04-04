@@ -29,5 +29,6 @@ alias focus="$TOOLS_DIR/../focus/focus.sh"
 alias pomot="$TOOLS_DIR/../pomodoro_timer/pomodoro_timer.sh"
 alias pomotst="$TOOLS_DIR/../pomodoro_timer/status.sh"
 alias pomotdsum="$TOOLS_DIR/../pomodoro_timer/day_summary.sh"
+alias pomotwsum="$TOOLS_DIR/../pomodoro_timer/weekly_summary.sh"
 
 alias devwp="cd $TOOLS_DIR/../../"
