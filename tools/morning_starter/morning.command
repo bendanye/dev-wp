@@ -41,7 +41,7 @@ function open_daily_tech_note() {
 
 function show_today_kata() {
     cd $SCRIPT_DIR
-    sh ../../katas/daily_summary.sh
+    sh ../../katas/daily_schedule.sh
 }
 
 start_communication
