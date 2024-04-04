@@ -20,6 +20,11 @@ if test -f "$FILE"; then
         echo "$MINUTES | color=darkgreen"
     else
         echo "🍅"
+        echo "---"
+        START=$(cat $FILE)
+        END=$(date +%s)
+        DURATION=$((END-START))
+        echo "$(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
     fi
 else
     echo "⏹"
