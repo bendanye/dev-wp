@@ -27,9 +27,9 @@ alias gopmrr="$TOOLS_DIR/../gitlab/open_project_mr_reviewed.sh"
 alias gpst="$TOOLS_DIR/../gitlab/poll_pipeline_status.sh"
 
 alias focus="$TOOLS_DIR/../focus/focus.sh"
-alias pomot="$TOOLS_DIR/../pomodoro_timer/time_tracker.sh"
-alias pomotst="$TOOLS_DIR/../pomodoro_timer/status.sh"
-alias pomotds="$TOOLS_DIR/../pomodoro_timer/day_summary.sh"
-alias pomotws="$TOOLS_DIR/../pomodoro_timer/weekly_summary.sh"
+alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
+alias ttst="$TOOLS_DIR/../time_tracker/status.sh"
+alias ttds="$TOOLS_DIR/../time_tracker/day_summary.sh"
+alias ttws="$TOOLS_DIR/../time_tracker/weekly_summary.sh"
 
 alias devwp="cd $TOOLS_DIR/../../"

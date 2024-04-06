@@ -25,10 +25,9 @@ get_file() {
 }
 
 function start() {
-    cd $SCRIPT_DIR
-    ./pomodoro_timer.sh
-    ./day_summary.sh
-    ./status.sh
+    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
+    sh "$SCRIPT_DIR/day_summary.sh"
+    sh "$SCRIPT_DIR/status.sh"
 }
 
 DATA_FILE=$(get_file)
@@ -36,13 +35,13 @@ if ! test -f "$DATA_FILE"; then
     echo "start_date,desk_minutes" > $DATA_FILE
 fi
 
-TIMER_FILE="$SCRIPT_DIR/timer"
+TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 while true; do
     if test -f "$TIMER_FILE"; then
         START=$(cat $TIMER_FILE)
         END=$(date +%s)
 
-        ./pomodoro_timer.sh
+        sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
         
         secs=$((END-START))
         working_time=$(( secs/60 ))
@@ -50,7 +49,7 @@ while true; do
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
         echo "$START_FORMATTED,$working_time" >> $DATA_FILE
 
-        sh $SCRIPT_DIR/day_summary.sh
+        sh "$SCRIPT_DIR/day_summary.sh"
 
         if [[ $ACTION == "REPEAT" ]]; then
             read -p "Press return to start timer"

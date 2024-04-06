@@ -1,14 +1,14 @@
 focus:
 	./tools/focus/focus.sh
 
-pomodoro-timer:
-	./tools/pomodoro_timer/pomodoro_timer.sh
+time-tracker:
+	./tools/time_tracker/time_tracker.sh
 
-pomodoro-timer-today-summary:
-	./tools/pomodoro_timer/day_summary.sh
+time-tracker-today-summary:
+	./tools/time_tracker/day_summary.sh
 
-pomodoro-timer-weekly-summary:
-	./tools/pomodoro_timer/weekly_summary.sh
+time-tracker-weekly-summary:
+	./tools/time_tracker/weekly_summary.sh
 
 kata-daily-all-summary:
 	./katas/all_daily_summary.sh

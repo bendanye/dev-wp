@@ -29,9 +29,9 @@ function open_ide() {
     code .
 }
 
-function backup_pomodoro_timer_files() {
+function backup_time_tracker_files() {
     cd $SCRIPT_DIR
-    sh ../pomodoro_timer/backup.sh
+    sh ../time_tracker/backup.sh
 }
 
 function open_daily_tech_note() {
@@ -51,7 +51,7 @@ open_freq_used_apps
 open_ide
 sleep 2
 
-backup_pomodoro_timer_files
+backup_time_tracker_files
 
 # colima start --cpu 4 --memory 8 --disk 100
 
