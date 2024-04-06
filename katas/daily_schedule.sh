@@ -2,13 +2,15 @@
 
 cd "$(dirname "$0")"
 
+source source.env
+
 kata_found="false"
 
 day_of_week=$(date +%w)
 days=("Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday")
 day_of_week=${days[$day_of_week]}
 
-katas=$(jq -c '.katas[]' schedule.json)
+katas=$(jq -c '.katas[]' $SCHEDULE_FILE_NAME)
 for kata in $katas; do
     name=$(jq -r '.name' <<< "$kata")
     day=$(jq -r '.["day-of-week"]' <<< "$kata")

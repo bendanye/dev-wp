@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")"
 
-TIME_TAKEN_FILE_NAME="time_taken.txt"
+source source.env
 
 function check() {
     local dir=$1
@@ -43,7 +43,7 @@ function check() {
     fi
  }
 
-katas=$(jq -c '.katas[]' schedule.json)
+katas=$(jq -c '.katas[]' $SCHEDULE_FILE_NAME)
 for kata in $katas; do
     name=$(jq -r '.name' <<< "$kata")
     kata_directory=$(jq -r '.repo_dir' <<< "$kata")

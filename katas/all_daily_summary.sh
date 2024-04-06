@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")"
 
-TIME_TAKEN_FILE_NAME="time_taken.txt"
+source source.env
 
 if [[ $1 ]]; then
     specified_date=$1
@@ -37,7 +37,7 @@ function check() {
  }
 
 function print_each_summary() {
-    katas=$(jq -c '.katas[]' schedule.json)
+    katas=$(jq -c '.katas[]' $SCHEDULE_FILE_NAME)
     for kata in $katas; do
         name=$(jq -r '.name' <<< "$kata")
         kata_directory=$(jq -r '.repo_dir' <<< "$kata")
@@ -57,7 +57,7 @@ function print_each_summary() {
 function print_total_secs() {
     total_secs=0
 
-    katas=$(jq -c '.katas[]' schedule.json)
+    katas=$(jq -c '.katas[]' $SCHEDULE_FILE_NAME)
     for kata in $katas; do
         name=$(jq -r '.name' <<< "$kata")
         kata_directory=$(jq -r '.repo_dir' <<< "$kata")
