@@ -18,4 +18,4 @@ fi
 
 cd $SCRIPT_DIR
 cd ../
-sh pomodoro_timer/pomodoro_timer.sh "END_IF_STOPPED"
+sh pomodoro_timer/time_tracker.sh "END_IF_STOPPED"
