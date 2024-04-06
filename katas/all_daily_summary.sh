@@ -2,6 +2,8 @@
 
 cd "$(dirname "$0")"
 
+TIME_TAKEN_FILE_NAME="time_taken.txt"
+
 if [[ $1 ]]; then
     specified_date=$1
 else
@@ -10,10 +12,10 @@ fi
 
 function check() {
     local dir=$1
-    if [[ ! -f "$dir/time_taken.txt" ]]; then
+    if [[ ! -f "$dir/$TIME_TAKEN_FILE_NAME" ]]; then
         echo -e "[ ] $dir"
     else
-        result=$(cat $dir/time_taken.txt | grep $specified_date)
+        result=$(cat $dir/$TIME_TAKEN_FILE_NAME | grep $specified_date)
         if [[ $result ]]; then
             secs=${result##*,}
             echo -e "[\xE2\x9C\x94] $dir - $secs"
@@ -25,8 +27,8 @@ function check() {
  
  function time_taken() {
     local dir=$1
-    if [[ -f "$dir/time_taken.txt" ]]; then
-        result=$(cat $dir/time_taken.txt | grep $specified_date)
+    if [[ -f "$dir/$TIME_TAKEN_FILE_NAME" ]]; then
+        result=$(cat $dir/$TIME_TAKEN_FILE_NAME | grep $specified_date)
         if [[ $result ]]; then
             secs=${result##*,}
             echo $secs

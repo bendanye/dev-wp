@@ -2,6 +2,8 @@
 
 cd "$(dirname "$0")"
 
+TIME_TAKEN_FILE_NAME="time_taken.txt"
+
 function check() {
     local dir=$1
     # Get the current day of the week (1 for Monday, 2 for Tuesday, ..., 0 for Sunday)
@@ -20,10 +22,10 @@ function check() {
     # Loop through the dates from start to end of the week (inclusive)
     while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$end_of_week" "+%Y%m%d") ]]; do
 
-        if [[ ! -f "$dir/time_taken.txt" ]]; then
+        if [[ ! -f "$dir/$TIME_TAKEN_FILE_NAME" ]]; then
             echo -e "[ ] $dir"
         else
-            result=$(cat $dir/time_taken.txt | grep $current_date)
+            result=$(cat $dir/$TIME_TAKEN_FILE_NAME | grep $current_date)
             if [[ $result ]]; then
                 secs=${result##*,}
                 echo -e "[\xE2\x9C\x94] $dir - $secs"
