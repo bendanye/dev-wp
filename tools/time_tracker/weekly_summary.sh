@@ -14,21 +14,21 @@ end_of_week=$(date -v +$((6 - current_day + 1))d "+%Y-%m-%d")
 # Loop through the dates from start to end of the week (inclusive)
 current_date=$start_of_week
 while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$end_of_week" "+%Y%m%d") ]]; do
-    file="$SCRIPT_DIR/working_$current_date.txt"
+    file="$SCRIPT_DIR/tracking_$current_date.txt"
     if test -f "$file"; then
         minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
         total_minutes=$(( total_minutes + minutes ))
-        total_working_days=$(( total_working_days + 1 ))
+        total_days=$(( total_days + 1 ))
 
         hours=$(( minutes/60 ))
         min=$(( minutes-$hours*60 ))
         echo "$current_date (1)  - $hours hours, $min minutes"
     else
-        file="$SCRIPT_DIR/working_h_$current_date.txt"
+        file="$SCRIPT_DIR/tracking_h_$current_date.txt"
         if test -f "$file"; then
             minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
             total_minutes=$(( total_minutes + minutes ))
-            total_working_days=$(( total_working_days + .5 ))
+            total_days=$(( total_days + .5 ))
 
             hours=$(( minutes/60 ))
             min=$(( minutes-$hours*60 ))
@@ -40,21 +40,21 @@ while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-
     current_date=$(date -jf "%Y-%m-%d" -v+1d "$current_date" "+%Y-%m-%d")
 done
 
-if [ -z $total_working_days ]; then
-    echo "There is no working information for this week"
+if [ -z $total_days ]; then
+    echo "There is no tracking information from $start_of_week to $end_of_week"
     exit 0
 fi
 
-if (( total_working_days > 1 )); then
-   average_working_minutes=$(( total_minutes / total_working_days ))
+if (( total_days > 1 )); then
+   average_minutes=$(( total_minutes / total_days ))
 else
-    average_working_minutes=$total_minutes
+    average_minutes=$total_minutes
 fi
 
 # Remove decimal place
-average_working_minutes=${average_working_minutes%.*}
+average_minutes=${average_minutes%.*}
 
-average_hour=$(( average_working_minutes/60 ))
-average_min=$(( average_working_minutes-$average_hour*60 ))
+average_hour=$(( average_minutes/60 ))
+average_min=$(( average_minutes-$average_hour*60 ))
 
-echo "On average ($total_working_days days), I am on my desk for $average_hour hours, $average_min minutes" 
+echo "On average ($total_days days), I am on my desk for $average_hour hours, $average_min minutes" 

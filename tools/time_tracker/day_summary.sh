@@ -9,11 +9,11 @@ else
 fi
 
 get_file() {
-    local file="$SCRIPT_DIR/working_$current_date.txt"
+    local file="$SCRIPT_DIR/tracking_$current_date.txt"
     if test -f "$file"; then
         echo $file
     else
-        file="$SCRIPT_DIR/working_h_$current_date.txt"
+        file="$SCRIPT_DIR/tracking_h_$current_date.txt"
         if test -f "$file"; then
             echo $file
         else
@@ -24,6 +24,10 @@ get_file() {
 }
 
 FILE=$(get_file)
+if ! test -f "$FILE"; then
+    echo "There is no tracking information for $current_date"
+    exit 0
+fi
 
 total_minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $FILE)
 

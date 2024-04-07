@@ -11,15 +11,15 @@ fi
 current_date=$(date '+%Y-%m-%d')
 
 get_file() {
-    local file="$SCRIPT_DIR/working_$current_date.txt"
+    local file="$SCRIPT_DIR/tracking_$current_date.txt"
     if test -f "$file"; then
         echo $file
     else
-        file="$SCRIPT_DIR/working_h_$current_date.txt"
+        file="$SCRIPT_DIR/tracking_h_$current_date.txt"
         if test -f "$file"; then
             echo $file
         else
-            echo "$SCRIPT_DIR/working_$current_date.txt"
+            echo "$SCRIPT_DIR/tracking_$current_date.txt"
         fi
     fi
 }
@@ -44,10 +44,10 @@ while true; do
         sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
         
         secs=$((END-START))
-        working_time=$(( secs/60 ))
+        desk_time=$(( secs/60 ))
         
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
-        echo "$START_FORMATTED,$working_time" >> $DATA_FILE
+        echo "$START_FORMATTED,$desk_time" >> $DATA_FILE
 
         sh "$SCRIPT_DIR/day_summary.sh"
 
