@@ -9,8 +9,6 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-ENV_DIR = "."
-
 
 @dataclass(frozen=True)
 class JiraEnv:
@@ -20,7 +18,7 @@ class JiraEnv:
 
 
 def main(card_number: str, file_name: str) -> None:
-    jira_env = _read_from_jira_env_file(f"{ENV_DIR}/jira.env")
+    jira_env = _read_from_jira_env_file(f"../../jira.env")
     working_dir = _read_from_source_env_file(f"../../source.env")
 
     attachment_path = f"{working_dir}/{card_number}/{file_name}"
