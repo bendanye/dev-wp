@@ -1,0 +1,7 @@
+[global]
+default = gitlab
+ssl_verify = true
+
+[gitlab]
+url = https://gitlab.com
+private_token = 
