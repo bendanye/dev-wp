@@ -9,9 +9,8 @@ else
 fi
 
 BASEDIR=$(dirname "$0")
-cd $BASEDIR
 
-source ../../gitlab.env
+source "$BASEDIR/../../gitlab.env"
 
 CONFIG_PATH="$BASEDIR/config.ini"
 
@@ -23,7 +22,7 @@ else
     for file in $files
     do
         echo "Linting $file"
-        gitlab --config-file "$CONFIG_PATH" project-ci-lint validate --project-id $GROUP/$PROJECT --content @$file
+        gitlab --config-file "$CONFIG_PATH" project-ci-lint validate --project-id $GITLAB_GROUP/$PROJECT --content @$file
     done
 
     echo "All .gitlab-ci files are lint without errors!"

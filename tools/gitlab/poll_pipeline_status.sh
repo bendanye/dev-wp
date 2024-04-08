@@ -12,7 +12,7 @@ source ../gitlab.env
 
 while true
 do
-    status=$(curl -s --header "PRIVATE-TOKEN: $ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GROUP}${PROJECT}/pipelines" | jq first | jq -r '.status')
+    status=$(curl -s --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GITLAB_GROUP_ENCODING}${PROJECT}/pipelines" | jq first | jq -r '.status')
     if [[ $status != "success" && $status != "failed" && $status != "canceled" ]]; then
         echo "Still in progress. Sleep for 10 secs"
         sleep 10

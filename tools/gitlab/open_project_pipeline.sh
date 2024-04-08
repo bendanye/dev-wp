@@ -10,4 +10,4 @@ cd "$(dirname "$0")"
 
 source ../gitlab.env
 
-open  -a "Google Chrome" "${GITLAB_URL}/${GROUP}/${PROJECT}/~/pipelines"
+open  -a "Google Chrome" "${GITLAB_URL}/${GITLAB_GROUP}/${PROJECT}/-/pipelines"
