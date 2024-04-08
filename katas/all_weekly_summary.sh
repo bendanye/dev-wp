@@ -28,7 +28,7 @@ function check() {
             result=$(cat $dir/$TIME_TAKEN_FILE_NAME | grep $current_date)
             if [[ $result ]]; then
                 secs=${result##*,}
-                echo -e "[\xE2\x9C\x94] $dir - $secs"
+                echo -e "[\xE2\x9C\x94] $dir - $current_date"
                 has_result="true"
                 break
             fi
