@@ -4,11 +4,6 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 source $SCRIPT_DIR/../focus/communications.sh
 
-function open_fav_tabs() {
-    open  -a "Google Chrome" "https://www.youtube.com/playlist?list=PLv4wZaT1eIwVdqdt6ROKj5k4VNAOqli3k"
-    sleep 1
-}
-
 function open_daily_reading_news_tabs() {
     open  -a "Google Chrome" "https://www.espn.com.sg/football"
     sleep 1
@@ -45,7 +40,6 @@ function show_today_kata() {
 }
 
 start_communication
-open_fav_tabs
 open_daily_reading_news_tabs
 open_freq_used_apps
 open_ide
