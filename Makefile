@@ -18,3 +18,6 @@ kata-daily-summary:
 
 kata-weekly-all-summary:
 	./katas/all_weekly_summary.sh
+
+kata-daily-schedule:
+	./katas/daily_schedule.sh
