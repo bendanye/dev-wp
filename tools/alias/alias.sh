@@ -33,3 +33,4 @@ alias ttds="$TOOLS_DIR/../time_tracker/day_summary.sh"
 alias ttws="$TOOLS_DIR/../time_tracker/weekly_summary.sh"
 
 alias devwp="cd $TOOLS_DIR/../../"
+alias gwp="cd ~/IdeaProjects"
