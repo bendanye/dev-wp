@@ -4,8 +4,6 @@ minutes=0
 seconds=0
 
 while true; do
-    
-    printf "\r%02d:%02d" $minutes $seconds
 
     ((seconds++))
 
@@ -14,5 +12,11 @@ while true; do
         ((minutes++))
     fi
     
-    sleep 1
+    printf "\r%02d:%02d (press space to exit)" $minutes $seconds
+    IFS="\n"
+    read -s -n 1 -t 1 key
+    if [ "$key" == " " ]; then
+        break
+    fi
+    IFS=""
 done
