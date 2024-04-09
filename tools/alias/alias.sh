@@ -13,8 +13,8 @@ alias nc="$TOOLS_DIR/../new_card/new_card.sh"
 alias od="$TOOLS_DIR/../open_directory/open.sh"
 alias zcte="$TOOLS_DIR/../zip/zip_card_evidences.sh"
 
-alias jc="$TOOLS_DIR/../jira/jira_card.sh"
-alias jbw="$TOOLS_DIR/../jira/jira_board_web.sh"
+alias joc="$TOOLS_DIR/../jira/jira_card.sh"
+alias job="$TOOLS_DIR/../jira/jira_board_web.sh"
 alias jcua="$TOOLS_DIR/../jira/jira_upload_attachment.sh"
 
 alias glint="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
