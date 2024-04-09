@@ -10,14 +10,14 @@ time-tracker-today-summary:
 time-tracker-weekly-summary:
 	./tools/time_tracker/weekly_summary.sh
 
-kata-daily-all-summary:
-	./katas/all_daily_summary.sh
-
 kata-daily-summary:
 	./katas/daily_summary.sh
 
-kata-weekly-all-summary:
-	./katas/all_weekly_summary.sh
-
 kata-daily-schedule:
 	./katas/daily_schedule.sh
+
+kata-all-daily-summary:
+	./katas/all_daily_summary.sh
+
+kata-all-weekly-summary:
+	./katas/all_weekly_summary.sh
