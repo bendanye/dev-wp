@@ -83,7 +83,9 @@ function print_total_secs() {
         fi
     done
 
-    echo "Total time taken: $total_secs secs"
+    minutes=$(( total_secs/60 ))
+    secs=$(( total_secs%60 ))
+    echo "Total time taken: $minutes minutes $secs seconds"
 }
 
 print_each_summary
