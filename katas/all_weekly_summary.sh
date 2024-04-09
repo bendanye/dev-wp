@@ -17,8 +17,6 @@ function check() {
 
     current_date=$start_of_week
 
-    has_result="false"
-
     # Loop through the dates from start to end of the week (inclusive)
     while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$end_of_week" "+%Y%m%d") ]]; do
 
@@ -29,18 +27,14 @@ function check() {
             if [[ $result ]]; then
                 secs=${result##*,}
                 echo -e "[\xE2\x9C\x94] $dir - $current_date"
-                has_result="true"
-                break
+            else
+                echo -e "[ ] $dir - $current_date"
             fi
         fi
         
         # Add one day to the current date
         current_date=$(date -jf "%Y-%m-%d" -v+1d "$current_date" "+%Y-%m-%d")
     done
-
-    if [[ $has_result == "false" ]]; then
-        echo -e "[ ] $dir"
-    fi
  }
 
 katas=$(jq -c '.katas[]' $SCHEDULE_FILE_NAME)
