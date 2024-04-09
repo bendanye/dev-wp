@@ -18,6 +18,8 @@ function check() {
 
     current_date=$start_of_week
 
+    echo -e "$dir"
+
     # Loop through the dates from start to end of the week (inclusive)
     while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$end_of_week" "+%Y%m%d") ]]; do
 
@@ -27,9 +29,9 @@ function check() {
             result=$(cat $dir/$TIME_TAKEN_FILE_NAME | grep $current_date)
             if [[ $result ]]; then
                 secs=${result##*,}
-                echo -e "[\xE2\x9C\x94] $dir - $current_date"
+                echo -e "[\xE2\x9C\x94] $current_date"
             else
-                echo -e "[ ] $dir - $current_date"
+                echo -e "[ ] $current_date"
             fi
         fi
         
