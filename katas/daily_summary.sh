@@ -22,7 +22,7 @@ function check() {
         result=$(cat $dir/$TIME_TAKEN_FILE_NAME | grep $specified_date)
         if [[ $result ]]; then
             secs=${result##*,}
-            echo -e "[\xE2\x9C\x94] $dir - $secs"
+            echo -e "[\xE2\x9C\x94] $dir - ${secs}s"
         else
             echo -e "[ ] $dir"
         fi
