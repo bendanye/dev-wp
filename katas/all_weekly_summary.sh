@@ -12,8 +12,9 @@ function check() {
     # Calculate the date for the start of the week (Monday)
     start_of_week=$(date -v -$((current_day - 1))d "+%Y-%m-%d")
 
-    # Calculate the date for the end of the week (Sunday)
-    end_of_week=$(date -v +$((6 - current_day + 1))d "+%Y-%m-%d")
+    # Calcuate the date using current day as the end date
+    end_of_week=$(date -v +$((current_day - 2))d "+%Y-%m-%d")
+    # end_of_week=$(date -v +$((6 - current_day + 1))d "+%Y-%m-%d")
 
     current_date=$start_of_week
 
