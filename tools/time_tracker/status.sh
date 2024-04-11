@@ -5,10 +5,16 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 if test -f "$TIMER_FILE"; then
     while true; do
-        START=$(cat $TIMER_FILE)
+        START=$(cat $TIMER_FILE | cut -d ',' -f1)
+        TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
         END=$(date +%s)
         DURATION=$((END-START))
-        printf "\r Currently at my desk: $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
+
+        if [[ $TASK == "NIL" ]]; then
+            printf "\r Currently at my desk: $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
+        else
+            printf "\r Currently at my desk working on $TASK: $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
+        fi
         IFS="\n"
         read -s -n 1 -t 1 key
         if [ "$key" == " " ]; then

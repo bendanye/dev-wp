@@ -2,10 +2,23 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-if [[ -z $1 ]]; then
-    ACTION="REPEAT"
-else
-    ACTION=$1
+while getopts ":a:t:" opt; do
+  case $opt in
+    a) action="$OPTARG"
+    ;;
+    t) task="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
+if [[ -z $action ]]; then
+    action="REPEAT"
+fi
+
+if [[ -z $task ]]; then
+    task="NIL"
 fi
 
 current_date=$(date '+%Y-%m-%d')
@@ -25,20 +38,21 @@ get_file() {
 }
 
 function start() {
-    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
+    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $task
     sh "$SCRIPT_DIR/day_summary.sh"
     sh "$SCRIPT_DIR/status.sh"
 }
 
 DATA_FILE=$(get_file)
 if ! test -f "$DATA_FILE"; then
-    echo "start_date,desk_minutes" > $DATA_FILE
+    echo "start_date,task,desk_minutes" > $DATA_FILE
 fi
 
 TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 while true; do
     if test -f "$TIMER_FILE"; then
-        START=$(cat $TIMER_FILE)
+        START=$(cat $TIMER_FILE | cut -d ',' -f1)
+        TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
         END=$(date +%s)
 
         sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
@@ -47,12 +61,16 @@ while true; do
         desk_time=$(( secs/60 ))
         
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
-        echo "$START_FORMATTED,$desk_time" >> $DATA_FILE
+        echo "$START_FORMATTED,$task,$desk_time" >> $DATA_FILE
 
         sh "$SCRIPT_DIR/day_summary.sh"
 
-        if [[ $ACTION == "REPEAT" ]]; then
-            read -p "Press return to start timer"
+        if [[ $action == "REPEAT" ]]; then
+            if [[ $TASK == "NIL" ]]; then
+                read -p "Press return to start timer"
+            else
+                read -p "Press return to start timer to resume on $TASK"
+            fi
 
             start
         fi
