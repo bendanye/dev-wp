@@ -32,8 +32,6 @@ function backup_time_tracker_files() {
 function open_daily_tech_notes() {
     cd ~/IdeaProjects/renotes
     sh open_random.sh tech
-    cd ~/IdeaProjects/refactoring-kata
-    sh open_random.sh
 }
 
 function show_today_kata() {
