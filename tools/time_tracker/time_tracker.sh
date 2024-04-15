@@ -52,7 +52,7 @@ TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 while true; do
     if test -f "$TIMER_FILE"; then
         START=$(cat $TIMER_FILE | cut -d ',' -f1)
-        TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
+        CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
         END=$(date +%s)
 
         sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
@@ -61,15 +61,15 @@ while true; do
         desk_time=$(( secs/60 ))
         
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
-        echo "$START_FORMATTED,$task,$desk_time" >> $DATA_FILE
+        echo "$START_FORMATTED,$CURRENT_TASK,$desk_time" >> $DATA_FILE
 
         sh "$SCRIPT_DIR/day_summary.sh"
 
         if [[ $action == "REPEAT" ]]; then
-            if [[ $TASK == "NIL" ]]; then
+            if [[ $CURRENT_TASK == "NIL" ]]; then
                 read -p "Press return to start timer"
             else
-                read -p "Press return to start timer to resume on $TASK"
+                read -p "Press return to start timer to resume on $CURRENT_TASK"
             fi
 
             start
