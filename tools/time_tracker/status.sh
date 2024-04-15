@@ -13,7 +13,7 @@ if test -f "$TIMER_FILE"; then
         if [[ $TASK == "NIL" ]]; then
             printf "\r Currently at my desk for $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
         else
-            printf "\r Currently at my desk working on $TASK for $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
+            printf "\r Currently at my desk focusing on $TASK for $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
         fi
         IFS="\n"
         read -s -n 1 -t 1 key
