@@ -29,7 +29,7 @@ if ! test -f "$FILE"; then
     exit 0
 fi
 
-total_minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $FILE)
+total_minutes=$(awk -F, '{if(NR==1)next;total+=$3}END{print total}' $FILE)
 
 hour=$(( total_minutes/60 ))
 min=$(( total_minutes-$hour*60 ))
