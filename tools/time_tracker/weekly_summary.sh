@@ -16,7 +16,7 @@ current_date=$start_of_week
 while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$end_of_week" "+%Y%m%d") ]]; do
     file="$SCRIPT_DIR/tracking_$current_date.txt"
     if test -f "$file"; then
-        minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
+        minutes=$(awk -F, '{if(NR==1)next;total+=$3}END{print total}' $file)
         total_minutes=$(( total_minutes + minutes ))
         total_days=$(( total_days + 1 ))
 
@@ -26,7 +26,7 @@ while [[ $(date -jf "%Y-%m-%d" "$current_date" "+%Y%m%d") -le $(date -jf "%Y-%m-
     else
         file="$SCRIPT_DIR/tracking_h_$current_date.txt"
         if test -f "$file"; then
-            minutes=$(awk -F, '{if(NR==1)next;total+=$2}END{print total}' $file)
+            minutes=$(awk -F, '{if(NR==1)next;total+=$3}END{print total}' $file)
             total_minutes=$(( total_minutes + minutes ))
             total_days=$(( total_days + .5 ))
 
