@@ -4,41 +4,41 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 while getopts ":a:t:" opt; do
   case $opt in
-    a) action="$OPTARG"
+    a) ACTION="$OPTARG"
     ;;
-    t) task="$OPTARG"
+    t) TASK="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     ;;
   esac
 done
 
-if [[ -z $action ]]; then
-    action="REPEAT"
+if [[ -z $ACTION ]]; then
+    ACTION="REPEAT"
 fi
 
-if [[ -z $task ]]; then
-    task="NIL"
+if [[ -z $TASK ]]; then
+    TASK="NIL"
 fi
 
-current_date=$(date '+%Y-%m-%d')
+CURRENT_DATE=$(date '+%Y-%m-%d')
 
 get_file() {
-    local file="$SCRIPT_DIR/tracking_$current_date.txt"
+    local file="$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
     if test -f "$file"; then
         echo $file
     else
-        file="$SCRIPT_DIR/tracking_h_$current_date.txt"
+        file="$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
         if test -f "$file"; then
             echo $file
         else
-            echo "$SCRIPT_DIR/tracking_$current_date.txt"
+            echo "$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
         fi
     fi
 }
 
 function start() {
-    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $task
+    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $TASK
     sh "$SCRIPT_DIR/day_summary.sh"
     sh "$SCRIPT_DIR/status.sh"
 }
@@ -57,15 +57,15 @@ while true; do
 
         sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
         
-        secs=$((END-START))
-        desk_time=$(( secs/60 ))
+        SECS=$((END-START))
+        DESK_TIME=$(( SECS/60 ))
         
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
-        echo "$START_FORMATTED,$CURRENT_TASK,$desk_time" >> $DATA_FILE
+        echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> $DATA_FILE
 
         sh "$SCRIPT_DIR/day_summary.sh"
 
-        if [[ $action == "REPEAT" ]]; then
+        if [[ $ACTION == "REPEAT" ]]; then
             if [[ $CURRENT_TASK == "NIL" ]]; then
                 read -p "Press return to start timer"
             else
