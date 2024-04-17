@@ -22,9 +22,10 @@ if test -f "$TIMER_FILE"; then
         echo "🍅"
         echo "---"
         START=$(cat $TIMER_FILE | cut -d ',' -f1)
+        CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
         END=$(date +%s)
         DURATION=$((END-START))
-        echo "$(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
+        echo "$CURRENT_TASK - $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
     fi
 else
     echo "⏹"
