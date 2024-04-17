@@ -25,7 +25,11 @@ if test -f "$TIMER_FILE"; then
         CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
         END=$(date +%s)
         DURATION=$((END-START))
-        echo "$CURRENT_TASK - $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
+        if [[ $CURRENT_TASK == "NIL" ]]; then
+            echo "$(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
+        else
+            echo "$CURRENT_TASK - $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
+        fi
     fi
 else
     echo "⏹"
