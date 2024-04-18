@@ -38,7 +38,8 @@ get_file() {
 }
 
 function start() {
-    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $TASK
+    local task=$1
+    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $task
     sh "$SCRIPT_DIR/day_summary.sh"
     sh "$SCRIPT_DIR/status.sh"
 }
@@ -67,14 +68,18 @@ while true; do
 
         if [[ $ACTION == "REPEAT" ]]; then
             if [[ $CURRENT_TASK == "NIL" ]]; then
-                read -p "Press return to start timer"
+                read -p "Press return to start timer or type a new task before press: " NEW_TASK
             else
-                read -p "Press return to start timer to resume on $CURRENT_TASK"
+                read -p "Press return to start timer to resume on $CURRENT_TASK or type a new task before press: " NEW_TASK
             fi
 
-            start
+            if [[ -z $NEW_TASK ]]; then
+                start $CURRENT_TASK
+            else
+                start $NEW_TASK
+            fi
         fi
     else
-        start
+        start $TASK
     fi
 done
