@@ -10,6 +10,9 @@ time-tracker-today-summary:
 time-tracker-weekly-summary:
 	./tools/time_tracker/weekly_summary.sh
 
+time-tracker-weekly-task-breakdown:
+	cd ./tools/time_tracker && python3 weekly_task_breakdown.py
+
 kata-daily-summary:
 	./katas/daily_summary.sh
 
