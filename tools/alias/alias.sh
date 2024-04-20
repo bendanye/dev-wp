@@ -32,6 +32,7 @@ alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"
 alias ttds="$TOOLS_DIR/../time_tracker/day_summary.sh"
 alias ttws="$TOOLS_DIR/../time_tracker/weekly_summary.sh"
+alias ttdat="python3 $TOOLS_DIR/../time_tracker/display_all_tasks.py"
 alias ttct="$TOOLS_DIR/../time_tracker/change_task.sh"
 
 alias dwp="cd $TOOLS_DIR/../../"
