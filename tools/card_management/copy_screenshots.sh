@@ -9,5 +9,5 @@ source ../source.env
 test "$1"
 ID=$1
 
-cd /Users/benjamin.ng/Desktop
+cd ~/Desktop
 mv *.png "$WORKING_DIR/$ID/$CARD_TEST_EVIDENCES"
