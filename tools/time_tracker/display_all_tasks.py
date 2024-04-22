@@ -14,7 +14,7 @@ def get_tasks(files, exclude_tasks):
             for line in lines:
                 data = line.replace("\n", "").split(",")
                 task = data[1]
-                if task not in exclude_tasks and task != "NIL":
+                if task not in exclude_tasks and task != "MISC":
                     result.add(task)
 
     return result

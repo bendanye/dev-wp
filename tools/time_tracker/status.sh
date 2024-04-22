@@ -10,7 +10,7 @@ if test -f "$TIMER_FILE"; then
         END=$(date +%s)
         DURATION=$((END-START))
 
-        if [[ $TASK == "NIL" ]]; then
+        if [[ $TASK == "MISC" ]]; then
             printf "\r Currently at my desk for $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "
         else
             printf "\r Currently at my desk focusing on $TASK for $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds (press space to exit) "

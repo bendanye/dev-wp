@@ -18,7 +18,7 @@ if [[ -z $ACTION ]]; then
 fi
 
 if [[ -z $TASK ]]; then
-    TASK="NIL"
+    TASK="MISC"
 fi
 
 CURRENT_DATE=$(date '+%Y-%m-%d')
@@ -67,7 +67,7 @@ while true; do
         sh "$SCRIPT_DIR/day_summary.sh"
 
         if [[ $ACTION == "REPEAT" ]]; then
-            if [[ $CURRENT_TASK == "NIL" ]]; then
+            if [[ $CURRENT_TASK == "MISC" ]]; then
                 read -p "Press return to start timer or type a new task before press: " NEW_TASK
             else
                 read -p "Press return to start timer to resume on $CURRENT_TASK or type a new task before press: " NEW_TASK

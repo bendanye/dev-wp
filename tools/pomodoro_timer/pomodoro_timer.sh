@@ -2,7 +2,7 @@
 
 TASK=$1
 if [[ -z $TASK ]]; then
-    TASK="NIL"
+    TASK="MISC"
 fi
 
 SCRIPT_DIR=$( dirname -- "$0"; )
@@ -21,7 +21,7 @@ if test -f "$TIMER_FILE"; then
     RESTING_TIME=$(( DESK_TIME/5 ))
     REST_UNTIL=$(date "-v+$RESTING_TIME"M '+%H:%M')
 
-    if [[ $TASK == "NIL" ]]; then
+    if [[ $TASK == "MISC" ]]; then
         echo "Total minutes at my desk time: $DESK_TIME"
     else
         echo "Total minutes at my desk time focusing on $TASK: $DESK_TIME"
