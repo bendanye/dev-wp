@@ -24,7 +24,10 @@ def group_by_task(file_name: str, tasks: Dict[str, int]):
 def print_breakdown(tasks: Dict[str, int]):
     print(f"Breakdown of tasks from {start} to {current_date}")
     print("--------------")
-    for task, minutes in tasks.items():
+    sort_by_longest_task = dict(
+        sorted(tasks.items(), key=lambda item: item[1], reverse=True)
+    )
+    for task, minutes in sort_by_longest_task.items():
         if minutes < 60:
             print(f"{task} - {minutes} minutes")
         else:
