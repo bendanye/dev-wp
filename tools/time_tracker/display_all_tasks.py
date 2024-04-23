@@ -1,3 +1,5 @@
+from datetime import timedelta, date
+
 import glob
 import os
 
@@ -20,6 +22,25 @@ def get_tasks(files, exclude_tasks):
     return result
 
 
+def _get_last_week_files():
+    all_backup_files = glob.glob(f"{SCRIPT_DIR}/bkup/tracking_*.txt")
+    files = []
+
+    current_date = date.today()
+    start_date = current_date + timedelta(-current_date.weekday(), weeks=-1)
+    end_date = current_date + timedelta(-current_date.weekday() - 1)
+    loop_date = start_date
+    while loop_date <= end_date:
+        for file in all_backup_files:
+            if str(loop_date) in file:
+                files.append(file)
+                break
+
+        loop_date = loop_date + timedelta(days=1)
+
+    return files
+
+
 files = glob.glob(f"{SCRIPT_DIR}/tracking_*.txt")
 this_week_tasks = get_tasks(files, set())
 print("This week's tasks that were focused on:")
@@ -27,8 +48,8 @@ for task in sorted(this_week_tasks):
     print(task)
 
 
-files = glob.glob(f"{SCRIPT_DIR}/bkup/tracking_*.txt")
+files = _get_last_week_files()
 remaining_tasks = get_tasks(files, this_week_tasks)
-print("\nPrevious weeks' tasks that were focused on:")
+print("\nLast week's tasks that were focused on (not on this week):")
 for task in sorted(remaining_tasks):
     print(task)
