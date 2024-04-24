@@ -4,6 +4,11 @@ IFS=$'\n'
 
 TASK=$1
 
+if [[ -z $TASK ]]; then
+    echo "Please enter the task name to check"
+    exit 0
+fi
+
 LINES=$(grep -R $TASK .)
 
 print_per_day() {
