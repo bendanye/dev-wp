@@ -18,7 +18,11 @@ print_per_day() {
     for line in ${LINES[@]}; do
         MINUTES=$(echo "$line" | cut -d ',' -f3)
         FILE_NAME=$(echo "$line" | cut -d ':' -f1)
-        current_loop_date=$(echo $FILE_NAME | cut -d '_' -f2 | cut -d '.' -f1)
+        if [[ $FILE_NAME == *"tracking_h_"* ]]; then
+            current_loop_date=$(echo $FILE_NAME | cut -d '_' -f3 | cut -d '.' -f1)
+        else
+            current_loop_date=$(echo $FILE_NAME | cut -d '_' -f2 | cut -d '.' -f1)
+        fi
         if [[ $loop_date != $current_loop_date ]]; then
             if [[ $loop_date != "" ]]; then
                 echo "$loop_date - $total_minutes_per_day minutes"
