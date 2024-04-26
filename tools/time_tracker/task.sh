@@ -12,7 +12,7 @@ if [[ -z $TASK ]]; then
     exit 0
 fi
 
-LINES=$(grep -R $TASK .)
+LINES=$(grep -R $TASK . | sort)
 
 print_per_day() {
     loop_date=""
