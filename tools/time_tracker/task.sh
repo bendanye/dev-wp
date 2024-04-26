@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SCRIPT_DIR=$( dirname -- "$0"; )
+cd $SCRIPT_DIR
+
 IFS=$'\n'
 
 TASK=$1
