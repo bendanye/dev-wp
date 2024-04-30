@@ -7,11 +7,14 @@ time-tracker:
 time-tracker-today-summary:
 	./tools/time_tracker/day_summary.sh
 
+time-tracker-today-focus-task:
+	cd ./tools/time_tracker && python3 focus_task.py d
+
 time-tracker-weekly-summary:
 	./tools/time_tracker/weekly_summary.sh
 
-time-tracker-weekly-task-breakdown:
-	cd ./tools/time_tracker && python3 weekly_task_breakdown.py
+time-tracker-weekly-focus-task:
+	cd ./tools/time_tracker && python3 focus_task.py w
 
 kata-daily-summary:
 	./katas/daily_summary.sh
