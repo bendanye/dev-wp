@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/../focus/communications.sh
+source $SCRIPT_DIR/../communication/communications.sh
 
 function open_daily_reading_news_tabs() {
     open  -a "Google Chrome" "https://www.espn.com.sg/football"
