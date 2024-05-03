@@ -21,7 +21,7 @@ change_current_task() {
         exit 0
     fi
     CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
-    sed -i "" "s/$CURRENT_TASK/$TASK/g" $TIMER_FILE
+    sed -i "" "s/$CURRENT_TASK/$NEW_TASK/g" $TIMER_FILE
     echo "Updated current task, $CURRENT_TASK to $NEW_TASK"
 }
 
