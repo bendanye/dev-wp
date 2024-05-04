@@ -4,6 +4,8 @@ alias caf="caffeinate -dims"
 
 TOOLS_DIR="$(dirname "$0")"
 
+alias dicrm="$TOOLS_DIR/../docker/remove_docker_container_and_image.sh"
+
 alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
 alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
