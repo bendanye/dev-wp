@@ -1,9 +1,15 @@
 #!/bin/bash
 
-communications=("google")
+SCRIPT_DIR=$( dirname -- "$0"; )
+
+if [ -f "$SCRIPT_DIR/../source.env" ]; then
+    source "$SCRIPT_DIR/../source.env"
+else
+    COMMUNICATIONS=("google")
+fi
 
 function start_communication() {
-    for communication in ${communications[@]}; do
+    for communication in ${COMMUNICATIONS[@]}; do
         if [[ $communication == "google" ]]; then
             open  -a "Google Chrome" "https://mail.google.com/mail/u/0/?tab=rm&ogbl"
             sleep 1
@@ -27,7 +33,7 @@ EOT
 } 
 
 function stop_communication() {
-    for communication in ${communications[@]}; do
+    for communication in ${COMMUNICATIONS[@]}; do
         if [[ $communication == "google" ]]; then
             stop_communication_from_browser
         elif [[ $communication == "slack" ]]; then
@@ -35,3 +41,5 @@ function stop_communication() {
         fi
     done
 }
+
+echo $COMMUNICATIONS
