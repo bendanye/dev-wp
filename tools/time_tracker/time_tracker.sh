@@ -44,13 +44,14 @@ function start() {
     sh "$SCRIPT_DIR/status.sh"
 }
 
-DATA_FILE=$(get_file)
-if ! test -f "$DATA_FILE"; then
-    echo "start_date,task,desk_minutes" > $DATA_FILE
+data_file=$(get_file)
+if ! test -f "$data_file"; then
+    echo "start_date,task,desk_minutes" > $data_file
 fi
 
 TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 while true; do
+    data_file=$(get_file)
     if test -f "$TIMER_FILE"; then
         START=$(cat $TIMER_FILE | cut -d ',' -f1)
         CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
@@ -62,7 +63,7 @@ while true; do
         DESK_TIME=$(( SECS/60 ))
         
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
-        echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> $DATA_FILE
+        echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> $data_file
 
         sh "$SCRIPT_DIR/day_summary.sh"
 
