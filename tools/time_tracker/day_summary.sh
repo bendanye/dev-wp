@@ -2,10 +2,27 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-if [[ $1 ]]; then
-    CURRENT_DATE=$1
+while getopts ":a:d:" opt; do
+  case $opt in
+    a) ACTION="$OPTARG"
+    ;;
+    d) SPECIFIED_DATE="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
+if [[ $SPECIFIED_DATE ]]; then
+    CURRENT_DATE=$SPECIFIED_DATE
 else
     CURRENT_DATE=$(date '+%Y-%m-%d')
+fi
+
+if [[ $ACTION == "EXCLUDE_TASKS" ]]; then
+    EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk)/"
+else
+    EXCLUDE_PATTERN=""
 fi
 
 get_file() {
@@ -29,7 +46,7 @@ if ! test -f "$FILE"; then
     exit 0
 fi
 
-TOTAL_MINUTES=$(awk -F, '{if(NR==1)next;total+=$3}END{print total}' $FILE)
+TOTAL_MINUTES=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $FILE)
 
 HOUR=$(( TOTAL_MINUTES/60 ))
 MINUTE=$(( TOTAL_MINUTES-$HOUR*60 ))

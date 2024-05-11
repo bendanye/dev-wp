@@ -2,6 +2,21 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+while getopts ":a:" opt; do
+  case $opt in
+    a) ACTION="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
+if [[ $ACTION == "EXCLUDE_TASKS" ]]; then
+    EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk)/"
+else
+    EXCLUDE_PATTERN=""
+fi
+
 # Get the current day of the week (1 for Monday, 2 for Tuesday, ..., 0 for Sunday)
 CURRENT_DATE=$(date +%u)
 
@@ -16,7 +31,7 @@ loop_date=$START_OF_WEEK
 while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$END_OF_WEEK" "+%Y%m%d") ]]; do
     file="$SCRIPT_DIR/tracking_$loop_date.txt"
     if test -f "$file"; then
-        MINUTES_IN_LOG=$(awk -F, '{if(NR==1)next;total+=$3}END{print total}' $file)
+        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
         total_days=$(( total_days + 1 ))
 
@@ -26,7 +41,7 @@ while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d"
     else
         file="$SCRIPT_DIR/tracking_h_$loop_date.txt"
         if test -f "$file"; then
-            MINUTES_IN_LOG=$(awk -F, '{if(NR==1)next;total+=$3}END{print total}' $file)
+            MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
             total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
             total_days=$(( total_days + .5 ))
 
