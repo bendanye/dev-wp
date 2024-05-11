@@ -2,11 +2,13 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-while getopts ":a:t:" opt; do
+while getopts ":a:t:d:" opt; do
   case $opt in
     a) ACTION="$OPTARG"
     ;;
     t) TASK="$OPTARG"
+    ;;
+    d) DAY="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     ;;
@@ -21,6 +23,10 @@ if [[ -z $TASK ]]; then
     TASK="MISC"
 fi
 
+if [[ -z $DAY ]]; then
+    DAY="F"
+fi
+
 CURRENT_DATE=$(date '+%Y-%m-%d')
 
 get_file() {
@@ -31,6 +37,8 @@ get_file() {
         file="$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
         if test -f "$file"; then
             echo $file
+        elif [[ $DAY != "F" ]]; then
+            echo "$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
         else
             echo "$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
         fi
