@@ -6,7 +6,7 @@ alias zshrc="vi ~/.zshrc"
 
 TOOLS_DIR="$(dirname "$0")"
 
-alias dicrm="$TOOLS_DIR/../docker/remove_docker_container_and_image.sh"
+alias dicrm="$TOOLS_DIR/../docker/docker_remove_container_and_image.sh"
 
 alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
