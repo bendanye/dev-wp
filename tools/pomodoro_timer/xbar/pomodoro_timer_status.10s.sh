@@ -8,7 +8,7 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 source $SCRIPT_DIR/env/pomodoro_timer.env
 
-TIMER_FILE="$SOURCE_DIR/timer"
+TIMER_FILE="$SOURCE_DIR/../timer"
 if test -f "$TIMER_FILE"; then
     START=$(cat $TIMER_FILE | cut -d ',' -f1)
     END=$(date +%s)
