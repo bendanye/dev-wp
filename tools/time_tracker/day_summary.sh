@@ -51,8 +51,14 @@ TOTAL_MINUTES=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print
 HOUR=$(( TOTAL_MINUTES/60 ))
 MINUTE=$(( TOTAL_MINUTES-$HOUR*60 ))
 
-if [[ $1 ]]; then
-    echo "On ($CURRENT_DATE), I am at my desk for $HOUR hours, $MINUTE minutes" 
+if [[ $EXCLUDE_PATTERN == "" ]]; then
+    EXCLUDE_MSG=""
 else
-    echo "Today ($CURRENT_DATE), I am at my desk for $HOUR hours, $MINUTE minutes" 
+    EXCLUDE_MSG="after excluding tasks"
+fi
+
+if [[ $1 ]]; then
+    echo "On ($CURRENT_DATE), I am at my desk for $HOUR hours, $MINUTE minutes $EXCLUDE_MSG" 
+else
+    echo "Today ($CURRENT_DATE), I am at my desk for $HOUR hours, $MINUTE minutes $EXCLUDE_MSG" 
 fi
