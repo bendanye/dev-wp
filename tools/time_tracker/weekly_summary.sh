@@ -72,4 +72,10 @@ average_minutes=${average_minutes%.*}
 AVERAGE_HOUR=$(( average_minutes/60 ))
 AVERAGE_MIN=$(( average_minutes-$AVERAGE_HOUR*60 ))
 
-echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes" 
+if [[ $EXCLUDE_PATTERN == "" ]]; then
+    EXCLUDE_MSG=""
+else
+    EXCLUDE_MSG="after excluding tasks"
+fi
+
+echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes $EXCLUDE_MSG" 
