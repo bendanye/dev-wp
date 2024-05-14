@@ -76,10 +76,10 @@ while true; do
         sh "$SCRIPT_DIR/day_summary.sh"
 
         if [[ $ACTION == "REPEAT" ]]; then
+            echo ""
+            python3 $SCRIPT_DIR/focus_task.py d
+            echo ""
             if [[ $CURRENT_TASK == "MISC" ]]; then
-                echo ""
-                python3 $SCRIPT_DIR/focus_task.py d
-                echo ""
                 read -p "Press return to start timer or type a new task before press: " NEW_TASK
             else
                 read -p "Press return to start timer to resume on $CURRENT_TASK or type a new task before press: " NEW_TASK
