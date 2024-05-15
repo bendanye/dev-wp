@@ -1,0 +1,15 @@
+#/usr/bin/env bash
+
+SCRIPT_DIR=$( dirname -- "$0"; )
+
+_docker_image_name_completions()
+{
+  for OUTPUT in $(docker images --format "{{.Repository}}:{{.Tag}}")
+  do
+    COMPREPLY+=("$OUTPUT")
+  done
+}
+
+# source docker_autocomplete
+# complete -F _docker_image_name_completions docker_container_logs_by_image_name.sh
+# complete -F _docker_image_name_completions docker_remove_container_and_image.sh
