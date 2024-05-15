@@ -1,0 +1,12 @@
+#/usr/bin/env bash
+
+_time_tracker_task_completions()
+{
+  for OUTPUT in $(python3 display_all_tasks.py NO_HEADER)
+  do
+    COMPREPLY+=("$OUTPUT")
+  done
+}
+
+# source time_tracker_autocomplete
+# complete -F _time_tracker_task_completions time_tracker.sh
