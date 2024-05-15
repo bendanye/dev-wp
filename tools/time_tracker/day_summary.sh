@@ -20,7 +20,7 @@ else
 fi
 
 if [[ $ACTION == "EXCLUDE_TASKS" ]]; then
-    EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk)/"
+    EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk|learning)/"
 else
     EXCLUDE_PATTERN=""
 fi
