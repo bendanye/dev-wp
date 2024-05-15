@@ -17,6 +17,6 @@ project_dir=$(pwd)
 
 echo "WORKING_DIR=\"$project_dir\"" > "$SCRIPT_PATH/source.env"
 echo "CARD_TEST_EVIDENCES=\"test_evidences\"" >> "$SCRIPT_PATH/source.env"
-echo "COMMUNICATION=\"$communication\"" >> "$SCRIPT_PATH/source.env"
+echo "COMMUNICATION=(\"$communication\")" >> "$SCRIPT_PATH/source.env"
 
 echo "Setup completed"
