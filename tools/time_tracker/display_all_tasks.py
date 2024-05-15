@@ -2,6 +2,7 @@ from datetime import timedelta, date
 
 import glob
 import os
+import sys
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -41,15 +42,24 @@ def _get_last_week_files():
     return files
 
 
+is_header_display = True if len(sys.argv) == 1 else False
+
+
 files = glob.glob(f"{SCRIPT_DIR}/tracking_*.txt")
 this_week_tasks = get_tasks(files, set())
-print("This week's tasks that were focused on:")
+
+if is_header_display:
+    print("This week's tasks that were focused on:")
+
 for task in sorted(this_week_tasks):
     print(task)
 
 
 files = _get_last_week_files()
 remaining_tasks = get_tasks(files, this_week_tasks)
-print("\nLast week's tasks that were focused on (not on this week):")
+
+if is_header_display:
+    print("\nLast week's tasks that were focused on (not on this week):")
+
 for task in sorted(remaining_tasks):
     print(task)
