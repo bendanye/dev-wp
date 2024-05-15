@@ -3,6 +3,7 @@ alias dpsa="docker ps -a"
 alias caf="caffeinate -dims"
 alias ll="ls -al"
 alias zshrc="vi ~/.zshrc"
+alias hm="cd ~"
 
 TOOLS_DIR="$(dirname "$0")"
 
