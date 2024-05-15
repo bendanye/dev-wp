@@ -73,6 +73,7 @@ while true; do
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
         echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> $data_file
 
+        echo ""
         sh "$SCRIPT_DIR/day_summary.sh"
 
         if [[ $ACTION == "REPEAT" ]]; then
