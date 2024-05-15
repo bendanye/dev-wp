@@ -4,14 +4,19 @@ SCRIPT_PATH=$(pwd)
 
 read -p "Name of the project: " project_name
 read -p "Communication (google, slack): " communication
+read -p "Name of the type of managment (default is cards): " management
 
 echo
 
+if [[ $management == "" ]]; then
+    management="cards"
+fi
+
 cd "$SCRIPT_PATH/../"
 
-mkdir -p "$project_name/cards"
+mkdir -p "$project_name/$management"
 
-cd "$project_name/cards"
+cd "$project_name/$management"
 
 project_dir=$(pwd)
 
