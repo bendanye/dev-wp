@@ -29,7 +29,7 @@ function backup_time_tracker_files() {
     sh ../time_tracker/backup.sh
 }
 
-function open_daily_tech_notes() {
+function open_daily_tech_note() {
     cd ~/IdeaProjects/renotes
     sh open_random.sh tech
 }
