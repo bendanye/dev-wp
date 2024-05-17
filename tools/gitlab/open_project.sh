@@ -6,13 +6,12 @@ else
     PROJECT=$(basename `git rev-parse --show-toplevel`)
 fi
 
+SCRIPT_DIR=$( dirname -- "$0"; )
+
+source "$SCRIPT_DIR/../gitlab.env"
+
 URL=$(git config --get remote.origin.url)
-
-cd "$(dirname "$0")"
-
-source ../gitlab.env
-
-if [[ $GITLAB_GROUP == "" ]]; then
+if [[ $URL != https* ]]; then
     GITLAB_GROUP=${URL#*:}
     GITLAB_GROUP=${GITLAB_GROUP%/*}
 fi
