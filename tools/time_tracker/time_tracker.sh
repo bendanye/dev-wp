@@ -78,7 +78,10 @@ while true; do
 
         if [[ $ACTION == "REPEAT" ]]; then
             echo ""
-            python3 $SCRIPT_DIR/focus_task.py d
+            echo "Recent focus tasks"
+            echo "--"
+            python3 $SCRIPT_DIR/display_all_tasks.py NO_HEADER
+            echo "--"
             echo ""
             if [[ $CURRENT_TASK == "MISC" ]]; then
                 read -p "Press return to start timer or type a new task before press: " NEW_TASK
