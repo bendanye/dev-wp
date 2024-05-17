@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-if [ -n "$1" ]; then
-    PROJECT=$1
-else
-    PROJECT=$(basename `git rev-parse --show-toplevel`)
-fi
-
 SCRIPT_DIR=$( dirname -- "$0"; )
 
 source "$SCRIPT_DIR/../gitlab.env"
+
+if [ -n "$1" ]; then
+    source "$SCRIPT_DIR/../source.env"
+    PROJECT=$1
+    cd "$GIT_PROJECT_DIR/$PROJECT"
+else
+    PROJECT=$(basename `git rev-parse --show-toplevel`)
+fi
 
 URL=$(git config --get remote.origin.url)
 if [[ $URL != https* ]]; then
