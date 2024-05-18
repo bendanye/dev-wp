@@ -4,6 +4,8 @@ alias caf="caffeinate -dims"
 alias ll="ls -al"
 alias zshrc="vi ~/.zshrc"
 alias hm="cd ~"
+alias c="clear"
+alias ..="cd .."
 
 TOOLS_DIR="$(dirname "$0")"
 
