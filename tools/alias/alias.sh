@@ -48,5 +48,11 @@ alias ttctt="$TOOLS_DIR/../time_tracker/change_today_tracking_file.sh EDIT"
 alias ttcth="$TOOLS_DIR/../time_tracker/change_today_tracking_file.sh HALF"
 
 alias dwp="cd $TOOLS_DIR/../../"
-alias gwp="cd ~/IdeaProjects"
 alias ewp="cd ~/SelfExploration"
+
+if [ -f "$TOOLS_DIR/../source.env" ]; then
+    source "$TOOLS_DIR/../source.env"
+    alias gwp="cd $GIT_PROJECT_DIR"
+else
+    alias gwp="cd ~/IdeaProjects"
+fi
