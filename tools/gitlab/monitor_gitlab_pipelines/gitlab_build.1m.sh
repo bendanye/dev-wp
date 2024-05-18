@@ -9,6 +9,8 @@ cd "$(dirname "$0")"
 source env/gitlab.env
 # source ../../gitlab.env
 
+source "../gitlab.sh"
+
 set -eu
 
 test "$GITLAB_ACCESS_TOKEN"

@@ -2,8 +2,8 @@
 
 set -eu
 
-cd "$(dirname "$0")"
+SCRIPT_DIR=$( dirname -- "$0"; )
 
-source ../gitlab.env
+source "$SCRIPT_DIR/../gitlab.env"
 
 open  -a "Google Chrome" "${GITLAB_URL}/dashboard/merge_requests?assignee_username=${GITLAB_GROUP_USER_NAME}"

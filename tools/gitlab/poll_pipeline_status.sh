@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
 
+SCRIPT_DIR=$( dirname -- "$0"; )
+
+source "$SCRIPT_DIR/../gitlab.env"
+source "$SCRIPT_DIR/gitlab.sh"
+
 if [ -n "$1" ]; then
     PROJECT=$1
+    FROM="TERMINAL"
 else
     PROJECT=$(basename `git rev-parse --show-toplevel`)
+    FROM="DIRECTORY"
 fi
 
-cd "$(dirname "$0")"
+GITLAB_GROUP=$(get_group_name $PROJECT $FROM)
 
-source ../gitlab.env
+if [[ $GITLAB_GROUP == *"Unable to determine the project url"* ]]; then
+    echo $GITLAB_GROUP
+    exit 1
+fi
+
+GITLAB_GROUP_ENCODING=$(echo "$GITLAB_GROUP/" | sed 's#/#%2F#g')
 
 while true
 do

@@ -4,13 +4,23 @@ export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
 if [ -n "$1" ]; then
     PROJECT=$1
+    FROM="TERMINAL"
 else
     PROJECT=$(basename `git rev-parse --show-toplevel`)
+    FROM="DIRECTORY"
 fi
 
 BASEDIR=$(dirname "$0")
 
 source "$BASEDIR/../../gitlab.env"
+source "$BASEDIR/../gitlab.sh"
+
+GITLAB_GROUP=$(get_group_name $PROJECT $FROM)
+
+if [[ $GITLAB_GROUP == *"Unable to determine the project url"* ]]; then
+    echo $GITLAB_GROUP
+    exit 1
+fi 
 
 CONFIG_PATH="$BASEDIR/config.ini"
 

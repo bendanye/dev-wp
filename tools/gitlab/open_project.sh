@@ -3,19 +3,21 @@
 SCRIPT_DIR=$( dirname -- "$0"; )
 
 source "$SCRIPT_DIR/../gitlab.env"
+source "$SCRIPT_DIR/gitlab.sh"
 
 if [ -n "$1" ]; then
-    source "$SCRIPT_DIR/../source.env"
     PROJECT=$1
-    cd "$GIT_PROJECT_DIR/$PROJECT"
+    FROM="TERMINAL"
 else
     PROJECT=$(basename `git rev-parse --show-toplevel`)
+    FROM="DIRECTORY"
 fi
 
-URL=$(git config --get remote.origin.url)
-if [[ $URL != https* ]]; then
-    GITLAB_GROUP=${URL#*:}
-    GITLAB_GROUP=${GITLAB_GROUP%/*}
-fi
+GITLAB_GROUP=$(get_group_name $PROJECT $FROM)
+
+if [[ $GITLAB_GROUP == *"Unable to determine the project url"* ]]; then
+    echo $GITLAB_GROUP
+    exit 1
+fi 
 
 open  -a "Google Chrome" "${GITLAB_URL}/${GITLAB_GROUP}/${PROJECT}"
