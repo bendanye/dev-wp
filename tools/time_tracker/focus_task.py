@@ -15,8 +15,9 @@ def day_focus():
 
     focus(current_date, tasks)
 
-    print("--------------")
-    print(f"Focused tasks for {current_date}")
+    if print_in_terminal:
+        print("--------------")
+        print(f"Focused tasks for {current_date}")
     print_focus(tasks)
 
 
@@ -30,8 +31,9 @@ def week_focus():
         focus(loop_date, tasks)
         loop_date = loop_date + timedelta(days=1)
 
-    print("--------------")
-    print(f"Focused tasks from {start} to {current_date}")
+    if print_in_terminal:
+        print("--------------")
+        print(f"Focused tasks from {start} to {current_date}")
     print_focus(tasks)
 
 
@@ -61,21 +63,34 @@ def _group_by_task(file_name: str, tasks: Dict[str, int]):
 
 
 def print_focus(tasks: Dict[str, int]):
-    print("--------------")
+    if print_in_terminal:
+        print("--------------")
+
     sort_by_longest_task = dict(
         sorted(tasks.items(), key=lambda item: item[1], reverse=True)
     )
     for task, minutes in sort_by_longest_task.items():
         if minutes < 60:
-            print(f"{task} - {minutes} minutes")
+            if print_in_terminal:
+                print(f"{task} - {minutes} minutes")
+            else:
+                print(f"-- {task} - {minutes} minutes")
         else:
             hour = math.floor(minutes / 60)
             remaining_minutes = minutes % 60
-            print(f"{task} - {hour} hours {remaining_minutes} minutes")
+            if print_in_terminal:
+                print(f"{task} - {hour} hours {remaining_minutes} minutes")
+            else:
+                print(f"-- {task} - {hour} hours {remaining_minutes} minutes")
 
 
-if len(sys.argv) != 2:
-    raise ValueError("Expected one argument, d or w")
+if len(sys.argv) < 2:
+    raise ValueError("Expected at least one argument, d or w")
+
+if len(sys.argv) == 3:
+    print_in_terminal = False
+else:
+    print_in_terminal = True
 
 type = sys.argv[1]
 if type == "d":
