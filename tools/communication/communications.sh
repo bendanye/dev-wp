@@ -11,11 +11,11 @@ fi
 function start_communication() {
     for communication in ${COMMUNICATIONS[@]}; do
         if [[ $communication == "google" ]]; then
-            open  -a "Google Chrome" "https://mail.google.com/mail/u/0/?tab=rm&ogbl"
+            sh "$SCRIPT_DIR/../browser/browser.sh gmail"
             sleep 1
-            open  -a "Google Chrome" "https://mail.google.com/chat/u/0/"
+            sh "$SCRIPT_DIR/../browser/browser.sh gchat"
             sleep 1
-            open  -a "Google Chrome" "https://calendar.google.com/calendar/u/0/r"
+            sh "$SCRIPT_DIR/../browser/browser.sh gcal"
             sleep 1
         elif [[ $communication == "slack" ]]; then
             killall Slack
