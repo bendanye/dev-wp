@@ -57,7 +57,7 @@ else
     EXCLUDE_MSG="after excluding tasks"
 fi
 
-if [[ $1 ]]; then
+if [[ $SPECIFIED_DATE ]]; then
     echo "On ($CURRENT_DATE), I am at my desk for $HOUR hours, $MINUTE minutes $EXCLUDE_MSG" 
 else
     echo "Today ($CURRENT_DATE), I am at my desk for $HOUR hours, $MINUTE minutes $EXCLUDE_MSG" 
