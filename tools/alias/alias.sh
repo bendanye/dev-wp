@@ -10,6 +10,8 @@ alias ..="cd .."
 TOOLS_DIR="$(dirname "$0")"
 
 alias ob="$TOOLS_DIR/../browser/browser.sh"
+alias obcg="$TOOLS_DIR/../browser/browser.sh cgpt"
+alias obhm="$TOOLS_DIR/../browser/browser.sh hm"
 
 alias dicrm="$TOOLS_DIR/../docker/docker_remove_container_and_image.sh"
 alias dloi="$TOOLS_DIR/../docker/docker_container_logs_by_image_name.sh"
