@@ -20,16 +20,17 @@ if test -f "$TIMER_FILE"; then
         echo "$MINUTES | color=darkgreen"
     else
         echo "🍅"
-        echo "---"
-        START=$(cat $TIMER_FILE | cut -d ',' -f1)
-        CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
-        END=$(date +%s)
-        DURATION=$((END-START))
-        if [[ $CURRENT_TASK == "MISC" ]]; then
-            echo "$(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
-        else
-            echo "$CURRENT_TASK - $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
-        fi
+    fi
+    
+    echo "---"
+    START=$(cat $TIMER_FILE | cut -d ',' -f1)
+    CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
+    END=$(date +%s)
+    DURATION=$((END-START))
+    if [[ $CURRENT_TASK == "MISC" ]]; then
+        echo "$(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
+    else
+        echo "$CURRENT_TASK - $(($DURATION / 60)) minutes and $(($DURATION % 60)) seconds | color=darkgreen"
     fi
 else
     echo "⏹"
