@@ -32,7 +32,15 @@ _git_project_completions()
   done
 }
 
-# source autocomplete
+_browser_keys_completions()
+{
+  for OUTPUT in $(grep -E '^[^#;]' "$SCRIPT_DIR/../browser/url.properties" | cut -d'=' -f1 | cut -d':' -f1)
+  do
+    COMPREPLY+=("$OUTPUT")
+  done
+}
+
+# source autocomplete.sh
 # complete -F _time_tracker_task_completions time_tracker.sh
 # complete -F _time_tracker_task_completions change_task.sh
 
@@ -45,3 +53,5 @@ _git_project_completions()
 # complete -F _git_project_completions open_project.sh
 # complete -F _git_project_completions poll_pipeline_status.sh
 # complete -F _git_project_completions ci_linter.sh
+
+# complete -F _browser_keys_completions browser.sh
