@@ -1,5 +1,5 @@
 if [[ -z $1 ]]; then
-    echo "Enter the image name to remove"
+    echo "Enter the image name to view container logs"
     exit 0
 fi
 
