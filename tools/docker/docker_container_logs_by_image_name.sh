@@ -1,6 +1,10 @@
 if [[ -z $1 ]]; then
-    echo "Enter the image name to view container logs"
+    echo "Enter the image name to remove"
     exit 0
 fi
 
-docker logs $(docker ps -a -q --filter ancestor=$1)
+IMAGE_NAME=$1
+
+shift
+
+docker logs $(docker ps -a -q --filter ancestor=$IMAGE_NAME) $@
