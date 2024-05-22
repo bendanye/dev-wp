@@ -2,6 +2,8 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+source $SCRIPT_DIR/time_tracker_func.sh
+
 while getopts ":a:t:d:" opt; do
   case $opt in
     a) ACTION="$OPTARG"
@@ -29,22 +31,6 @@ fi
 
 CURRENT_DATE=$(date '+%Y-%m-%d')
 
-get_file() {
-    local file="$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
-    if test -f "$file"; then
-        echo $file
-    else
-        file="$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
-        if test -f "$file"; then
-            echo $file
-        elif [[ $DAY != "F" ]]; then
-            echo "$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
-        else
-            echo "$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
-        fi
-    fi
-}
-
 function start() {
     local task=$1
     sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $task
@@ -52,14 +38,19 @@ function start() {
     sh "$SCRIPT_DIR/status.sh"
 }
 
-data_file=$(get_file)
+data_file=$(get_file $CURRENT_DATE)
 if ! test -f "$data_file"; then
+    if [[ $DAY != "F" ]]; then
+        data_file="$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
+    else
+        data_file="$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
+    fi
     echo "start_date,task,desk_minutes" > $data_file
 fi
 
 TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 while true; do
-    data_file=$(get_file)
+    data_file=$(get_file $CURRENT_DATE)
     if test -f "$TIMER_FILE"; then
         START=$(cat $TIMER_FILE | cut -d ',' -f1)
         CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)

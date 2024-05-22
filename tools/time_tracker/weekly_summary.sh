@@ -2,6 +2,8 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+source $SCRIPT_DIR/time_tracker_func.sh
+
 while getopts ":a:" opt; do
   case $opt in
     a) ACTION="$OPTARG"
@@ -11,11 +13,7 @@ while getopts ":a:" opt; do
   esac
 done
 
-if [[ $ACTION == "EXCLUDE_TASKS" ]]; then
-    EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk|learning)/"
-else
-    EXCLUDE_PATTERN=""
-fi
+EXCLUDE_PATTERN=$(get_exclude_pattern $ACTION)
 
 # Get the current day of the week (1 for Monday, 2 for Tuesday, ..., 0 for Sunday)
 CURRENT_DATE=$(date +%u)

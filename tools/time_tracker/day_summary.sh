@@ -2,6 +2,8 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+source $SCRIPT_DIR/time_tracker_func.sh
+
 while getopts ":a:d:" opt; do
   case $opt in
     a) ACTION="$OPTARG"
@@ -19,31 +21,12 @@ else
     CURRENT_DATE=$(date '+%Y-%m-%d')
 fi
 
-if [[ $ACTION == "EXCLUDE_TASKS" ]]; then
-    EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk|learning)/"
-else
-    EXCLUDE_PATTERN=""
-fi
+EXCLUDE_PATTERN=$(get_exclude_pattern $ACTION)
 
-get_file() {
-    local file="$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
-    if test -f "$file"; then
-        echo $file
-    else
-        file="$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
-        if test -f "$file"; then
-            echo $file
-        else
-            echo "$CURRENT_DATE does not exist!"
-            exit 1
-        fi
-    fi
-}
-
-FILE=$(get_file)
+FILE=$(get_file $CURRENT_DATE)
 if ! test -f "$FILE"; then
     echo "There is no tracking information for $CURRENT_DATE"
-    exit 0
+    exit 1
 fi
 
 TOTAL_MINUTES=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $FILE)
