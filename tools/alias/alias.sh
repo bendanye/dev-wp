@@ -31,6 +31,7 @@ alias jcua="$TOOLS_DIR/../jira/jira_upload_attachment.sh"
 
 alias gop="$TOOLS_DIR/../git/open_project_in_browser.sh"
 # alias gop="$TOOLS_DIR/../gitlab/open_project.sh"
+alias gopc="$TOOLS_DIR/../gitlab/open_project_commit.sh"
 alias glint="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
 alias gopp="$TOOLS_DIR/../gitlab/open_project_pipeline.sh"
 alias gomra="$TOOLS_DIR/../gitlab/open_mr_assigned.sh"
