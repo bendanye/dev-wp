@@ -5,9 +5,9 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 source $SCRIPT_DIR/../communication/communications.sh
 
 function open_daily_reading_news_tabs() {
-    open  -a "Google Chrome" "https://www.espn.com.sg/football"
+    sh $SCRIPT_DIR/../browser/browser.sh so
     sleep 1
-    open  -a "Google Chrome" "https://www.channelnewsasia.com/singapore"
+    sh $SCRIPT_DIR/../browser/browser.sh cna
     sleep 1
 }
 
