@@ -32,6 +32,7 @@ alias job="$TOOLS_DIR/../jira/jira_board_web.sh"
 alias jcua="$TOOLS_DIR/../jira/jira_upload_attachment.sh"
 
 alias gop="$TOOLS_DIR/../git/open_project_in_browser.sh"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 # alias gop="$TOOLS_DIR/../gitlab/open_project.sh"
 alias gopc="$TOOLS_DIR/../gitlab/open_project_commit.sh"
 alias glint="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
