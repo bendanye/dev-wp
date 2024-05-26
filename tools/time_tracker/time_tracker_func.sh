@@ -1,16 +1,19 @@
 SCRIPT_DIR=$( dirname -- "$0"; )
 
 SUMMARY_EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk|learning|PP)/"
+SUMMARY_ACTION_ALL_TASKS="ALL_TASKS"
 SUMMARY_ACTION_EXCLUDE_TASKS="EXCLUDE_TASKS"
 
 # currently place here the default action
 get_default_show_task() {
-    echo "ALL_TASKS"
+    echo $SUMMARY_ACTION_ALL_TASKS
 }
 
 get_exclude_pattern() {
     if [[ $1 == $SUMMARY_ACTION_EXCLUDE_TASKS ]]; then
         echo $SUMMARY_EXCLUDE_PATTERN
+    elif [[ $1 == $SUMMARY_ACTION_ALL_TASKS ]]; then
+        echo ""
     else
         local default=$(get_default_show_task)
         if [[ $default == $SUMMARY_ACTION_EXCLUDE_TASKS ]]; then
