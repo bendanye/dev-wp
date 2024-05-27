@@ -42,6 +42,7 @@ alias gomrr="$TOOLS_DIR/../gitlab/open_mr_reviewed.sh"
 alias gopmra="$TOOLS_DIR/../gitlab/open_project_mr_assigned.sh"
 alias gopmrr="$TOOLS_DIR/../gitlab/open_project_mr_reviewed.sh"
 alias gpst="$TOOLS_DIR/../gitlab/poll_pipeline_status.sh"
+alias gmst="$TOOLS_DIR/../gitlab/get_mirror_status.sh"
 
 alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"
