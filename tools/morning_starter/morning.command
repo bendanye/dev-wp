@@ -30,7 +30,12 @@ function backup_time_tracker_files() {
 }
 
 function open_daily_tech_note() {
+    if [ ! -d "~/IdeaProjects/renotes" ]; then
+        echo "renotes folder does not exists."
+        return 1
+    fi
     cd ~/IdeaProjects/renotes
+    # cd ../../tasks/renotes
     sh open_random.sh tech
 }
 
