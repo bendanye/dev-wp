@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+URL=$(git config --get remote.origin.url)
+
 if [[ $URL == https* ]]; then
     open  -a "Google Chrome" $URL
 else
