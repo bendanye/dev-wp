@@ -47,10 +47,8 @@ _browser_keys_completions()
 # complete -F _docker_image_name_completions docker_container_logs_by_image_name.sh
 # complete -F _docker_image_name_completions docker_remove_container_and_image.sh
 
-# complete -F _git_project_completions open_project_mr_assigned.sh
-# complete -F _git_project_completions open_project_mr_reviewed.sh
-# complete -F _git_project_completions open_project_pipeline.sh
-# complete -F _git_project_completions open_project.sh
+# complete -F _git_project_completions open_project_page.sh
+# complete -F _git_project_completions open_page.sh
 # complete -F _git_project_completions poll_pipeline_status.sh
 # complete -F _git_project_completions ci_linter.sh
 
