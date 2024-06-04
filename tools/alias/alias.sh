@@ -1,5 +1,6 @@
 alias drma='docker rm $(docker ps -aq) --force'
 alias dpsa="docker ps -a"
+alias dpsadn="docker ps -a --filter \"status=exited\" --filter \"status=created\" --filter \"status=dead\" --filter \"status=paused\""
 alias caf="caffeinate -dims"
 alias ll="ls -al"
 alias zshrc="vi ~/.zshrc"
