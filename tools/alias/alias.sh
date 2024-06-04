@@ -6,6 +6,7 @@ alias ll="ls -al"
 alias zshrc="vi ~/.zshrc"
 alias hm="cd ~"
 alias c="clear"
+alias rmf="rm -rf"
 alias ..="cd .."
 
 TOOLS_DIR="$(dirname "$0")"
