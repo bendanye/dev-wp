@@ -51,3 +51,6 @@ code-kata-easy:
 
 refactoring-kata:
 	cd ./katas/refactoring-kata-main/ && ./start.sh
+
+autocomplete-docker-kata:
+	./katas/autocomplete-kata-main/docker/start.sh
