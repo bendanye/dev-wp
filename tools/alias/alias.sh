@@ -1,4 +1,5 @@
 alias drma='docker rm $(docker ps -aq) --force'
+alias drmdn="docker rm $(docker ps -aq -f status=exited -f status=created -f status=dead -f status=paused) --force"
 alias dpsa="docker ps -a"
 alias dpsadn="docker ps -a --filter \"status=exited\" --filter \"status=created\" --filter \"status=dead\" --filter \"status=paused\""
 alias caf="caffeinate -dims"
