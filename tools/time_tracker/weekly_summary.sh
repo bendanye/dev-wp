@@ -27,8 +27,8 @@ END_OF_WEEK=$(date -v +$((6 - CURRENT_DATE + 1))d "+%Y-%m-%d")
 # Loop through the dates from start to end of the week (inclusive)
 loop_date=$START_OF_WEEK
 while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$END_OF_WEEK" "+%Y%m%d") ]]; do
-    file="$SCRIPT_DIR/tracking_$loop_date.txt"
-    if test -f "$file"; then
+    if test -f "$SCRIPT_DIR/tracking_$loop_date.txt"; then
+        file="$SCRIPT_DIR/tracking_$loop_date.txt"
         MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
         total_days=$(( total_days + 1 ))
@@ -36,17 +36,22 @@ while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d"
         HOUR=$(( MINUTES_IN_LOG/60 ))
         MINUTE=$(( MINUTES_IN_LOG-$HOUR*60 ))
         echo "$loop_date (1)  - $HOUR hours, $MINUTE minutes"
-    else
+    elif test -f "$SCRIPT_DIR/tracking_h_$loop_date.txt"; then
         file="$SCRIPT_DIR/tracking_h_$loop_date.txt"
-        if test -f "$file"; then
-            MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
-            total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
-            total_days=$(( total_days + .5 ))
+        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
+        total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
+        total_days=$(( total_days + .5 ))
 
-            HOUR=$(( MINUTES_IN_LOG/60 ))
-            min=$(( MINUTES_IN_LOG-$HOUR*60 ))
-            echo "$loop_date (.5) - $HOUR hours, $min minutes"
-        fi
+        HOUR=$(( MINUTES_IN_LOG/60 ))
+        min=$(( MINUTES_IN_LOG-$HOUR*60 ))
+        echo "$loop_date (.5) - $HOUR hours, $min minutes"
+    elif test -f "$SCRIPT_DIR/tracking_e_$loop_date.txt"; then
+        file="$SCRIPT_DIR/tracking_e_$loop_date.txt"
+        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
+        total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
+        HOUR=$(( MINUTES_IN_LOG/60 ))
+        min=$(( MINUTES_IN_LOG-$HOUR*60 ))
+        echo "$loop_date (E)  - $HOUR hours, $min minutes"
     fi
 
     # Add one day to the current date
