@@ -42,12 +42,12 @@ tasks = {}
 
 loop_date = start
 while loop_date <= current_date:
-    file_name = f"tracking_{loop_date}.txt"
-    if os.path.isfile(file_name):
-        group_by_task(file_name, tasks)
-    else:
-        file_name = f"tracking_h_{loop_date}.txt"
-        group_by_task(file_name, tasks)
+    if os.path.isfile(f"tracking_{loop_date}.txt"):
+        group_by_task(f"tracking_{loop_date}.txt", tasks)
+    elif os.path.isfile(f"tracking_h_{loop_date}.txt"):
+        group_by_task(f"tracking_h_{loop_date}.txt", tasks)
+    elif os.path.isfile(f"tracking_e_{loop_date}.txt"):
+        group_by_task(f"tracking_e_{loop_date}.txt", tasks)
 
     loop_date = loop_date + timedelta(days=1)
 
