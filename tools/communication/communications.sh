@@ -22,7 +22,7 @@ function start_communication() {
             sleep 1
         fi
         elif [[ $communication == "slack" ]]; then
-            killall Slack
+            open -a "Slack"
         fi
     done
 }
