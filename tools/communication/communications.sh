@@ -20,7 +20,6 @@ function start_communication() {
         elif [[ $communication == "telegram" ]]; then
             open  -a "Google Chrome" "https://web.telegram.org"
             sleep 1
-        fi
         elif [[ $communication == "slack" ]]; then
             open -a "Slack"
         fi
