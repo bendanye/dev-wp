@@ -50,6 +50,7 @@ if [ -f "$TOOLS_DIR/../gitlab.env" ]; then
 else
     alias gop="$TOOLS_DIR/../git/open_project_in_browser.sh"
 fi
+alias gclc="$TOOLS_DIR/../git/copy_last_commit_msg.sh"
 
 alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"

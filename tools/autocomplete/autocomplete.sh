@@ -51,5 +51,6 @@ _browser_keys_completions()
 # complete -F _git_project_completions open_page.sh
 # complete -F _git_project_completions poll_pipeline_status.sh
 # complete -F _git_project_completions ci_linter.sh
+# complete -F _git_project_completions copy_last_commit_msg.sh
 
 # complete -F _browser_keys_completions browser.sh
