@@ -4,6 +4,11 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 source $SCRIPT_DIR/../communication/communications.sh
 
+function update_katas_git_repos() {
+    cd ../../katas
+    sh update_repos.sh
+}
+
 function open_daily_reading_news_tabs() {
     sh $SCRIPT_DIR/../browser/browser.sh so
     sleep 1
@@ -44,6 +49,8 @@ function show_today_kata() {
     sh ../../katas/daily_schedule.sh
 }
 
+
+update_katas_git_repos
 start_communication
 open_daily_reading_news_tabs
 open_freq_used_apps
