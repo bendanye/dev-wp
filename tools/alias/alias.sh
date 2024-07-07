@@ -52,6 +52,7 @@ else
     alias gop="$TOOLS_DIR/../git/open_project_in_browser.sh"
 fi
 alias gclc="$TOOLS_DIR/../git/copy_last_commit_msg.sh"
+alias gwp="$TOOLS_DIR/../git/goto_directory.sh"
 
 alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"
@@ -71,10 +72,3 @@ alias ttcth="$TOOLS_DIR/../time_tracker/change_today_tracking_file.sh HALF"
 
 alias dwp="cd $TOOLS_DIR/../../"
 alias ewp="cd ~/SelfExploration"
-
-if [ -f "$TOOLS_DIR/../source.env" ]; then
-    source "$TOOLS_DIR/../source.env"
-    alias gwp="cd $GIT_PROJECT_DIR"
-else
-    alias gwp="cd ~/IdeaProjects"
-fi
