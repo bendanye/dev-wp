@@ -41,6 +41,7 @@ function open_daily_tech_note() {
     fi
     cd ~/IdeaProjects/renotes
     # cd ../../tasks/renotes
+    git pull
     sh open_random.sh tech
 }
 
