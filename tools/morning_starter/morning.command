@@ -50,6 +50,9 @@ function show_today_kata() {
     sh ../../katas/daily_schedule.sh
 }
 
+function start_work_related_activity() {
+    //To add work related activities such as opening a page, add key
+}
 
 update_katas_git_repos
 start_communication
@@ -67,3 +70,5 @@ open_daily_tech_note
 open  -a "xbar"
 
 show_today_kata
+
+start_work_related_activity
