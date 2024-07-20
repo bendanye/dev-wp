@@ -53,5 +53,6 @@ _browser_keys_completions()
 # complete -F _git_project_completions ci_linter.sh
 # complete -F _git_project_completions copy_last_commit_msg.sh
 # complete -F _git_project_completions goto_directory.sh
+# complete -F _git_project_completions open_vscode.sh
 
 # complete -F _browser_keys_completions browser.sh
