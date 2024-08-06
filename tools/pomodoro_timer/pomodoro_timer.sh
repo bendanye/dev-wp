@@ -11,11 +11,14 @@ TIMER_FILE="$SCRIPT_DIR/timer"
 
 if test -f "$TIMER_FILE"; then
     clear
-    echo "Stop timer"
     START=$(cat $TIMER_FILE | cut -d ',' -f1)
     TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
     rm $TIMER_FILE
     END=$(date +%s)
+
+    END_TIME=$(date +"%H:%M")
+    echo "Stop timer at $END_TIME"
+    
     SECS=$((END-START))
     DESK_TIME=$(( SECS/60 ))
     RESTING_TIME=$(( DESK_TIME/5 ))
