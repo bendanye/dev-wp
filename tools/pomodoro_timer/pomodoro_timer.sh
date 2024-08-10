@@ -29,7 +29,12 @@ if test -f "$TIMER_FILE"; then
     else
         echo "Total minutes at my desk time focusing on $TASK: $DESK_TIME"
     fi
-    echo "Please check the communication tools and take a break for $RESTING_TIME minutes until $REST_UNTIL"
+
+    if [[ $RESTING_TIME == 0 ]]; then
+        echo "Please check the communication tools and take a short break if required"
+    else
+        echo "Please check the communication tools and take a break for $RESTING_TIME minutes until $REST_UNTIL"
+    fi
 else
     clear
     echo "Start timer"
