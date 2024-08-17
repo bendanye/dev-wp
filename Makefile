@@ -43,6 +43,9 @@ shortcut-browser-kata:
 shortcut-vi-kata:
 	./katas/shortcut-kata/vi/start.sh
 
+shortcut-mac-kata:
+	./katas/shortcut-kata/mac/start.sh
+
 code-kata:
 	cd ./katas/code-kata/ && ./start.sh -l rand -t problem-solving -d rand
 
