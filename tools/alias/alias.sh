@@ -55,6 +55,9 @@ fi
 alias gclc="$TOOLS_DIR/../git/copy_last_commit_msg.sh"
 alias gwp="$TOOLS_DIR/../git/goto_directory.sh"
 
+alias hg="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh git"
+alias hglog="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh glog"
+
 alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"
 alias ttds="$TOOLS_DIR/../time_tracker/day_summary.sh"
