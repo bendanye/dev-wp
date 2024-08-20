@@ -9,6 +9,13 @@ function update_katas_git_repos() {
     sh update_repos.sh
 }
 
+function update_other_tools_git_repos() {
+    if test -d $SCRIPT_DIR/../../other_tools; then
+        cd $SCRIPT_DIR/../../other_tools
+        sh git_pull.sh
+    fi
+}
+
 function open_daily_reading_news_tabs() {
     sh $SCRIPT_DIR/../browser/browser.sh so
     sleep 1
@@ -55,6 +62,7 @@ function start_work_related_activity() {
 }
 
 update_katas_git_repos
+update_other_tools_git_repos
 start_communication
 open_daily_reading_news_tabs
 open_freq_used_apps
