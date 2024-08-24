@@ -81,4 +81,14 @@ else
     EXCLUDE_MSG="after excluding tasks"
 fi
 
-echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes $EXCLUDE_MSG" 
+echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes $EXCLUDE_MSG"
+
+TARGET_HOURS=6
+TARGET_MINUTES=50
+TARGET_TOTAL_MINUTES=$(( (TARGET_HOURS * 60 + TARGET_MINUTES) * total_days ))
+
+REMAINING_MINUTES=$(( TARGET_TOTAL_MINUTES - total_minutes ))
+REMAINING_HOURS=$(( REMAINING_MINUTES / 60 ))
+REMAINING_MINUTES=$(( REMAINING_MINUTES % 60 ))
+
+echo "I need to work remaining of $REMAINING_HOURS hours and $REMAINING_MINUTES minutes today to achieve the average target ($TARGET_HOURS hours and $TARGET_MINUTES minutes)"
