@@ -27,5 +27,6 @@ echo "CARD_TEST_EVIDENCES=\"test_evidences\"" >> "$SCRIPT_PATH/source.env"
 echo "COMMUNICATION=(\"$communication\")" >> "$SCRIPT_PATH/source.env"
 echo "GIT_PROJECT_DIR=\"$GIT_PROJECT_DIR\"" >> "$SCRIPT_PATH/source.env"
 
+touch $project_dir/list.txt
 
 echo "Setup completed"
