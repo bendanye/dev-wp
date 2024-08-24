@@ -83,12 +83,23 @@ fi
 
 echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes $EXCLUDE_MSG"
 
+
+echo ""
+
 TARGET_HOURS=6
 TARGET_MINUTES=50
 TARGET_TOTAL_MINUTES=$(( (TARGET_HOURS * 60 + TARGET_MINUTES) * total_days ))
 
-REMAINING_MINUTES=$(( TARGET_TOTAL_MINUTES - total_minutes ))
-REMAINING_HOURS=$(( REMAINING_MINUTES / 60 ))
-REMAINING_MINUTES=$(( REMAINING_MINUTES % 60 ))
+remaining_minutes=$(( TARGET_TOTAL_MINUTES - total_minutes ))
 
-echo "I need to work remaining of $REMAINING_HOURS hours and $REMAINING_MINUTES minutes today to achieve the average target ($TARGET_HOURS hours and $TARGET_MINUTES minutes)"
+# Remove decimal place
+remaining_minutes=${remaining_minutes%.*}
+
+AVERAGE_REMAINING_HOURS=$(( remaining_minutes / 60 ))
+AVERAGE_REMAINING_MINUTES=$(( remaining_minutes % 60 ))
+
+if [[ $AVERAGE_REMAINING_HOURS -le 0 ]] && [[ $AVERAGE_REMAINING_MINUTES -le 0 ]]; then
+    echo "I have meet the average target of $TARGET_HOURS hours and $TARGET_MINUTES minutes over $total_days days!"
+else
+    echo "I need to work the remaining of $AVERAGE_REMAINING_HOURS hours and $AVERAGE_REMAINING_MINUTES minutes today to meet the average target of $TARGET_HOURS hours and $TARGET_MINUTES minutes over $total_days days."
+fi
