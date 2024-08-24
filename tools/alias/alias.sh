@@ -57,6 +57,7 @@ alias gwp="$TOOLS_DIR/../git/goto_directory.sh"
 
 alias hg="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh git"
 alias hglog="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh glog"
+alias hcml="$TOOLS_DIR/../card_management/keyword_finder/run_keyword_finder.sh list"
 
 alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"
