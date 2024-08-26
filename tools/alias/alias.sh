@@ -8,6 +8,7 @@ alias zshrc="vi ~/.zshrc"
 alias hm="cd ~"
 alias c="clear"
 alias rmf="rm -rf"
+alias cfn="basename "$PWD" | pbcopy"
 alias ..="cd .."
 
 TOOLS_DIR="$(dirname "$0")"
