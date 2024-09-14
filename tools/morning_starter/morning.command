@@ -11,8 +11,8 @@ function update_katas_git_repos() {
 
 function update_other_tools_git_repos() {
     if test -d $SCRIPT_DIR/../../other_tools; then
-        cd $SCRIPT_DIR/../../other_tools
-        sh git_pull.sh
+        cd $SCRIPT_DIR/../git
+        sh git_pull_all_projects.sh $SCRIPT_DIR/../../other_tools
     fi
 }
 
