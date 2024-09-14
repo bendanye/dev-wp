@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ALERTME_MAIN_FILE=""
+source "$SCRIPT_DIR/../source.env"
 
 while getopts ":m:s:" opt; do
   case $opt in

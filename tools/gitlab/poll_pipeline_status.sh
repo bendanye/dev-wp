@@ -2,6 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
+source "$SCRIPT_DIR/../source.env"
 source "$SCRIPT_DIR/../gitlab.env"
 source "$SCRIPT_DIR/gitlab.sh"
 
@@ -34,4 +35,6 @@ do
     fi
 done
 
-# Can call another script to alert
+if [[ $ALERTME_MAIN_FILE != "" ]]; then
+    sh $ALERTME_MAIN_FILE
+fi
