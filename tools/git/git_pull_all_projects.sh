@@ -2,7 +2,9 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-if [ -f "$SCRIPT_DIR/../source.env" ]; then
+if [[ $1 ]]; then
+    DIRECTORY=$1
+elif [ -f "$SCRIPT_DIR/../source.env" ]; then
     source "$SCRIPT_DIR/../source.env"
     DIRECTORY=$GIT_PROJECT_DIR
 else
