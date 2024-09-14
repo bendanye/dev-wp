@@ -27,6 +27,8 @@ alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias ffn="$TOOLS_DIR/../search/find_by_file_name.sh"
 alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
 alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
+alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
+
 alias cgwp="$TOOLS_DIR/../vscode/open_vscode.sh"
 
 alias cs="$TOOLS_DIR/../card_management/copy_screenshots.sh"
