@@ -52,6 +52,11 @@ function open_daily_tech_note() {
     sh open_random.sh tech
 }
 
+function check_tasks() {
+    cd $SCRIPT_DIR/../tools/time_tracker
+    sh check_yesterday.sh
+}
+
 function show_today_kata() {
     cd $SCRIPT_DIR
     sh ../../katas/daily_schedule.sh
@@ -74,6 +79,7 @@ backup_time_tracker_files
 # colima start --cpu 4 --memory 8 --disk 100
 
 open_daily_tech_note
+check_tasks
 
 open  -a "xbar"
 
