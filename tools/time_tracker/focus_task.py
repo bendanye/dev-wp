@@ -2,7 +2,7 @@ from datetime import timedelta, date
 
 import os.path
 import math
-from typing import Dict
+from typing import Dict, List
 
 import sys
 
@@ -72,19 +72,55 @@ def print_focus(tasks: Dict[str, int]):
     sort_by_longest_task = dict(
         sorted(tasks.items(), key=lambda item: item[1], reverse=True)
     )
+
+    card_management_list = _get_card_management_list()
+
     for task, minutes in sort_by_longest_task.items():
+
+        name = _get_card_name(task, card_management_list)
+
         if minutes < 60:
             if print_in_terminal:
-                print(f"{task} - {minutes} minutes")
+                print(f"{name} - {minutes} minutes")
             else:
-                print(f"-- {task} - {minutes} minutes")
+                print(f"-- {name} - {minutes} minutes")
         else:
             hour = math.floor(minutes / 60)
             remaining_minutes = minutes % 60
             if print_in_terminal:
-                print(f"{task} - {hour} hours {remaining_minutes} minutes")
+                print(f"{name} - {hour} hours {remaining_minutes} minutes")
             else:
-                print(f"-- {task} - {hour} hours {remaining_minutes} minutes")
+                print(f"-- {name} - {hour} hours {remaining_minutes} minutes")
+
+
+def _get_card_management_list() -> List[str]:
+    source_env = f"{SCRIPT_DIR}/../source.env"
+    if not os.path.exists(source_env):
+        return []
+
+    with open(source_env, "r") as source_env_file:
+        for line in source_env_file.readlines():
+            if "WORKING_DIR" in line:
+                proj_path = line.replace("WORKING_DIR=", "").replace('"', "").strip()
+                card_management = f"{proj_path}/list.txt"
+                if not os.path.exists(card_management):
+                    return []
+
+                with open(card_management, "r") as card_management_file:
+                    return [entry.strip() for entry in card_management_file.readlines()]
+
+    return []
+
+
+def _get_card_name(task: str, card_management_list: List[str]) -> str:
+    if not card_management_list:
+        return task
+
+    for card_name in card_management_list:
+        if task in card_name:
+            return card_name
+
+    return task
 
 
 if len(sys.argv) < 2:

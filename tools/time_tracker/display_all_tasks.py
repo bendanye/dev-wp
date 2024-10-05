@@ -3,6 +3,7 @@ from datetime import timedelta, date
 import glob
 import os
 import sys
+from typing import List
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -42,17 +43,50 @@ def _get_last_week_files():
     return files
 
 
+def _get_card_management_list() -> List[str]:
+    source_env = f"{SCRIPT_DIR}/../source.env"
+    if not os.path.exists(source_env):
+        return []
+
+    with open(source_env, "r") as source_env_file:
+        for line in source_env_file.readlines():
+            if "WORKING_DIR" in line:
+                proj_path = line.replace("WORKING_DIR=", "").replace('"', "").strip()
+                card_management = f"{proj_path}/list.txt"
+                if not os.path.exists(card_management):
+                    return []
+
+                with open(card_management, "r") as card_management_file:
+                    return [entry.strip() for entry in card_management_file.readlines()]
+
+    return []
+
+
+def _get_card_name(task: str, card_management_list: List[str]) -> str:
+    if not card_management_list:
+        return task
+
+    for card_name in card_management_list:
+        if task in card_name:
+            return card_name
+
+    return task
+
+
 is_header_display = True if len(sys.argv) == 1 else False
 
 
 files = glob.glob(f"{SCRIPT_DIR}/tracking_*.txt")
 this_week_tasks = get_tasks(files, set())
 
+card_management_list = _get_card_management_list()
+
 if is_header_display:
     print("This week's tasks that were focused on:")
 
 for task in sorted(this_week_tasks):
-    print(task)
+    name = _get_card_name(task, card_management_list)
+    print(name)
 
 
 files = _get_last_week_files()
@@ -62,4 +96,5 @@ if is_header_display:
     print("\nLast week's tasks that were focused on (not on this week):")
 
 for task in sorted(remaining_tasks):
-    print(task)
+    name = _get_card_name(task, card_management_list)
+    print(name)
