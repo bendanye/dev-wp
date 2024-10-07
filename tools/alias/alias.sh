@@ -10,6 +10,7 @@ alias hm="cd ~"
 alias c="clear"
 alias rmf="rm -rf"
 alias cfn="basename "$PWD" | pbcopy"
+alias ccp="echo $PWD | pbcopy"
 alias gulc="git reset --soft HEAD~1"
 alias ..="cd .."
 
