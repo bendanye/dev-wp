@@ -24,7 +24,7 @@ function check_project_commit() {
 
     if [ "$(git log origin/$BRANCH..HEAD --oneline)" ]; then
         echo -e "${RED}$PROJECT_NAME ('$BRANCH') - There are commits that have not been pushed to the remote branch!${NO_COLOR}"
-        is_all_projects_commit_push = "false"
+        is_all_projects_commit_push="false"
     fi
 }
 
