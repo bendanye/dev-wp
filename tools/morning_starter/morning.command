@@ -26,6 +26,11 @@ function open_daily_reading_news_tabs() {
 function open_freq_used_apps() {
     open ~/Desktop/MacPass.app
     open -a "Notes"
+
+    if test -d $SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools; then
+        cd $SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools
+        sh run.sh
+    fi
 }
 
 function open_ide() {
