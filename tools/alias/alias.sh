@@ -19,6 +19,7 @@ TOOLS_DIR="$(dirname "$0")"
 alias ob="$TOOLS_DIR/../browser/browser.sh"
 alias obcg="$TOOLS_DIR/../browser/browser.sh cgpt"
 alias obhm="$TOOLS_DIR/../browser/browser.sh hm"
+alias obdpt="$TOOLS_DIR/../browser/browser.sh dpt"
 
 alias dicrm="$TOOLS_DIR/../docker/docker_remove_container_and_image.sh"
 alias dloi="$TOOLS_DIR/../docker/docker_container_logs_by_image_name.sh"
@@ -29,7 +30,7 @@ alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias ffn="$TOOLS_DIR/../search/find_by_file_name.sh"
 alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
 alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
-alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
+# alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
 
 alias cgwp="$TOOLS_DIR/../vscode/open_vscode.sh"
 
