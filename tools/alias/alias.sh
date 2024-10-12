@@ -62,6 +62,7 @@ fi
 alias gclc="$TOOLS_DIR/../git/copy_last_commit_msg.sh"
 alias gwp="$TOOLS_DIR/../git/goto_directory.sh"
 alias gcpc="$TOOLS_DIR/../git/check_all_projects_commit.sh"
+alias ggpcw="$TOOLS_DIR/../git/get_all_projects_commit_within_specified.sh"
 
 alias hg="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh git"
 alias hglog="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh glog"
