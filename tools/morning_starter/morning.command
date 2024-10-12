@@ -63,7 +63,11 @@ function show_today_kata() {
 }
 
 function start_work_related_activity() {
-    //To add work related activities such as opening a page, add key
+    cd $SCRIPT_DIR/../git
+    sh check_all_projects_commit.sh
+    sh check_all_projects_branch.sh
+
+    # To add work related activities such as opening a page, add key
 }
 
 update_katas_git_repos
