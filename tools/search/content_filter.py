@@ -9,7 +9,7 @@ class Criteria:
     def is_match(self, line: str) -> bool:
         if self.is_match_substring and self.substring in line:
             return True
-        if not self.is_match_substring and not self.substring in line:
+        if not self.is_match_substring and self.substring not in line:
             return True
         
         return False
