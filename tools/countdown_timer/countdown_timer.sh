@@ -44,5 +44,5 @@ echo ""
 echo "Timer stopped"
 
 if [[ $ALERTME_MAIN_FILE != "" ]]; then
-    sh $ALERTME_MAIN_FILE
+    sh $ALERTME_MAIN_FILE -m "Timer stopped"
 fi
