@@ -105,7 +105,7 @@ files = (
 )
 remaining_tasks = get_tasks(files, this_week_tasks)
 
-if is_header_display:
+if is_header_display and get_backup_tasks_by == "LAST_WEEK":
     print("\nLast week's tasks that were focused on (not on this week):")
 
 for task in sorted(remaining_tasks):
