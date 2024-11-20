@@ -77,8 +77,13 @@ def _get_card_name(task: str, card_management_list: List[str]) -> str:
     return task
 
 
-is_header_display = True if len(sys.argv) == 1 else False
+get_backup_tasks_by = "LAST_WEEK"
+is_header_display = True
 
+if len(sys.argv) > 1:
+    is_header_display = False
+    if sys.argv[1] == "ALL":
+        get_backup_tasks_by = "ALL"
 
 files = glob.glob(f"{SCRIPT_DIR}/tracking_*.txt")
 this_week_tasks = get_tasks(files, set())
@@ -93,7 +98,11 @@ for task in sorted(this_week_tasks):
     print(name)
 
 
-files = _get_last_week_files()
+files = (
+    _get_last_week_files()
+    if get_backup_tasks_by == "LAST_WEEK"
+    else _get_backup_files()
+)
 remaining_tasks = get_tasks(files, this_week_tasks)
 
 if is_header_display:
