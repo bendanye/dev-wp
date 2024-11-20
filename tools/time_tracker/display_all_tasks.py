@@ -25,7 +25,7 @@ def get_tasks(files, exclude_tasks):
 
 
 def _get_last_week_files():
-    all_backup_files = glob.glob(f"{SCRIPT_DIR}/bkup/tracking_*.txt")
+    all_backup_files = _get_backup_files()
     files = []
 
     current_date = date.today()
@@ -41,6 +41,10 @@ def _get_last_week_files():
         loop_date = loop_date + timedelta(days=1)
 
     return files
+
+
+def _get_backup_files():
+    return glob.glob(f"{SCRIPT_DIR}/bkup/tracking_*.txt")
 
 
 def _get_card_management_list() -> List[str]:
