@@ -67,6 +67,7 @@ alias ggpcw="$TOOLS_DIR/../git/get_all_projects_commit_within_specified.sh"
 alias hg="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh git"
 alias hglog="$TOOLS_DIR/../git/keyword_finder/run_keyword_finder.sh glog"
 alias hcm="$TOOLS_DIR/../card_management/keyword_finder/run_keyword_finder.sh list"
+alias htt="$TOOLS_DIR/../time_tracker/keyword_finder/run_keyword_finder.sh dat"
 
 alias tt="$TOOLS_DIR/../time_tracker/time_tracker.sh"
 alias ttst="$TOOLS_DIR/../time_tracker/status.sh"

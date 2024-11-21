@@ -1,0 +1,9 @@
+{
+  "helps": [
+    {
+      "keyword": "dat",
+      "type": "command",
+      "command": "python3 ${PROJECT_DIR}/display_all_tasks.py ALL"
+    }
+  ]
+}
