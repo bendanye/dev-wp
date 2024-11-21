@@ -6,8 +6,6 @@ else
     KEYWORD_FINDER_MAIN_FILE=""
 fi
 
-KEYWORD_FINDER_MAIN_FILE="/Users/benjaminng/IdeaProjects/keyword-finder/main.py"
-
 if [[ $KEYWORD_FINDER_MAIN_FILE == "" ]]; then
     echo "Please specify the path and the file where keyword-finder project located"
     exit 0
