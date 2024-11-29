@@ -9,8 +9,8 @@ alias zshrc="vi ~/.zshrc"
 alias hm="cd ~"
 alias c="clear"
 alias rmf="rm -rf"
-alias cfn="basename "$PWD" | pbcopy"
-alias ccp="echo $PWD | pbcopy"
+alias cfn='basename `pwd` | pbcopy'
+alias ccp='echo `pwd` | pbcopy'
 alias gulc="git reset --soft HEAD~1"
 alias ..="cd .."
 
