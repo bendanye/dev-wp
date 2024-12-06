@@ -1,6 +1,7 @@
 from typing import List
 from dataclasses import dataclass
 
+
 @dataclass
 class Criteria:
     substring: str
@@ -11,9 +12,8 @@ class Criteria:
             return True
         if not self.is_match_substring and self.substring not in line:
             return True
-        
-        return False
 
+        return False
 
 
 def get_lines(file_path: str, criterias: List[Criteria]):
@@ -27,13 +27,13 @@ def get_lines(file_path: str, criterias: List[Criteria]):
 
     return result
 
+
 def _is_all_criteria_met(line: str, criterias: List[Criteria]) -> bool:
     for criteria in criterias:
         if not criteria.is_match(line):
             return False
-        
-    return True
 
+    return True
 
 
 def _output_result(output_file_path: str, lines: List[str]):
@@ -43,8 +43,8 @@ def _output_result(output_file_path: str, lines: List[str]):
 
 
 if __name__ == "__main__":
-    input_file_path = "hello.csv"
-    output_file_path = "hello_output.csv"
+    input_file_path = "examples/example1.csv"
+    output_file_path = "examples/example1_output.csv"
 
     criterias = []
     criterias.append(Criteria(substring=";True;", is_match_substring=True))
