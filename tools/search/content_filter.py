@@ -16,14 +16,23 @@ class Criteria:
         return False
 
 
-def get_lines(file_path: str, criterias: List[Criteria]):
+@dataclass
+class Line:
+    file_path: str
+    number: int
+    content: str
+
+
+def get_lines(file_path: str, criterias: List[Criteria]) -> List[Line]:
     result = []
     with open(file_path, "r") as file:
         for line_number, line in enumerate(file, start=1):
             if not line.strip():
                 continue
             if _is_all_criteria_met(line, criterias):
-                result.append(line.strip())
+                result.append(
+                    Line(file_path=file_path, number=line_number, content=line.strip())
+                )
 
     return result
 
@@ -36,10 +45,15 @@ def _is_all_criteria_met(line: str, criterias: List[Criteria]) -> bool:
     return True
 
 
-def _output_result(output_file_path: str, lines: List[str]):
+def _output_result(output_file_path: str, lines: List[Line], save_all: bool):
     with open(output_file_path, "w") as file:
         for line in lines:
-            file.write(line + "\n")
+            if save_all:
+                file.write(
+                    f"File={line.file_path};Line number={line.number};{line.content}\n"
+                )
+            else:
+                file.write(f"{line.content}\n")
 
 
 if __name__ == "__main__":
@@ -50,5 +64,5 @@ if __name__ == "__main__":
     criterias.append(Criteria(substring=";True;", is_match_substring=True))
     criterias.append(Criteria(substring=";False", is_match_substring=True))
 
-    result = get_lines(input_file_path, criterias)
-    _output_result(output_file_path, result)
+    lines = get_lines(input_file_path, criterias)
+    _output_result(output_file_path, lines, save_all=False)
