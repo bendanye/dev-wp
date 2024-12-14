@@ -1,0 +1,10 @@
+{
+  "helps": [
+    {
+      "keyword": "list",
+      "type": "command",
+      "command": "cat ${WORKING_DIR}/list.txt",
+      "copy_pattern": "^.+?(?=-|$)"
+    }
+  ]
+}
