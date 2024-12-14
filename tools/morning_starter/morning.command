@@ -46,6 +46,11 @@ function backup_time_tracker_files() {
     sh ../time_tracker/backup.sh
 }
 
+function create_work_log_file() {
+    cd $SCRIPT_DIR
+    python3 ../../work_logs/create_work_log_file.py
+}
+
 function open_daily_tech_note() {
     if [ ! -d "$SCRIPT_DIR/../../tasks/renotes" ]; then
         echo "renotes folder does not exists."
@@ -84,6 +89,7 @@ open_ide
 sleep 2
 
 backup_time_tracker_files
+create_work_log_file
 
 # colima start --cpu 4 --memory 8 --disk 100
 
