@@ -1,6 +1,6 @@
 import pytest
 
-from common_functions import get_last_monday, get_last_working_date
+from date_utils import get_last_monday, get_last_working_date
 from datetime import datetime
 
 
