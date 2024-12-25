@@ -1,11 +1,10 @@
 import os.path
 
+from date_utils import get_last_monday
+
 from datetime import timedelta, date
 
-today = date.today()
-days_since_monday = today.weekday()
-
-monday = today - timedelta(days=days_since_monday)
+monday = get_last_monday(date.today())
 
 if os.path.isfile(f'{monday.strftime("%Y%m%d")}.md'):
     print("This week work log is already exists. Skip creating")
