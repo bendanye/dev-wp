@@ -1,6 +1,6 @@
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-SUMMARY_EXCLUDE_PATTERN="!/(MISC|kata|feedback|conf_talk|learning|PP|admin)/"
+SUMMARY_EXCLUDE_PATTERN="!/(MISC|kata|feedback|PP|admin)/"
 SUMMARY_ACTION_ALL_TASKS="ALL_TASKS"
 SUMMARY_ACTION_EXCLUDE_TASKS="EXCLUDE_TASKS"
 
