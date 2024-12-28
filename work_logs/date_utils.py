@@ -14,3 +14,11 @@ def get_last_working_date(specified_date):
         last_working_day = specified_date - timedelta(days=1)
 
     return last_working_day
+
+
+def format_date_to_yyyymmdd(specified_date):
+    return specified_date.strftime("%Y%m%d")
+
+
+def format_date_to_yyyymmdd_hyphen(specified_date):
+    return specified_date.strftime("%Y-%m-%d")
