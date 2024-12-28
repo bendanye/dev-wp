@@ -34,3 +34,37 @@ def get_tasks(work_log_directory, specified_date):
         return []
 
     return result
+
+
+def get_goals(work_log_directory, specified_date):
+    last_monday = get_last_monday(specified_date)
+    result = []
+    with open(
+        f"{work_log_directory}/{format_date_to_yyyymmdd(last_monday)}.md", "r"
+    ) as file:
+        save_line = False
+        on_yesterday_date = False
+        for line in file:
+            if f"[{format_date_to_yyyymmdd_hyphen(specified_date)}]" in line:
+                on_yesterday_date = True
+
+            if "Goals for Next Working Day" in line and on_yesterday_date is True:
+                save_line = True
+
+            elif "### " in line and on_yesterday_date is True and save_line is True:
+                save_line = False
+                on_yesterday_date = False
+
+            if save_line:
+                if "Goals for Next Working Day" in line:
+                    continue
+                else:
+                    result.append(line)
+
+    if result[-1] == "\n":
+        result = result[:-1]
+
+    if len(result) == 1 and result[0].startswith("- [ ]"):
+        return []
+
+    return result
