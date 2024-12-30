@@ -1,9 +1,9 @@
 import os
 
-directory = "."
+DIRECTORY = "examples"
 
-for filename in os.listdir(directory):
-    f = os.path.join(directory, filename)
+for filename in os.listdir(DIRECTORY):
+    f = os.path.join(DIRECTORY, filename)
     if os.path.isfile(f) and "template.md" not in f and f.endswith(".md"):
         with open(f, "r") as file:
             lines = []
