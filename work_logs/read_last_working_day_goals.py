@@ -3,7 +3,7 @@ from datetime import datetime
 from date_utils import get_last_working_date, format_date_to_yyyymmdd_hyphen
 from read_utils import get_goals, get_tasks
 
-DIRECTORY = "examples"
+DIRECTORY = "logs"
 
 last_working_date = get_last_working_date(datetime.now())
 tasks = get_tasks(DIRECTORY, last_working_date)

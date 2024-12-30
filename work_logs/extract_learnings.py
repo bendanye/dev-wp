@@ -1,6 +1,6 @@
 import os
 
-DIRECTORY = "examples"
+DIRECTORY = "logs"
 
 for filename in os.listdir(DIRECTORY):
     f = os.path.join(DIRECTORY, filename)

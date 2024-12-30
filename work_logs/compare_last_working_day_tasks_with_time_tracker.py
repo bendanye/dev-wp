@@ -4,7 +4,7 @@ from datetime import datetime
 from date_utils import get_last_working_date, format_date_to_yyyymmdd_hyphen
 from read_utils import get_tasks
 
-DIRECTORY = "examples"
+DIRECTORY = "logs"
 TASK_PREFIX = ""
 
 work_log_tasks = set()

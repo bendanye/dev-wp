@@ -8,15 +8,17 @@ from date_utils import (
 
 from datetime import timedelta, date
 
+DIRECTORY = "logs"
+
 monday = get_last_monday(date.today())
 
 work_log_file_name = format_date_to_yyyymmdd(monday)
 
-if os.path.isfile(f"{work_log_file_name}.md"):
+if os.path.isfile(f"{DIRECTORY}/{work_log_file_name}.md"):
     print("This week work log is already exists. Skip creating")
 else:
     with open("template.md", "r") as fin:
-        with open(f"{work_log_file_name}.md", "w") as fout:
+        with open(f"{DIRECTORY}/{work_log_file_name}.md", "w") as fout:
             for line in fin:
                 if "## Week of [Month Day, Year]" in line:
                     fout.write(

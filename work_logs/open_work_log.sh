@@ -1,6 +1,6 @@
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-WORK_LOG_DIR="${SCRIPT_DIR}/examples"
+WORK_LOG_DIR="${SCRIPT_DIR}/logs"
 
 OPEN_FILE=$1
 
