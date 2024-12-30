@@ -36,6 +36,26 @@ def get_tasks(work_log_directory, specified_date):
     return result
 
 
+def get_specified_tasks(work_log_directory, specified_date, specified_task):
+    result = []
+    all_tasks = get_tasks(work_log_directory, specified_date)
+    save_line = False
+    for task in all_tasks:
+        if task.startswith("- ") and specified_task in task:
+            save_line = True
+
+        elif task.startswith("- ") and save_line is True:
+            save_line = False
+
+        if save_line:
+            result.append(task)
+
+    if len(result) > 0 and result[-1] == "\n":
+        result = result[:-1]
+
+    return result
+
+
 def get_goals(work_log_directory, specified_date):
     last_monday = get_last_monday(specified_date)
     result = []
