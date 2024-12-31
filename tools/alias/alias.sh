@@ -32,7 +32,7 @@ alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
 alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
 # alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
 
-alias cgwp="$TOOLS_DIR/../vscode/open_vscode.sh"
+alias cgwp="$TOOLS_DIR/../git/open_vscode.sh"
 alias cwlc="$TOOLS_DIR/../../work_logs/open_work_log.sh current"
 alias cwlp="$TOOLS_DIR/../../work_logs/open_work_log.sh previous"
 
