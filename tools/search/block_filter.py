@@ -1,5 +1,9 @@
+import os
+
 from dataclasses import dataclass
 from typing import List
+
+COMMON_SKIP_DIRECTORIES = [".git", ".idea"]
 
 
 @dataclass
@@ -20,14 +24,37 @@ def main(
     criterias: List[Criteria],
     input_path: str,
 ) -> None:
-    blocks = read_blocks_from_file(input_path)
+    if os.path.isfile(input_path):
+        _start_from_file(criterias, input_path)
+    else:
+        _start_from_directory(criterias, input_path)
+
+
+def _start_from_file(criterias: List[Criteria], input_path: str) -> None:
+    blocks = _read_blocks_from_file(input_path)
 
     for block in blocks:
         if _is_all_criteria_met(block, criterias):
             _output_to_terminal(input_path, block)
 
 
-def read_blocks_from_file(file_path):
+def _start_from_directory(criterias: List[Criteria], input_path: str) -> None:
+    for subdir, dirs, files in os.walk(input_path):
+        for file in files:
+            for skip_directory in COMMON_SKIP_DIRECTORIES:
+                if skip_directory in dirs:
+                    dirs.remove(skip_directory)
+
+            absolute_path = os.path.join(subdir, file)
+            if os.path.isfile(absolute_path):
+                blocks = _read_blocks_from_file(absolute_path)
+
+                for block in blocks:
+                    if _is_all_criteria_met(block, criterias):
+                        _output_to_terminal(absolute_path, block)
+
+
+def _read_blocks_from_file(file_path):
     blocks = []
     with open(file_path, "r") as file:
         current_block = []

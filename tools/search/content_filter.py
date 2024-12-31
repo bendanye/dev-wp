@@ -1,5 +1,9 @@
+import os
+
 from typing import List
 from dataclasses import dataclass
+
+COMMON_SKIP_DIRECTORIES = [".git", ".idea"]
 
 
 @dataclass
@@ -29,12 +33,45 @@ def main(
     output_file_path: str,
     show_all_details: bool = False,
 ) -> None:
-    lines = get_lines(input_path, criterias)
+    if os.path.isfile(input_path):
+        _start_from_file(criterias, input_path, output_file_path, show_all_details)
+    else:
+        _start_from_directory(criterias, input_path, output_file_path, show_all_details)
 
+
+def _start_from_file(
+    criterias: List[Criteria],
+    input_path: str,
+    output_file_path: str,
+    show_all_details: bool,
+) -> None:
+    lines = get_lines(input_path, criterias)
     if output_file_path:
         _output_to_file(output_file_path, lines, show_all_details)
     else:
         _output_to_terminal(lines, show_all_details)
+
+
+def _start_from_directory(
+    criterias: List[Criteria],
+    input_path: str,
+    output_file_path: str,
+    show_all_details: bool,
+) -> None:
+    for subdir, dirs, files in os.walk(input_path):
+        for file in files:
+            for skip_directory in COMMON_SKIP_DIRECTORIES:
+                if skip_directory in dirs:
+                    dirs.remove(skip_directory)
+
+            absolute_path = os.path.join(subdir, file)
+            if os.path.isfile(absolute_path):
+                lines = get_lines(absolute_path, criterias)
+
+                if output_file_path:
+                    _output_to_file(output_file_path, lines, show_all_details)
+                else:
+                    _output_to_terminal(lines, show_all_details)
 
 
 def get_lines(file_path: str, criterias: List[Criteria]) -> List[Line]:
@@ -71,6 +108,7 @@ def _output_to_file(output_file_path: str, lines: List[Line], show_all_detail: b
 
 
 def _output_to_terminal(lines: List[Line], show_all_detail: bool):
+    print(f"Total count: {len(lines)}")
     for line in lines:
         if show_all_detail:
             print(f"File={line.file_path};Line number={line.number};{line.content}")
