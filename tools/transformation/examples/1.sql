@@ -1,0 +1,1 @@
+INSERT INTO testing.abcd (ID, TYPE) VALUES (1, 'HELLO');
