@@ -22,6 +22,8 @@ function start_communication() {
             sleep 1
         elif [[ $communication == "slack" ]]; then
             open -a "Slack"
+        elif [[ $communication == "discord" ]]; then
+            open  -a Discord
         fi
     done
 }
@@ -41,6 +43,8 @@ function stop_communication() {
             stop_communication_from_browser
         elif [[ $communication == "slack" ]]; then
             killall Slack
+        elif [[ $communication == "discord" ]]; then
+            killall Discord
         fi
     done
 }
