@@ -30,7 +30,7 @@ def get_tasks(work_log_directory, specified_date):
     if result[-1] == "\n":
         result = result[:-1]
 
-    if len(result) == 1 and result[0].startswith("- [ ]"):
+    if len(result) == 3 and result[2].startswith("- [ ]"):
         return []
 
     return result
@@ -84,7 +84,7 @@ def get_goals(work_log_directory, specified_date):
     if result[-1] == "\n":
         result = result[:-1]
 
-    if len(result) == 1 and result[0].startswith("- [ ]"):
+    if len(result) == 2 and result[1].startswith("- [ ]"):
         return []
 
     return result
