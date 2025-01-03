@@ -48,4 +48,8 @@ for task in work_log_tasks:
         missing.add(task)
 
 
-print(missing)
+if len(missing) == 0:        
+    print("No differences between work log and time tracker")
+else:
+    print("\033[91mHas differences between work log and time tracker")
+    print(missing)
