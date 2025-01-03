@@ -3,7 +3,7 @@
 SCRIPT_PATH=$(pwd)
 
 read -p "Name of the project: " project_name
-read -p "Communication (google, slack): " communication
+read -p "Communication (google, slack, discord): " communication
 read -p "Name of the type of managment (default is cards): " management
 
 echo
