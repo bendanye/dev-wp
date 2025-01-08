@@ -9,7 +9,7 @@ cd "$(dirname "$0")"
 source env/gitlab.env
 # source ../../gitlab.env
 
-source "../gitlab.sh"
+# source "../gitlab.sh"
 
 set -eu
 
@@ -18,6 +18,10 @@ test "$GITLAB_URL"
 
 # Specified list of projects
 PROJECTS=()
+
+GITLAB_GROUP=""
+
+GITLAB_GROUP_ENCODING=$(echo "$GITLAB_GROUP/" | sed 's#/#%2F#g')
 
 pipeline_results=()
 
