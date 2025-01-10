@@ -23,14 +23,18 @@ fi
 
 GITLAB_GROUP_ENCODING=$(echo "$GITLAB_GROUP/" | sed 's#/#%2F#g')
 
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
 while true
 do
-    status=$(curl -s -k --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GITLAB_GROUP_ENCODING}${PROJECT}/pipelines" | jq first | jq -r '.status')
+    result=$(curl -s -k --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GITLAB_GROUP_ENCODING}${PROJECT}/pipelines/latest?ref=${BRANCH_NAME}")
+    status=$(echo $result | jq -r '.status')
+    id=$(echo $result | jq -r '.id')
     if [[ $status != "success" && $status != "failed" && $status != "canceled" ]]; then
-        echo "Still in progress. Sleep for 10 secs"
+        echo "${id} is still in progress. Sleep for 10 secs"
         sleep 10
     else
-        echo "No more running. Status is $status"
+        echo "${id} is not running. Status is $status"
         break
     fi
 done
