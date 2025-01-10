@@ -31,10 +31,10 @@ do
     status=$(echo $result | jq -r '.status')
     id=$(echo $result | jq -r '.id')
     if [[ $status != "success" && $status != "failed" && $status != "canceled" ]]; then
-        echo "${id} is still in progress. Sleep for 10 secs"
+        echo "${id}-${BRANCH_NAME} is still in progress. Sleep for 10 secs"
         sleep 10
     else
-        echo "${id} is not running. Status is $status"
+        echo "${id}-${BRANCH_NAME} is not running. Status is $status"
         break
     fi
 done
