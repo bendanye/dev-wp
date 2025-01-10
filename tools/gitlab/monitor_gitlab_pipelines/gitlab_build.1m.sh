@@ -56,6 +56,8 @@ function print_submenu() {
             echo "$pipeline_result | color=darkgreen href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ "$pipeline_result" == *"canceled"* ]]; then
             echo "$pipeline_result | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+        elif [[ "$pipeline_result" == *"skipped"* ]]; then
+            echo "$pipeline_result | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ " $pipeline_result" == *"running"* ]]; then
             echo "$pipeline_result | color=yellow href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ " $pipeline_result" == *"pending"* ]]; then
