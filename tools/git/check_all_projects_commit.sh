@@ -11,9 +11,8 @@ fi
 
 # Define color codes
 RED='\033[0;31m'
-NO_COLOR='\033[0m'
 
-is_all_projects_commit_push="true"
+check_results=()
 
 function check_project_commit() {
     PROJECT_NAME=$(basename "$PWD")
@@ -23,20 +22,23 @@ function check_project_commit() {
     git fetch
 
     if [ "$(git log origin/$BRANCH..HEAD --oneline)" ]; then
-        echo -e "${RED}$PROJECT_NAME ('$BRANCH') - There are commits that have not been pushed to the remote branch!${NO_COLOR}"
-        is_all_projects_commit_push="false"
+        check_results+=("$PROJECT_NAME - $BRANCH")
     fi
 }
 
-echo "Checking projects' commits in $DIRECTORY"
+echo "Checking projects' commits in $GIT_PROJECT_DIR"
 
-for dir in "$DIRECTORY"/*; do
+for dir in "$GIT_PROJECT_DIR"/*; do
     if [ -d "$dir/.git" ]; then
         cd "$dir" || continue
         check_project_commit
     fi
 done
 
-if [[ $is_all_projects_commit_push == "true" ]]; then
-    echo "All projects' commits in $DIRECTORY are pushed!"
+if [[ ${#check_results[@]} -eq 0 ]]; then
+    echo "All projects' commits in $GIT_PROJECT_DIR are pushed!"
+else
+    for result in "${check_results[@]}"; do
+        echo -e "${RED}$result - There are commits that have not been pushed to the remote branch!"
+    done
 fi
