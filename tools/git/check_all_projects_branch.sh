@@ -11,9 +11,8 @@ fi
 
 # Define color codes
 RED='\033[0;31m'
-NO_COLOR='\033[0m'
 
-is_all_projects_master_branch="true"
+check_results=()
 
 function check_project_branch() {
     PROJECT_NAME=$(basename "$PWD")
@@ -21,8 +20,7 @@ function check_project_branch() {
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
     if [[ "$BRANCH" != "master" ]] && [[ "$BRANCH" != "main" ]]; then
-        echo -e "${RED}$PROJECT_NAME - Not on master/main branch but instead on $BRANCH"
-        is_all_projects_master_branch="false"
+        check_results+=("$PROJECT_NAME - $BRANCH")
     fi
 }
 
@@ -35,6 +33,11 @@ for dir in "$DIRECTORY"/*; do
     fi
 done
 
-if [[ $is_all_projects_master_branch == "true" ]]; then
+if [[ ${#check_results[@]} -eq 0 ]]; then
     echo "All projects' in $DIRECTORY are in master/main!"
+else
+    for result in "${check_results[@]}"; do
+        echo -e "${RED}$result is not in master/main branch"
+    done
 fi
+
