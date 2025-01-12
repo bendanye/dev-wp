@@ -28,7 +28,7 @@ function check_project_commit() {
 
 echo "Checking projects' commits in $GIT_PROJECT_DIR"
 
-for dir in "$GIT_PROJECT_DIR"/*; do
+for dir in "$DIRECTORY"/*; do
     if [ -d "$dir/.git" ]; then
         cd "$dir" || continue
         check_project_commit
