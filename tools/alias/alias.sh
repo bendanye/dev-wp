@@ -26,7 +26,7 @@ alias dloi="$TOOLS_DIR/../docker/docker_container_logs_by_image_name.sh"
 
 alias kp="$TOOLS_DIR/../networking/kill_port.sh"
 
-alias datecal="python3 $TOOLS_DIR/../calculator/day_calculator.py"
+alias datecal="python3 $TOOLS_DIR/../calculator/date_calculator.py"
 
 alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias ffn="$TOOLS_DIR/../search/find_by_file_name.sh"
