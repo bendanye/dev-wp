@@ -15,9 +15,9 @@ def main() -> None:
 
     print(f"last working date: {format_date_to_yyyymmdd_hyphen(last_working_date)}")
     if work_log_tasks and not time_tracker_tasks:
-        print("Missing time tracker tasks")
+        print("\033[91mMissing time tracker tasks")
     elif not work_log_tasks and time_tracker_tasks:
-        print("Missing work log tasks")
+        print("\033[91mMissing work log tasks")
     else:
         missing = set()
         for task in time_tracker_tasks:
@@ -31,7 +31,7 @@ def main() -> None:
         if not missing:
             print("No differences between work log and time tracker")
         else:
-            print("There is differences between work log and time tracker")
+            print("\033[91mThere is differences between work log and time tracker")
             print(missing)
 
 
