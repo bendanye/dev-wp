@@ -5,6 +5,9 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 source $SCRIPT_DIR/time_tracker_func.sh
 source $SCRIPT_DIR/../source.env
 
+# Define color codes
+RED='\033[0;31m'
+
 yesterday=$(date -v -1d +%u)
 
 if [ "$yesterday" -lt 1 ] && [ "$yesterday" -ge 5 ]; then
@@ -24,6 +27,6 @@ else
     if [[ $ALERTME_MAIN_FILE != "" ]]; then
         sh $ALERTME_MAIN_FILE -m $MESSAGE
     else
-        echo $MESSAGE
+        echo -e "${RED}$MESSAGE"
     fi
 fi
