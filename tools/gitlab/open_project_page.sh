@@ -31,6 +31,13 @@ if [[ $ACTION == "COMMITS" ]]; then
   SUB_PATH="/-/commits/master?ref_type=heads"
 elif [[ $ACTION == "PIPELINE" ]]; then
   SUB_PATH="/-/pipelines"
+elif [[ $ACTION == "PIPELINE_BRANCH" ]]; then
+  if [[ $FROM == "DIRECTORY" ]]; then
+    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+    SUB_PATH="/-/pipelines?page=1&scope=all&ref=${BRANCH_NAME}"
+  else
+    SUB_PATH="/-/pipelines"
+  fi
 elif [[ $ACTION == "MR_ASSIGNED" ]]; then
   SUB_PATH="/-/merge_requests?assignee_username=${GITLAB_GROUP_USER_NAME}"
 elif [[ $ACTION == "MR_REVIEWED" ]]; then
