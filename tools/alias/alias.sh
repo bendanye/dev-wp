@@ -53,6 +53,7 @@ if [ -f "$TOOLS_DIR/../gitlab.env" ]; then
     alias gopmra="$TOOLS_DIR/../gitlab/open_project_page.sh MR_ASSIGNED"
     alias gopmrr="$TOOLS_DIR/../gitlab/open_project_page.sh MR_REVIEWED"
     alias gopp="$TOOLS_DIR/../gitlab/open_project_page.sh PIPELINE"
+    alias goppb="$TOOLS_DIR/../gitlab/open_project_page.sh PIPELINE_BRANCH"
     alias gopc="$TOOLS_DIR/../gitlab/open_project_page.sh COMMITS"
     alias gopr="$TOOLS_DIR/../gitlab/open_project_page.sh SETTINGS_REPOSITORY"
     alias gomra="$TOOLS_DIR/../gitlab/open_page.sh MR_ASSIGNED"
