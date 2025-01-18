@@ -44,6 +44,13 @@ elif [[ $ACTION == "MR_REVIEWED" ]]; then
   SUB_PATH="/-/merge_requests?reviewer_username=${GITLAB_GROUP_USER_NAME}"
 elif [[ $ACTION == "SETTINGS_REPOSITORY" ]]; then
   SUB_PATH="/-/settings/repository"
+elif [[ $ACTION == "PROJECT_BRANCH" ]]; then
+  if [[ $FROM == "DIRECTORY" ]]; then
+    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+    SUB_PATH="?page=1&scope=all&ref=${BRANCH_NAME}"
+  else
+    SUB_PATH=""
+  fi
 else
   SUB_PATH=""
 fi

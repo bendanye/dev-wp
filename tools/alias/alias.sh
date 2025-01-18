@@ -50,6 +50,7 @@ alias jcua="$TOOLS_DIR/../jira/jira_upload_attachment.sh"
 
 if [ -f "$TOOLS_DIR/../gitlab.env" ]; then
     alias gop="$TOOLS_DIR/../gitlab/open_project_page.sh PROJECT"
+    alias gopb="$TOOLS_DIR/../gitlab/open_project_page.sh PROJECT_BRANCH"
     alias gopmra="$TOOLS_DIR/../gitlab/open_project_page.sh MR_ASSIGNED"
     alias gopmrr="$TOOLS_DIR/../gitlab/open_project_page.sh MR_REVIEWED"
     alias gopp="$TOOLS_DIR/../gitlab/open_project_page.sh PIPELINE"
