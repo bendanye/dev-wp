@@ -47,7 +47,7 @@ elif [[ $ACTION == "SETTINGS_REPOSITORY" ]]; then
 elif [[ $ACTION == "PROJECT_BRANCH" ]]; then
   if [[ $FROM == "DIRECTORY" ]]; then
     BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-    SUB_PATH="?page=1&scope=all&ref=${BRANCH_NAME}"
+    SUB_PATH="/-/tree/${BRANCH_NAME}?ref_type=heads"
   else
     SUB_PATH=""
   fi
