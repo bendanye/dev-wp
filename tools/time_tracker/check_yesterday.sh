@@ -10,8 +10,8 @@ RED='\033[0;31m'
 
 yesterday=$(date -v -1d +%u)
 
-if [ "$yesterday" -lt 1 ] && [ "$yesterday" -ge 5 ]; then
-    echo "Yesterday was not mon-thurs. Exit"
+if [ "$yesterday" -gt 4 ]; then
+    echo "Yesterday was not Mon-Thu. Exit"
     exit 0
 fi
 
