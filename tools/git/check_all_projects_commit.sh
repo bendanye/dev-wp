@@ -39,6 +39,10 @@ if [[ ${#check_results[@]} -eq 0 ]]; then
     echo "All projects' commits in $GIT_PROJECT_DIR are pushed!"
 else
     for result in "${check_results[@]}"; do
-        echo -e "${RED}$result - There are commits that have not been pushed to the remote branch!"
+        MESSAGE="${result} - There are commits that have not been pushed to the remote branch!"
+        echo -e "${RED}${MESSAGE}"
+        if [[ $TODO_MAIN_FILE != "" ]]; then
+            sh "${TODO_MAIN_FILE}" "$MESSAGE"
+        fi
     done
 fi
