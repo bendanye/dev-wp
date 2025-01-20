@@ -37,10 +37,10 @@ if [[ ${#check_results[@]} -eq 0 ]]; then
     echo "All projects' in $DIRECTORY are in master/main!"
 else
     for result in "${check_results[@]}"; do
-        MSG="${result} is not in master/main branch"
-        echo -e "${RED}${MSG}"
+        MESSAGE="${result} is not in master/main branch"
+        echo -e "${RED}${MESSAGE}"
         if [[ $TODO_MAIN_FILE != "" ]]; then
-            sh "${TODO_MAIN_FILE}" "$MSG"
+            sh "${TODO_MAIN_FILE}" "$MESSAGE"
         fi
     done
 fi
