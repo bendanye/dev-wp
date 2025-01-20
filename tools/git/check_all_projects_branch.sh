@@ -20,7 +20,7 @@ function check_project_branch() {
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
     if [[ "$BRANCH" != "master" ]] && [[ "$BRANCH" != "main" ]]; then
-        check_results+=("$PROJECT_NAME - $BRANCH")
+        check_results+=("$PROJECT_NAME")
     fi
 }
 
