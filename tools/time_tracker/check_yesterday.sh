@@ -24,9 +24,10 @@ if test -f "$data_file"; then
     echo "Found $YESTERDAY_DATE file. No actions needed"
 else
     MESSAGE="Missing $YESTERDAY_DATE file. Could be not working or PH. Please proceed to do neccessary action if needed"
-    if [[ $ALERTME_MAIN_FILE != "" ]]; then
-        sh $ALERTME_MAIN_FILE -m $MESSAGE
-    else
-        echo -e "${RED}$MESSAGE"
+    echo -e "${RED}${MESSAGE}"
+    if [[ $TODO_MAIN_FILE != "" ]]; then
+        sh $TODO_MAIN_FILE "$MESSAGE"
+    elif [[ $ALERTME_MAIN_FILE != "" ]]; then
+        sh $ALERTME_MAIN_FILE -m "$MESSAGE"
     fi
 fi
