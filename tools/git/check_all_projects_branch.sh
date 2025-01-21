@@ -11,6 +11,7 @@ fi
 
 # Define color codes
 RED='\033[0;31m'
+RESET='\033[0m'
 
 check_results=()
 
@@ -38,7 +39,7 @@ if [[ ${#check_results[@]} -eq 0 ]]; then
 else
     for result in "${check_results[@]}"; do
         MESSAGE="${result} is not in master/main branch"
-        echo -e "${RED}${MESSAGE}"
+        echo -e "${RED}${MESSAGE}${RESET}"
         if [[ $TODO_MAIN_FILE != "" ]]; then
             sh "${TODO_MAIN_FILE}" "$MESSAGE"
         fi
