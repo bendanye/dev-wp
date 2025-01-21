@@ -7,7 +7,7 @@ if [[ $result == *"Missing work log tasks"* || $result == *"There is differences
   if [[ $TODO_MAIN_FILE != "" ]]; then
     sh "${TODO_MAIN_FILE}" "$MESSAGE"
   elif [[ $ALERTME_MAIN_FILE != "" ]]; then
-      sh $ALERTME_MAIN_FILE -m "$MESSAGE"
+    sh $ALERTME_MAIN_FILE -m "$MESSAGE"
   fi
 fi
 
