@@ -7,6 +7,7 @@ source $SCRIPT_DIR/../source.env
 
 # Define color codes
 RED='\033[0;31m'
+RESET='\033[0m'
 
 yesterday=$(date -v -1d +%u)
 
@@ -24,7 +25,7 @@ if test -f "$data_file"; then
     echo "Found $YESTERDAY_DATE file. No actions needed"
 else
     MESSAGE="Missing $YESTERDAY_DATE file. Could be not working or PH. Please proceed to do neccessary action if needed"
-    echo -e "${RED}${MESSAGE}"
+    echo -e "${RED}${MESSAGE}${RESET}"
     if [[ $TODO_MAIN_FILE != "" ]]; then
         sh $TODO_MAIN_FILE "$MESSAGE"
     elif [[ $ALERTME_MAIN_FILE != "" ]]; then
