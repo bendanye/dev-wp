@@ -3,6 +3,8 @@
 #<xbar.title>Monitor Gitlab Builds</xbar.title>
 #<xbar.author>Benjamin Ng</xbar.author>
 #<xbar.dependencies>jq</xbar.dependencies>
+#<xbar.var>string(VAR_PROJECT_NAME=""): Project name to view in different branch.</xbar.var>
+#<xbar.var>string(VAR_BRANCH_NAME=""): Branch name to view.</xbar.var>
 
 cd "$(dirname "$0")"
 
@@ -27,7 +29,11 @@ pipeline_results=()
 
 function get_pipeline_status() {
     for project in ${PROJECTS[@]}; do
-        result=$(curl -s --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GITLAB_GROUP_ENCODING}${project}/pipelines/latest")
+        if [[ $VAR_PROJECT_NAME == $project ]]; then
+            result=$(curl -s --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GITLAB_GROUP_ENCODING}${project}/pipelines/latest?ref=${VAR_BRANCH_NAME}")
+        else
+            result=$(curl -s --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" "${GITLAB_URL}/api/v4/projects/${GITLAB_GROUP_ENCODING}${project}/pipelines/latest")
+        fi
         status=$(echo $result | /opt/homebrew/bin/jq -r '.status')
         id=$(echo $result | /opt/homebrew/bin/jq -r '.id')
         pipeline_results+=("$project - $status - $id")
@@ -51,19 +57,25 @@ function print_header() {
 function print_submenu() {
     for pipeline_result in "${pipeline_results[@]}"; do
         project=(${pipeline_result//" - "/ })
+
+        branch_name=""
+        if [[ $VAR_PROJECT_NAME == $project ]]; then
+            branch_name="(${VAR_BRANCH_NAME})"
+        fi
+        
         id=(${pipeline_result##*- })
         if [[ "$pipeline_result" == *"success"* ]]; then
-            echo "$pipeline_result | color=darkgreen href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+            echo "$pipeline_result $branch_name | color=darkgreen href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ "$pipeline_result" == *"canceled"* ]]; then
-            echo "$pipeline_result | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+            echo "$pipeline_result $branch_name | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ "$pipeline_result" == *"skipped"* ]]; then
-            echo "$pipeline_result | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+            echo "$pipeline_result $branch_name | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ " $pipeline_result" == *"running"* ]]; then
-            echo "$pipeline_result | color=yellow href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+            echo "$pipeline_result $branch_name | color=yellow href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ " $pipeline_result" == *"pending"* ]]; then
-            echo "$pipeline_result | color=yellow href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+            echo "$pipeline_result $branch_name | color=yellow href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         else
-            echo "$pipeline_result | color=darkred href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+            echo "$pipeline_result $branch_name | color=darkred href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         fi
     done
 }
