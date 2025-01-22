@@ -32,16 +32,17 @@ function stop_communication_from_browser() {
     osascript <<EOT
     tell windows of application "Google Chrome"
         close (tabs whose URL contain "https://mail.google.com")
+        close (tabs whose URL contain "https://mail.google.com/chat/u/0/")
         close (tabs whose URL contain "https://calendar.google.com/calendar")
+        close (tabs whose URL contain "https://web.telegram.org")
     end tell
 EOT
 } 
 
 function stop_communication() {
+    stop_google_communication_from_browser
     for communication in ${COMMUNICATIONS[@]}; do
-        if [[ $communication == "google" ]]; then
-            stop_communication_from_browser
-        elif [[ $communication == "slack" ]]; then
+        if [[ $communication == "slack" ]]; then
             killall Slack
         elif [[ $communication == "discord" ]]; then
             killall Discord
