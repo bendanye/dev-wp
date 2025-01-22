@@ -40,7 +40,7 @@ EOT
 } 
 
 function stop_communication() {
-    stop_google_communication_from_browser
+    stop_communication_from_browser
     for communication in ${COMMUNICATIONS[@]}; do
         if [[ $communication == "slack" ]]; then
             killall Slack
