@@ -67,7 +67,9 @@ def _get_tasks_from_work_log(last_working_date):
 def _get_tasks_from_time_tracker(last_working_date):
     time_tracker_file = f"../tools/time_tracker/tracking_{format_date_to_yyyymmdd_hyphen(last_working_date)}.txt"
     if not os.path.exists(time_tracker_file):
-        time_tracker_file = f"../tools/time_tracker/bkup/tracking_{format_date_to_yyyymmdd_hyphen(last_working_date)}.txt"
+        time_tracker_file = f"../tools/time_tracker/tracking_h_{format_date_to_yyyymmdd_hyphen(last_working_date)}.txt"
+        if not os.path.exists(time_tracker_file):
+            time_tracker_file = f"../tools/time_tracker/bkup/tracking_{format_date_to_yyyymmdd_hyphen(last_working_date)}.txt"
 
     if not os.path.exists(time_tracker_file):
         return set()
