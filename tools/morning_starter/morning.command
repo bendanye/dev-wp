@@ -65,6 +65,9 @@ function open_daily_tech_note() {
 function check_tasks() {
     cd $SCRIPT_DIR/../tools/time_tracker
     sh check_yesterday.sh
+
+    cd $SCRIPT_DIR/../../work_logs
+    sh daily_check.sh
 }
 
 function show_today_kata() {
@@ -76,9 +79,6 @@ function start_work_related_activity() {
     cd $SCRIPT_DIR/../git
     sh check_all_projects_commit.sh
     sh check_all_projects_branch.sh
-
-    cd $SCRIPT_DIR/../../work_logs
-    python3 compare_last_working_day_tasks_with_time_tracker.py
 
     # To add work related activities such as opening a page, add key
 }
