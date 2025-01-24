@@ -16,7 +16,7 @@ function open_ide() {
 }
 
 function start_work_related_activity() {
-    //To add work related activities such as opening a page, add key
+    # To add work related activities such as opening a page, add key
 }
 
 open_freq_used_apps
