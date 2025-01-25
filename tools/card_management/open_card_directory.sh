@@ -4,7 +4,7 @@ set -eu
 
 cd "$(dirname "$0")"
 
-source ../source.env
+source ../tools.env
 
 test "$1"
 

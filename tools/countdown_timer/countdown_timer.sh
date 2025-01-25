@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$SCRIPT_DIR/../source.env"
+source "$SCRIPT_DIR/../tools.env"
 
 if [ -f "$SCRIPT_DIR/../../dwp.env" ]; then
     source "$SCRIPT_DIR/../../dwp.env"

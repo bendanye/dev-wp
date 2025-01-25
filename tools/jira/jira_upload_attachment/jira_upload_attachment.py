@@ -19,7 +19,7 @@ class JiraEnv:
 
 def main(card_number: str, file_name: str) -> None:
     jira_env = _read_from_jira_env_file(f"../../jira.env")
-    working_dir = _read_from_source_env_file(f"../../source.env")
+    working_dir = _read_from_source_env_file(f"../../tools.env")
 
     attachment_path = f"{working_dir}/{card_number}/{file_name}"
 

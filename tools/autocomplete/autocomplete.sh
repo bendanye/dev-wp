@@ -20,8 +20,8 @@ _docker_image_name_completions()
 
 _git_project_completions()
 {
-  if [ -f "$SCRIPT_DIR/../source.env" ]; then
-    source "$SCRIPT_DIR/../source.env"
+  if [ -f "$SCRIPT_DIR/../tools.env" ]; then
+    source "$SCRIPT_DIR/../tools.env"
   else
     GIT_PROJECT_DIR="$HOME/IdeaProjects"
   fi

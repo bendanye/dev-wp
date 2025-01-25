@@ -22,10 +22,10 @@ cd "$project_name/$management"
 
 project_dir=$(pwd)
 
-echo "WORKING_DIR=\"$project_dir\"" > "$SCRIPT_PATH/source.env"
-echo "CARD_TEST_EVIDENCES=\"test_evidences\"" >> "$SCRIPT_PATH/source.env"
-echo "COMMUNICATION=(\"$communication\")" >> "$SCRIPT_PATH/source.env"
-echo "GIT_PROJECT_DIR=\"$GIT_PROJECT_DIR\"" >> "$SCRIPT_PATH/source.env"
+echo "WORKING_DIR=\"$project_dir\"" > "$SCRIPT_PATH/tools.env"
+echo "CARD_TEST_EVIDENCES=\"test_evidences\"" >> "$SCRIPT_PATH/tools.env"
+echo "COMMUNICATION=(\"$communication\")" >> "$SCRIPT_PATH/tools.env"
+echo "GIT_PROJECT_DIR=\"$GIT_PROJECT_DIR\"" >> "$SCRIPT_PATH/tools.env"
 
 touch $project_dir/list.txt
 

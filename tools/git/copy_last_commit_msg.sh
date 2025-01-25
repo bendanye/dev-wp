@@ -4,8 +4,8 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 if [ -n "$1" ]; then
     PROJECT=$1
-    if [ -f "$SCRIPT_DIR/../source.env" ]; then
-        source "$SCRIPT_DIR/../source.env"
+    if [ -f "$SCRIPT_DIR/../tools.env" ]; then
+        source "$SCRIPT_DIR/../tools.env"
     else
         GIT_PROJECT_DIR="$HOME/IdeaProjects"
     fi

@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source "$SCRIPT_DIR/../source.env"
+source "$SCRIPT_DIR/../tools.env"
 source "$SCRIPT_DIR/../gitlab.env"
 source "$SCRIPT_DIR/gitlab.sh"
 

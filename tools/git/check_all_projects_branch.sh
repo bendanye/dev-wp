@@ -6,8 +6,8 @@ if [ -f "$SCRIPT_DIR/../../dwp.env" ]; then
     source "$SCRIPT_DIR/../../dwp.env"
 fi
 
-if [ -f "$SCRIPT_DIR/../source.env" ]; then
-    source "$SCRIPT_DIR/../source.env"
+if [ -f "$SCRIPT_DIR/../tools.env" ]; then
+    source "$SCRIPT_DIR/../tools.env"
     DIRECTORY=$GIT_PROJECT_DIR
 else
     DIRECTORY=~/IdeaProjects

@@ -48,7 +48,7 @@ def _get_backup_files():
 
 
 def _get_card_management_list() -> List[str]:
-    source_env = f"{SCRIPT_DIR}/../source.env"
+    source_env = f"{SCRIPT_DIR}/../tools.env"
     if not os.path.exists(source_env):
         return []
 

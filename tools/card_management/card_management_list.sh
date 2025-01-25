@@ -4,6 +4,6 @@ set -eu
 
 cd "$(dirname "$0")"
 
-source ../source.env
+source ../tools.env
 
 vi $WORKING_DIR/list.txt

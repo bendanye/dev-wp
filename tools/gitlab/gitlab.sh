@@ -7,10 +7,10 @@ get_group_name() {
         PROJECT=$1
         FROM=$2
         if [ "$FROM" == "TERMINAL" ]; then
-            if [ -f "$SCRIPT_DIR/../source.env" ]; then
-                source "$SCRIPT_DIR/../source.env"
+            if [ -f "$SCRIPT_DIR/../tools.env" ]; then
+                source "$SCRIPT_DIR/../tools.env"
             elif [[ $GITLAB_GROUP == "" ]]; then
-                echo "source.env missing and GITLAB_GROUP is empty. Unable to determine the project url"
+                echo "tools.env missing and GITLAB_GROUP is empty. Unable to determine the project url"
             fi
 
             
