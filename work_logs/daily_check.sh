@@ -2,8 +2,8 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-if [ -f "$SCRIPT_DIR/../tools.env" ]; then
-    source "$SCRIPT_DIR/../tools.env"
+if [ -f "$SCRIPT_DIR/../dwp.env" ]; then
+    source "$SCRIPT_DIR/../dwp.env"
 fi
 
 result=$(python3 compare_last_working_day_tasks_with_time_tracker.py)

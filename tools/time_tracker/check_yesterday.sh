@@ -5,8 +5,8 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 source $SCRIPT_DIR/time_tracker_func.sh
 source $SCRIPT_DIR/../source.env
 
-if [ -f "$SCRIPT_DIR/../../tools.env" ]; then
-    source "$SCRIPT_DIR/../../tools.env"
+if [ -f "$SCRIPT_DIR/../../dwp.env" ]; then
+    source "$SCRIPT_DIR/../../dwp.env"
 fi
 
 # Define color codes

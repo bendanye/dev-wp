@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "TODO_MAIN_FILE=\"\"" > "tools.env"
-echo "ALERTME_MAIN_FILE=\"\"" >> "tools.env"
+echo "TODO_MAIN_FILE=\"\"" > "dwp.env"
+echo "ALERTME_MAIN_FILE=\"\"" >> "dwp.env"
 
 echo "Setup completed"

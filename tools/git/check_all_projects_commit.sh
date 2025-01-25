@@ -2,8 +2,8 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-if [ -f "$SCRIPT_DIR/../../tools.env" ]; then
-    source "$SCRIPT_DIR/../../tools.env"
+if [ -f "$SCRIPT_DIR/../../dwp.env" ]; then
+    source "$SCRIPT_DIR/../../dwp.env"
 fi
 
 if [ -f "$SCRIPT_DIR/../source.env" ]; then

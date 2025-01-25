@@ -6,8 +6,8 @@ source "$SCRIPT_DIR/../source.env"
 source "$SCRIPT_DIR/../gitlab.env"
 source "$SCRIPT_DIR/gitlab.sh"
 
-if [ -f "$SCRIPT_DIR/../../tools.env" ]; then
-    source "$SCRIPT_DIR/../../tools.env"
+if [ -f "$SCRIPT_DIR/../../dwp.env" ]; then
+    source "$SCRIPT_DIR/../../dwp.env"
 fi
 
 if [ -n "$1" ]; then
