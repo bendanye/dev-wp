@@ -1,9 +1,7 @@
 SCRIPT_DIR="$(dirname "$0")"
 
-if [ -f "$SCRIPT_DIR/../source.env" ]; then
-    source "$SCRIPT_DIR/../source.env"
-else
-    KEYWORD_FINDER_MAIN_FILE=""
+if [ -f "$SCRIPT_DIR/../../dwp.env" ]; then
+    source "$SCRIPT_DIR/../../dwp.env"
 fi
 
 if [[ $KEYWORD_FINDER_MAIN_FILE == "" ]]; then
