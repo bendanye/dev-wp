@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/../communication/communications.sh
+source $SCRIPT_DIR/../communication/communications_func.sh
 
 function update_katas_git_repos() {
     cd $SCRIPT_DIR/../../katas
