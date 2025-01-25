@@ -11,11 +11,11 @@ fi
 function start_communication() {
     for communication in ${COMMUNICATIONS[@]}; do
         if [[ $communication == "google" ]]; then
-            sh "$SCRIPT_DIR/../browser/browser.sh gmail"
+            sh "$SCRIPT_DIR/../browser/browser.sh" gmail
             sleep 1
-            sh "$SCRIPT_DIR/../browser/browser.sh gchat"
+            sh "$SCRIPT_DIR/../browser/browser.sh" gchat
             sleep 1
-            sh "$SCRIPT_DIR/../browser/browser.sh gcal"
+            sh "$SCRIPT_DIR/../browser/browser.sh" gcal
             sleep 1
         elif [[ $communication == "telegram" ]]; then
             open  -a "Google Chrome" "https://web.telegram.org"
