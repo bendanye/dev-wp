@@ -6,6 +6,10 @@ source "$SCRIPT_DIR/../source.env"
 source "$SCRIPT_DIR/../gitlab.env"
 source "$SCRIPT_DIR/gitlab.sh"
 
+if [ -f "$SCRIPT_DIR/../../tools.env" ]; then
+    source "$SCRIPT_DIR/../../tools.env"
+fi
+
 if [ -n "$1" ]; then
     PROJECT=$1
     FROM="TERMINAL"

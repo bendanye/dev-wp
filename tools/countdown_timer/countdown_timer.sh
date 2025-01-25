@@ -2,6 +2,10 @@
 
 source "$SCRIPT_DIR/../source.env"
 
+if [ -f "$SCRIPT_DIR/../../tools.env" ]; then
+    source "$SCRIPT_DIR/../../tools.env"
+fi
+
 while getopts ":m:s:" opt; do
   case $opt in
     m) minutes="$OPTARG"
