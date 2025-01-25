@@ -34,6 +34,10 @@ alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
 alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
 # alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
 
+alias comm="$TOOLS_DIR/../communication/communications.sh"
+alias commOn="$TOOLS_DIR/../communication/communications.sh on"
+alias commOff="$TOOLS_DIR/../communication/communications.sh off"
+
 alias taska="sh task-todo/add_task.sh"
 alias taskui="sh task-todo/ui.sh"
 
