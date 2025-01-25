@@ -49,5 +49,3 @@ function stop_communication() {
         fi
     done
 }
-
-echo $COMMUNICATIONS
