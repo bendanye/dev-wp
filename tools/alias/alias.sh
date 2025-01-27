@@ -67,7 +67,7 @@ if [ -f "$TOOLS_DIR/../gitlab.env" ]; then
     alias gopr="$TOOLS_DIR/../gitlab/open_project_page.sh SETTINGS_REPOSITORY"
     alias gomra="$TOOLS_DIR/../gitlab/open_page.sh MR_ASSIGNED"
     alias gomrr="$TOOLS_DIR/../gitlab/open_page.sh MR_REVIEWED"
-    alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    #alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
     alias glint="$TOOLS_DIR/../gitlab/ci_linter/ci_linter.sh"
     alias gpst="$TOOLS_DIR/../gitlab/poll_pipeline_status.sh"
     alias gmst="$TOOLS_DIR/../gitlab/get_mirror_status.sh"
