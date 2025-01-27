@@ -29,6 +29,13 @@ fi
 
 if [[ $ACTION == "COMMITS" ]]; then
   SUB_PATH="/-/commits"
+elif [[ $ACTION == "COMMITS_BRANCH" ]]; then
+  if [[ $FROM == "DIRECTORY" ]]; then
+    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+    SUB_PATH="/-/commits/${BRANCH_NAME}"
+  else
+    SUB_PATH="/-/commits"
+  fi
 elif [[ $ACTION == "PIPELINE" ]]; then
   SUB_PATH="/-/pipelines"
 elif [[ $ACTION == "PIPELINE_BRANCH" ]]; then
