@@ -28,7 +28,7 @@ if [[ $GITLAB_GROUP == *"Unable to determine the project url"* ]]; then
 fi
 
 if [[ $ACTION == "COMMITS" ]]; then
-  SUB_PATH="/-/commits/master?ref_type=heads"
+  SUB_PATH="/-/commits"
 elif [[ $ACTION == "PIPELINE" ]]; then
   SUB_PATH="/-/pipelines"
 elif [[ $ACTION == "PIPELINE_BRANCH" ]]; then
