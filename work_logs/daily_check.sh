@@ -17,3 +17,13 @@ if [[ $result == *"Missing work log tasks"* || $result == *"There is differences
   fi
 fi
 
+result=$(python3 check_specified_tasks.py)
+echo $result
+if [[ $result == *"is found in last working day"* ]]; then
+  MESSAGE=$result
+  if [[ $TODO_MAIN_FILE != "" ]]; then
+    sh "${TODO_MAIN_FILE}" "$MESSAGE"
+  elif [[ $ALERTME_MAIN_FILE != "" ]]; then
+    sh $ALERTME_MAIN_FILE -m "$MESSAGE"
+  fi
+fi
