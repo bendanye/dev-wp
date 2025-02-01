@@ -1,0 +1,8 @@
+{
+    "tasks": [
+        {
+            "name": "[ABCD-1234]",
+            "day-of-week": "Tuesday"
+        }
+    ]
+}
