@@ -10,4 +10,4 @@ def get_last_working_day_tasks(work_log_directory, specified_date):
             last_working_date = get_last_working_date(last_working_date)
             tasks = get_tasks(work_log_directory, last_working_date)
 
-    return tasks
+    return (last_working_date, tasks)
