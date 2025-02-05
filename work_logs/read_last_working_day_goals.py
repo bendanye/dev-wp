@@ -1,23 +1,17 @@
 from datetime import datetime
 
-from date_utils import get_last_working_date, format_date_to_yyyymmdd_hyphen
-from read_utils import get_goals, get_tasks
+from date_utils import format_date_to_yyyymmdd_hyphen
+from read_utils import get_goals
+from task_utils import get_last_working_day_tasks
 
 DIRECTORY = "logs"
-
-last_working_date = get_last_working_date(datetime.now())
-tasks = get_tasks(DIRECTORY, last_working_date)
-
-if not tasks:
-    while not tasks:
-        last_working_date = get_last_working_date(last_working_date)
-        tasks = get_tasks(DIRECTORY, last_working_date)
-
+# TODO to add a goal utils
+last_working_date, _ = get_last_working_day_tasks(DIRECTORY, datetime.now())
 goals = get_goals(DIRECTORY, last_working_date)
 
-print(format_date_to_yyyymmdd_hyphen(last_working_date))
 if goals:
+    print(f"There is goals set for {format_date_to_yyyymmdd_hyphen(last_working_date)}")
     for goal in goals:
         print(goal)
 else:
-    print("No goals set")
+    print(f"No goals set for {format_date_to_yyyymmdd_hyphen(last_working_date)}")
