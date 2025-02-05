@@ -27,3 +27,14 @@ if [[ $result == *"is found in last working day"* ]]; then
     sh $ALERTME_MAIN_FILE -m "$MESSAGE"
   fi
 fi
+
+result=$(python3 read_last_working_day_goals.py)
+echo $result
+if [[ $result == *"There is goals set for"* ]]; then
+  MESSAGE=$result
+  if [[ $TODO_MAIN_FILE != "" ]]; then
+    sh "${TODO_MAIN_FILE}" "$MESSAGE"
+  elif [[ $ALERTME_MAIN_FILE != "" ]]; then
+    sh $ALERTME_MAIN_FILE -m "$MESSAGE"
+  fi
+fi
