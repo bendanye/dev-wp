@@ -74,6 +74,8 @@ if [ -f "$TOOLS_DIR/../gitlab.env" ]; then
 else
     alias gop="$TOOLS_DIR/../git/open_project_in_browser.sh"
 fi
+
+alias glc="$TOOLS_DIR/../git/git_pull_and_check.sh"
 alias gclc="$TOOLS_DIR/../git/copy_last_commit_msg.sh"
 alias gwp="$TOOLS_DIR/../git/goto_directory.sh"
 alias ggpcw="$TOOLS_DIR/../git/get_all_projects_commit_within_specified.sh"
