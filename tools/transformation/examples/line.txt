@@ -1,0 +1,8 @@
+this is line 1
+this is line 2
+  this is a new line before
+  this is line 3
+  this is a new line after
+  this is line 4
+    this is line 4 extra change
+this is line 5
