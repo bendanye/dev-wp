@@ -1,11 +1,11 @@
 import os
+import re
 
 from datetime import datetime
 from date_utils import get_last_working_date, format_date_to_yyyymmdd_hyphen
 from read_utils import get_tasks
 
 DIRECTORY = "logs"
-TASK_PREFIX = ""
 
 
 def main() -> None:
@@ -21,11 +21,11 @@ def main() -> None:
     else:
         missing = set()
         for task in time_tracker_tasks:
-            if task.startswith(TASK_PREFIX) and task not in work_log_tasks:
+            if _ends_with_number_no_space(task) and task not in work_log_tasks:
                 missing.add(task)
 
         for task in work_log_tasks:
-            if task.startswith(TASK_PREFIX) and task not in time_tracker_tasks:
+            if _ends_with_number_no_space(task) and task not in time_tracker_tasks:
                 missing.add(task)
 
         if not missing:
@@ -56,7 +56,7 @@ def _get_tasks_from_work_log(last_working_date):
     tasks = get_tasks(DIRECTORY, last_working_date)
 
     for task in tasks:
-        if TASK_PREFIX in task:
+        if _ends_with_number_no_space(task.replace("- ", "").strip()):
             work_log_tasks.add(
                 task.replace("- ", "").replace("[", "").split("]")[0].strip()
             )
@@ -81,10 +81,14 @@ def _get_tasks_from_time_tracker(last_working_date):
         for line in task_lines:
             data = line.replace("\n", "").split(",")
             task = data[1]
-            if task.startswith(TASK_PREFIX):
+            if _ends_with_number_no_space(task):
                 time_tracker_tasks.add(task)
 
         return time_tracker_tasks
+
+
+def _ends_with_number_no_space(s: str) -> bool:
+    return bool(re.fullmatch(r"\S+\d", s))
 
 
 if __name__ == "__main__":
