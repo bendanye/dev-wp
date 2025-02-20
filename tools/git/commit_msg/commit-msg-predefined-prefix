@@ -1,0 +1,15 @@
+#!/bin/sh
+
+VALID_PREFIXES=("test" "fix" "refactor" "chore")
+
+INPUT_FILE=$1
+COMMIT_MESSAGE=`head -n1 $INPUT_FILE`
+
+for prefix in "${VALID_PREFIXES[@]}"; do
+  if [[ "$COMMIT_MESSAGE" =~ ^$prefix ]]; then
+    exit 0
+  fi
+done
+
+echo "Aborting commit. Your commit message does not start with predefined prefix"
+exit 1
