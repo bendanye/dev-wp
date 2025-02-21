@@ -45,6 +45,8 @@ elif [[ $ACTION == "PIPELINE_BRANCH" ]]; then
   else
     SUB_PATH="/-/pipelines"
   fi
+elif [[ $ACTION == "MR" ]]; then
+  SUB_PATH="/-/merge_requests"
 elif [[ $ACTION == "MR_ASSIGNED" ]]; then
   SUB_PATH="/-/merge_requests?assignee_username=${GITLAB_GROUP_USER_NAME}"
 elif [[ $ACTION == "MR_REVIEWED" ]]; then
