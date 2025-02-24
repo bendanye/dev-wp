@@ -50,6 +50,7 @@ alias nc="$TOOLS_DIR/../card_management/new_card.sh"
 alias od="$TOOLS_DIR/../card_management/open_card_directory.sh"
 alias zcte="$TOOLS_DIR/../card_management/zip_card_evidences.sh"
 alias vicm="$TOOLS_DIR/../card_management/card_management_list.sh"
+alias vicn="$TOOLS_DIR/../card_management/open_notes.sh"
 
 alias joc="$TOOLS_DIR/../jira/jira_card.sh"
 alias job="$TOOLS_DIR/../jira/jira_board_web.sh"
