@@ -27,7 +27,7 @@ def get_tasks(work_log_directory, specified_date):
                 else:
                     result.append(line)
 
-    if result[-1] == "\n":
+    if result and result[-1] == "\n":
         result = result[:-1]
 
     if len(result) == 3 and result[2].startswith("- [ ]"):
