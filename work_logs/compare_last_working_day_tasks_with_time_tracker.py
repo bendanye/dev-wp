@@ -13,7 +13,6 @@ def main() -> None:
     work_log_tasks = _get_tasks_from_work_log(last_working_date)
     time_tracker_tasks = _get_tasks_from_time_tracker(last_working_date)
 
-    print(f"last working date: {format_date_to_yyyymmdd_hyphen(last_working_date)}")
     if work_log_tasks and not time_tracker_tasks:
         print("\033[91mMissing time tracker tasks")
     elif not work_log_tasks and time_tracker_tasks:
