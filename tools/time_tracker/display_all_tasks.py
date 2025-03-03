@@ -71,7 +71,7 @@ def _get_card_name(task: str, card_management_list: List[str]) -> str:
         return task
 
     for card_name in card_management_list:
-        if task in card_name.split("-")[0]:
+        if task in card_name.split(":")[0]:
             return card_name
 
     return task
