@@ -63,7 +63,7 @@ function open_daily_tech_note() {
 }
 
 function check_tasks() {
-    cd $SCRIPT_DIR/../tools/time_tracker
+    cd $SCRIPT_DIR/../../tools/time_tracker
     sh check_yesterday.sh
 
     cd $SCRIPT_DIR/../../work_logs
