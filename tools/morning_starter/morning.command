@@ -52,7 +52,7 @@ function create_work_log_file() {
 }
 
 function open_daily_tech_note() {
-    if [ ! -d "$SCRIPT_DIR/../../tasks/renotes" ]; then
+    if [ ! -d "$SCRIPT_DIR/../../other_tools/renotes" ]; then
         echo "renotes folder does not exists."
         return 1
     fi
