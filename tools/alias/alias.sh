@@ -18,6 +18,8 @@ TOOLS_DIR="$(dirname "$0")"
 
 # alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
 
+alias phn="python3 $TOOLS_DIR/../../other_tools/public-holiday/get_dates.py 1"
+
 alias taska="sh task-todo/add_task.sh"
 alias taskui="sh task-todo/ui.sh"
 
