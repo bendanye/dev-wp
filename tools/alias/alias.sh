@@ -16,6 +16,11 @@ alias ..="cd .."
 
 TOOLS_DIR="$(dirname "$0")"
 
+# alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
+
+alias taska="sh task-todo/add_task.sh"
+alias taskui="sh task-todo/ui.sh"
+
 alias ob="$TOOLS_DIR/../browser/browser.sh"
 alias obcg="$TOOLS_DIR/../browser/browser.sh cgpt"
 alias obhm="$TOOLS_DIR/../browser/browser.sh hm"
@@ -32,14 +37,10 @@ alias ssif="$TOOLS_DIR/../search/search_string_in_files.sh"
 alias ffn="$TOOLS_DIR/../search/find_by_file_name.sh"
 alias stopwatch="$TOOLS_DIR/../stopwatch/stopwatch.sh"
 alias cdtimer="$TOOLS_DIR/../countdown_timer/countdown_timer.sh"
-# alias dpt="$TOOLS_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
 
 alias comm="$TOOLS_DIR/../communication/communications.sh"
 alias commOn="$TOOLS_DIR/../communication/communications.sh on"
 alias commOff="$TOOLS_DIR/../communication/communications.sh off"
-
-alias taska="sh task-todo/add_task.sh"
-alias taskui="sh task-todo/ui.sh"
 
 alias cgwp="$TOOLS_DIR/../git/open_vscode.sh"
 alias cwlc="$TOOLS_DIR/../../work_logs/open_work_log.sh current"
