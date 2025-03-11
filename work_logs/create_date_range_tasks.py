@@ -21,7 +21,7 @@ def create_markdown_for_tasks_Within(
         else:
             tasks = get_tasks(DIRECTORY, loop_date)
         if tasks:
-            lines.append(f"{format_date_to_yyyymmdd_hyphen(loop_date)}\n")
+            lines.append(f"## {format_date_to_yyyymmdd_hyphen(loop_date)}\n")
             for task in tasks:
                 lines.append(task)
 
