@@ -16,4 +16,4 @@ fi
 
 SCRIPT_DIR="$(dirname "$0")"
 
-python3 $KEYWORD_FINDER_MAIN_FILE $SCRIPT_DIR/help_cm.json $1 $2
+sh $KEYWORD_FINDER_MAIN_FILE $SCRIPT_DIR/help_cm.json $1 $2
