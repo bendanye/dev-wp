@@ -24,14 +24,13 @@ git pull
 NEW_COMMIT_HASH=$(git rev-parse HEAD)
 
 # If the commit didn't change, exit quietly
-if [[ -f "$LAST_COMMIT_FILE" && "$LAST_COMMIT_HASH" == "$(cat $LAST_COMMIT_FILE)" ]]; then
+if [[ -f "$LAST_COMMIT_FILE" && "$NEW_COMMIT_HASH" == "$(cat $LAST_COMMIT_FILE)" ]]; then
     exit 0
 fi
 
 # Check if package.json has changed in the last pull
 if git diff --name-only "$LAST_COMMIT_HASH" "$NEW_COMMIT_HASH" | grep -q "package.json"; then
     echo "package.json has changed! Running npm install."
-    rm -rf node_modules
     npm install
 fi
 
