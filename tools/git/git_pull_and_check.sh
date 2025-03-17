@@ -28,9 +28,12 @@ if [[ -f "$LAST_COMMIT_FILE" && "$NEW_COMMIT_HASH" == "$(cat $LAST_COMMIT_FILE)"
     exit 0
 fi
 
+CHANGED_FILES=$(git diff --name-only HEAD@{1} HEAD)
+
 # Check if package.json has changed in the last pull
-if git diff --name-only "$LAST_COMMIT_HASH" "$NEW_COMMIT_HASH" | grep -q "package.json"; then
+if echo "$CHANGED_FILES" | grep -q "package.json"; then
     echo "package.json has changed! Running npm install."
+    rm -rf node_modules
     npm install
 fi
 
