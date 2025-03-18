@@ -66,6 +66,8 @@ function print_submenu() {
         id=(${pipeline_result##*- })
         if [[ "$pipeline_result" == *"success"* ]]; then
             echo "$pipeline_result $branch_name | color=darkgreen href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
+        elif [[ "$pipeline_result" == *"manual"* ]]; then
+            echo "$pipeline_result $branch_name | color=darkgreen href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ "$pipeline_result" == *"canceled"* ]]; then
             echo "$pipeline_result $branch_name | color=slategray href=$GITLAB_URL/$GITLAB_GROUP/$project/-/pipelines/$id"
         elif [[ "$pipeline_result" == *"skipped"* ]]; then
