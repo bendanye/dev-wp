@@ -8,4 +8,12 @@ source ../tools.env
 
 test "$1"
 
-vi "$WORKING_DIR/$1/notes"
+ID=$1
+CARD_DIR="$WORKING_DIR/$ID"
+
+if [[ ! -d "$CARD_DIR" ]]; then
+    mkdir "$CARD_DIR"
+    echo "Created new folder, $CARD_DIR"
+fi
+
+vi "$CARD_DIR/notes"
