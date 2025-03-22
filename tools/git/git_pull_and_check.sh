@@ -4,7 +4,7 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 if [ -f "$SCRIPT_DIR/../tools.env" ]; then
     source "$SCRIPT_DIR/../tools.env"
-    DIRECTORY=$PROJECT_WORKING_DIR
+    DIRECTORY=$GIT_PROJECT_DIR
 else
     DIRECTORY=~/IdeaProjects
 fi
