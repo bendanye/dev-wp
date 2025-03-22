@@ -61,7 +61,7 @@ def _read_from_jira_env_file(env_path: str) -> JiraEnv:
 
 def _read_from_source_env_file(env_path: str) -> str:
     load_dotenv(dotenv_path=env_path, override=True)
-    return os.environ["WORKING_DIR"]
+    return os.environ["CARDS_WORKING_DIR"]
 
 
 if __name__ == "__main__":

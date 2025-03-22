@@ -10,4 +10,4 @@ test "$1"
 ID=$1
 
 cd ~/Desktop
-mv *.png "$WORKING_DIR/$ID/$CARD_TEST_EVIDENCES"
+mv *.png "$CARDS_WORKING_DIR/$ID/$CARD_TEST_EVIDENCES"

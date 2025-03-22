@@ -9,7 +9,7 @@ source ../tools.env
 test "$1"
 
 ID=$1
-NEW_DIR="$WORKING_DIR/$ID"
+NEW_DIR="$CARDS_WORKING_DIR/$ID"
 
 if [[ ! -d "$NEW_DIR" ]]; then
     mkdir "$NEW_DIR"

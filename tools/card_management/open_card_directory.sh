@@ -8,4 +8,4 @@ source ../tools.env
 
 test "$1"
 
-open "$WORKING_DIR/$1"
+open "$CARDS_WORKING_DIR/$1"

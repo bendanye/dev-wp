@@ -3,7 +3,7 @@
     {
       "keyword": "list",
       "type": "command",
-      "command": "cat ${WORKING_DIR}/list.txt",
+      "command": "cat ${CARDS_WORKING_DIR}/list.txt",
       "copy_pattern": ".+?(?=:)"
     }
   ]

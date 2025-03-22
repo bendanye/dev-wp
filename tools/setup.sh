@@ -20,11 +20,14 @@ cd "$SCRIPT_PATH/../"
 
 mkdir -p "$project_name/$management"
 
-cd "$project_name/$management"
-
+cd "$project_name"
 project_dir=$(pwd)
 
-echo "WORKING_DIR=\"$project_dir\"" > "$SCRIPT_PATH/tools.env"
+cd "$management"
+cards_dir=$(pwd)
+
+echo "PROJECT_WORKING_DIR=\"$project_dir\"" > "$SCRIPT_PATH/tools.env"
+echo "CARDS_WORKING_DIR=\"$cards_dir\"" > "$SCRIPT_PATH/tools.env"
 echo "CARD_TEST_EVIDENCES=\"test_evidences\"" >> "$SCRIPT_PATH/tools.env"
 echo "COMMUNICATION=(\"$communication\")" >> "$SCRIPT_PATH/tools.env"
 echo "GIT_PROJECT_DIR=\"$GIT_PROJECT_DIR\"" >> "$SCRIPT_PATH/tools.env"

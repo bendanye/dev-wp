@@ -100,8 +100,10 @@ def _get_card_management_list() -> List[str]:
 
     with open(source_env, "r") as source_env_file:
         for line in source_env_file.readlines():
-            if "WORKING_DIR" in line:
-                proj_path = line.replace("WORKING_DIR=", "").replace('"', "").strip()
+            if "CARDS_WORKING_DIR" in line:
+                proj_path = (
+                    line.replace("CARDS_WORKING_DIR=", "").replace('"', "").strip()
+                )
                 card_management = f"{proj_path}/list.txt"
                 if not os.path.exists(card_management):
                     return []
