@@ -107,6 +107,7 @@ alias ttdft="python3 $TOOLS_DIR/../time_tracker/focus_task.py d"
 alias ttwft="python3 $TOOLS_DIR/../time_tracker/focus_task.py w"
 alias ttctt="$TOOLS_DIR/../time_tracker/change_today_tracking_file.sh EDIT"
 alias ttcth="$TOOLS_DIR/../time_tracker/change_today_tracking_file.sh HALF"
+alias ttptt="$TOOLS_DIR/../time_tracker/change_previous_tracking_file.sh"
 
 alias dwp="cd $TOOLS_DIR/../../"
 alias ewp="cd ~/SelfExploration"
