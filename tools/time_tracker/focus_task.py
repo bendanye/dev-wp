@@ -37,15 +37,40 @@ def current_week_focus():
     print_focus(tasks)
 
 
+def previous_week_focus():
+    tasks = {}
+    today = date.today()
+    last_monday = today - timedelta(days=today.weekday() + 7)
+    last_sunday = last_monday + timedelta(days=6)
+
+    loop_date = last_monday
+    while loop_date <= last_sunday:
+        focus(loop_date, tasks)
+        loop_date = loop_date + timedelta(days=1)
+
+    if print_in_terminal:
+        print("--------------")
+        print(f"Focused tasks from {last_monday} to {last_sunday}")
+    print_focus(tasks)
+
+
 def focus(specified_date, tasks):
-    file_name = f"{SCRIPT_DIR}/tracking_{specified_date}.txt"
-    if os.path.isfile(file_name):
+    if os.path.isfile(f"{SCRIPT_DIR}/tracking_{specified_date}.txt"):
+        file_name = f"{SCRIPT_DIR}/tracking_{specified_date}.txt"
         _group_by_task(file_name, tasks)
     elif os.path.isfile(f"{SCRIPT_DIR}/tracking_h_{specified_date}.txt"):
         file_name = f"{SCRIPT_DIR}/tracking_h_{specified_date}.txt"
         _group_by_task(file_name, tasks)
     elif os.path.isfile(f"{SCRIPT_DIR}/tracking_e_{specified_date}.txt"):
         file_name = f"{SCRIPT_DIR}/tracking_e_{specified_date}.txt"
+        _group_by_task(file_name, tasks)
+    elif os.path.isfile(f"{SCRIPT_DIR}/bkup/tracking_{specified_date}.txt"):
+        file_name = f"{SCRIPT_DIR}/bkup/tracking_{specified_date}.txt"
+    elif os.path.isfile(f"{SCRIPT_DIR}/bkup/tracking_h_{specified_date}.txt"):
+        file_name = f"{SCRIPT_DIR}/bkup/tracking_h_{specified_date}.txt"
+        _group_by_task(file_name, tasks)
+    elif os.path.isfile(f"{SCRIPT_DIR}/bkup/tracking_e_{specified_date}.txt"):
+        file_name = f"{SCRIPT_DIR}/bkup/tracking_e_{specified_date}.txt"
         _group_by_task(file_name, tasks)
 
 
@@ -138,5 +163,7 @@ if type == "d":
     day_focus()
 elif type == "w":
     current_week_focus()
+elif type == "p":
+    previous_week_focus()
 else:
     raise ValueError(f"Unknown parameter pass: {type}")
