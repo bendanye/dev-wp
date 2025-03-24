@@ -21,7 +21,7 @@ def day_focus():
     print_focus(tasks)
 
 
-def week_focus():
+def current_week_focus():
     tasks = {}
     current_date = date.today()
     start = current_date - timedelta(days=current_date.weekday())
@@ -137,6 +137,6 @@ type = sys.argv[1]
 if type == "d":
     day_focus()
 elif type == "w":
-    week_focus()
+    current_week_focus()
 else:
     raise ValueError(f"Unknown parameter pass: {type}")
