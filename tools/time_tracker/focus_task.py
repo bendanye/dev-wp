@@ -66,6 +66,7 @@ def focus(specified_date, tasks):
         _group_by_task(file_name, tasks)
     elif os.path.isfile(f"{SCRIPT_DIR}/bkup/tracking_{specified_date}.txt"):
         file_name = f"{SCRIPT_DIR}/bkup/tracking_{specified_date}.txt"
+        _group_by_task(file_name, tasks)
     elif os.path.isfile(f"{SCRIPT_DIR}/bkup/tracking_h_{specified_date}.txt"):
         file_name = f"{SCRIPT_DIR}/bkup/tracking_h_{specified_date}.txt"
         _group_by_task(file_name, tasks)
