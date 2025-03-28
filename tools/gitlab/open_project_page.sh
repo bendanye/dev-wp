@@ -49,6 +49,13 @@ elif [[ $ACTION == "BRANCHES" ]]; then
   SUB_PATH="/-/branches"
 elif [[ $ACTION == "MR" ]]; then
   SUB_PATH="/-/merge_requests"
+elif [[ $ACTION == "MR_BRANCH" ]]; then
+  if [[ $FROM == "DIRECTORY" ]]; then
+    BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+    SUB_PATH="/-/merge_requests/?source_branches%5B%5D=${BRANCH_NAME}"
+  else
+    SUB_PATH="/-/merge_requests"
+  fi
 elif [[ $ACTION == "MR_ASSIGNED" ]]; then
   SUB_PATH="/-/merge_requests?assignee_username=${GITLAB_GROUP_USER_NAME}"
 elif [[ $ACTION == "MR_REVIEWED" ]]; then
