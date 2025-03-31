@@ -35,7 +35,7 @@ function start() {
     local task=$1
     sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $task
     sh "$SCRIPT_DIR/day_summary.sh"
-    sh "$SCRIPT_DIR/status.sh"
+    python3 "$SCRIPT_DIR/status.py"
 }
 
 data_file=$(get_file $CURRENT_DATE)
