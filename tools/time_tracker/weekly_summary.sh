@@ -3,6 +3,7 @@
 SCRIPT_DIR=$( dirname -- "$0"; )
 
 source $SCRIPT_DIR/time_tracker_func.sh
+source $SCRIPT_DIR/time_tracker.env
 
 while getopts ":a:" opt; do
   case $opt in
@@ -82,12 +83,8 @@ else
 fi
 
 echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes $EXCLUDE_MSG"
-
-
 echo ""
 
-TARGET_HOURS=6
-TARGET_MINUTES=50
 TARGET_TOTAL_MINUTES=$(( (TARGET_HOURS * 60 + TARGET_MINUTES) * total_days ))
 
 remaining_minutes=$(( TARGET_TOTAL_MINUTES - total_minutes ))
