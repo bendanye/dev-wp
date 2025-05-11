@@ -33,7 +33,7 @@ CURRENT_DATE=$(date '+%Y-%m-%d')
 
 function start() {
     local task=$1
-    sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh" $task
+    python3 "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.py" $task
     sh "$SCRIPT_DIR/day_summary.sh"
     python3 "$SCRIPT_DIR/status.py"
 }
