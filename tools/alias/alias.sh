@@ -86,7 +86,7 @@ alias gclc="$ALIAS_SCRIPT_DIR/../git/copy_last_commit_msg.sh"
 alias gwp="$ALIAS_SCRIPT_DIR/../git/goto_directory.sh"
 alias ggpcw="$ALIAS_SCRIPT_DIR/../git/get_all_projects_commit_within_specified.sh"
 alias glo="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias ghm="cd "$(git rev-parse --show-toplevel)""
+alias ghm="cd \"\$(git rev-parse --show-toplevel)\""
 
 alias hg="$ALIAS_SCRIPT_DIR/../git/keyword_finder/run_keyword_finder.sh git"
 alias hglog="$ALIAS_SCRIPT_DIR/../git/keyword_finder/run_keyword_finder.sh glog"
