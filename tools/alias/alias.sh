@@ -14,7 +14,12 @@ alias ccp='echo `pwd` | pbcopy'
 alias gulc="git reset --soft HEAD~1"
 alias ..="cd .."
 
-ALIAS_SCRIPT_DIR="$(dirname "$0")"
+if [[ $OSTYPE == "darwin"* ]]; then
+    ALIAS_SCRIPT_DIR="$(dirname "$0")"
+elif [[ "$OSTYPE" == "win32" ]]; then
+    echo "Please uncomment and set ALIAS_SCRIPT_DIR for windowa"
+    ALIAS_SCRIPT_DIR=""
+fi
 
 # alias dpt="$ALIAS_SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
 
