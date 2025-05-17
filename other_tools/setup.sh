@@ -1,5 +1,5 @@
 git clone https://github.com/bendanye/renotes.git
-git cline https://github.com/bendanye/keyword-finder.git
+git clone https://github.com/bendanye/keyword-finder.git
 git clone https://github.com/bendanye/task-todo.git
 
 # optional
