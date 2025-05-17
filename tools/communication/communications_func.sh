@@ -18,7 +18,7 @@ function start_communication() {
             sh "$SCRIPT_DIR/../browser/browser.sh" gcal
             sleep 1
         elif [[ $communication == "telegram" ]]; then
-            open  -a "Google Chrome" "https://web.telegram.org"
+            sh "$SCRIPT_DIR/../browser/browser.sh" telegram
             sleep 1
         elif [[ $communication == "slack" ]]; then
             open -a "Slack"
