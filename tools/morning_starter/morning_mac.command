@@ -58,7 +58,6 @@ function open_daily_tech_note() {
     fi
 
     cd $SCRIPT_DIR/../../other_tools/renotes
-    git pull
     sh open_random.sh tech
 }
 
