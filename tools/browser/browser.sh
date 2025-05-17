@@ -20,4 +20,10 @@ if [[ -z $URL ]]; then
     exit 1
 fi
 
-open  -a "Google Chrome" "$URL"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  open -a "Google Chrome" "$URL"
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin"* ]]; then
+  start "$URL"
+else
+  echo "Unsupported operating system"
+fi

@@ -73,4 +73,12 @@ else
   SUB_PATH=""
 fi
 
-open  -a "Google Chrome" "${GITLAB_URL}/${GITLAB_GROUP}/${PROJECT}${SUB_PATH}"
+URL="${GITLAB_URL}/${GITLAB_GROUP}/${PROJECT}${SUB_PATH}"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  open -a "Google Chrome" "$URL"
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin"* ]]; then
+  start "$URL"
+else
+  echo "Unsupported operating system"
+fi

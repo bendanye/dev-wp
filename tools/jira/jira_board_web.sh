@@ -6,4 +6,12 @@ cd "$(dirname "$0")"
 
 source ../jira.env
 
-open  -a "Google Chrome" "${JIRA_URL}/secure/${JIRA_BOARD}"
+URL="${JIRA_URL}/secure/${JIRA_BOARD}"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  open -a "Google Chrome" "$URL"
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin"* ]]; then
+  start "$URL"
+else
+  echo "Unsupported operating system"
+fi
