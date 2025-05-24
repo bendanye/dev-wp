@@ -47,6 +47,11 @@ function backup_time_tracker_files() {
 }
 
 function create_work_log_file() {
+    if [ ! -d "$SCRIPT_DIR/../../work_logs" ]; then
+        echo "work_logs folder does not exists."
+        return 1
+    fi
+
     cd $SCRIPT_DIR/../../work_logs
     python3 create_work_log_file.py
 }
@@ -65,11 +70,19 @@ function check_tasks() {
     cd $SCRIPT_DIR/../../tools/time_tracker
     sh check_yesterday.sh
 
+    if [ ! -d "$SCRIPT_DIR/../../work_logs" ]; then
+        echo "work_logs folder does not exists."
+        return 1
+    fi
     cd $SCRIPT_DIR/../../work_logs
     sh daily_check.sh
 }
 
 function show_today_kata() {
+    if [ ! -d "$SCRIPT_DIR/../../katas" ]; then
+        echo "katas folder does not exists."
+        return 1
+    fi
     cd $SCRIPT_DIR
     sh ../../katas/daily_schedule.sh
 }

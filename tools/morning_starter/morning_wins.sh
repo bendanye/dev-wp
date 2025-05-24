@@ -33,10 +33,15 @@ function backup_time_tracker_files() {
     sh ../time_tracker/backup.sh
 }
 
-# function create_work_log_file() {
-#     cd $SCRIPT_DIR/../../work_logs
-#     python3 create_work_log_file.py
-# }
+function create_work_log_file() {
+    if [ ! -d "$SCRIPT_DIR/../../work_logs" ]; then
+        echo "work_logs folder does not exists."
+        return 1
+    fi
+
+    cd $SCRIPT_DIR/../../work_logs
+    python3 create_work_log_file.py
+}
 
 function open_daily_tech_note() {
     if [ ! -d "$SCRIPT_DIR/../../other_tools/renotes" ]; then
@@ -52,11 +57,20 @@ function check_tasks() {
     cd $SCRIPT_DIR/../../tools/time_tracker
     sh check_yesterday.sh
 
-    # cd $SCRIPT_DIR/../../work_logs
-    # sh daily_check.sh
+    if [ ! -d "$SCRIPT_DIR/../../work_logs" ]; then
+        echo "work_logs folder does not exists."
+        return 1
+    fi
+    cd $SCRIPT_DIR/../../work_logs
+    sh daily_check.sh
 }
 
 function show_today_kata() {
+    if [ ! -d "$SCRIPT_DIR/../../katas" ]; then
+        echo "katas folder does not exists."
+        return 1
+    fi
+
     cd $SCRIPT_DIR
     sh ../../katas/daily_schedule.sh
 }
@@ -76,7 +90,7 @@ open_daily_reading_news_tabs
 sleep 2
 
 backup_time_tracker_files
-# create_work_log_file
+create_work_log_file
 
 open_daily_tech_note
 check_tasks
