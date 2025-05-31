@@ -20,10 +20,12 @@ function start_communication() {
         elif [[ $communication == "telegram" ]]; then
             sh "$SCRIPT_DIR/../browser/browser.sh" telegram
             sleep 1
-        elif [[ $communication == "slack" ]]; then
-            open -a "Slack"
-        elif [[ $communication == "discord" ]]; then
-            open  -a Discord
+        elif [[ "$OSTYPE" == "darwin"* ]]; then
+            if [[ $communication == "slack" ]]; then
+                open -a "Slack"
+            elif [[ $communication == "discord" ]]; then
+                open  -a Discord
+            fi
         fi
     done
 }
