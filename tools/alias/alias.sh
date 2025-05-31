@@ -17,7 +17,7 @@ if [[ $OSTYPE == "darwin"* ]]; then
     alias ccp='echo `pwd` | pbcopy'
 
     ALIAS_SCRIPT_DIR="$(dirname "$0")"
-elif [[ "$OSTYPE" == "win32" ]]; then
+elif [[ $OSTYPE == "msys" || $OSTYPE == "cygwin"* ]]; then
     alias cfn='basename `pwd` | clip'
     alias ccp='echo `pwd` | clip'
 
