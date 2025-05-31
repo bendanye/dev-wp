@@ -3,20 +3,24 @@ alias drmdn='docker rm $(docker ps -aq -f status=exited -f status=created -f sta
 alias drmd='docker rmi $(docker images -f "dangling=true" -q)'
 alias dpsa="docker ps -a"
 alias dpsadn="docker ps -a --filter \"status=exited\" --filter \"status=created\" --filter \"status=dead\" --filter \"status=paused\""
-alias caf="caffeinate -dims"
 alias ll="ls -al"
-alias zshrc="vi ~/.zshrc"
 alias hm="cd ~"
 alias c="clear"
 alias rmf="rm -rf"
-alias cfn='basename `pwd` | pbcopy'
-alias ccp='echo `pwd` | pbcopy'
 alias gulc="git reset --soft HEAD~1"
 alias ..="cd .."
 
 if [[ $OSTYPE == "darwin"* ]]; then
+    alias caf="caffeinate -dims"
+    alias zshrc="vi ~/.zshrc"
+    alias cfn='basename `pwd` | pbcopy'
+    alias ccp='echo `pwd` | pbcopy'
+
     ALIAS_SCRIPT_DIR="$(dirname "$0")"
 elif [[ "$OSTYPE" == "win32" ]]; then
+    alias cfn='basename `pwd` | clip'
+    alias ccp='echo `pwd` | clip'
+
     echo "Please uncomment and set ALIAS_SCRIPT_DIR for windowa"
     ALIAS_SCRIPT_DIR=""
 fi
