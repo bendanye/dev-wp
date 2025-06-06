@@ -33,7 +33,7 @@ CURRENT_DATE=$(date '+%Y-%m-%d')
 
 function start() {
     local task=$1
-    python3 "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.py" $task
+    python3 "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.py" "$task"
     sh "$SCRIPT_DIR/day_summary.sh"
     python3 "$SCRIPT_DIR/status.py"
 }
@@ -61,9 +61,13 @@ while true; do
         SECS=$((END-START))
         DESK_TIME=$(( SECS/60 ))
         
-        START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
+        if [[ $OSTYPE == "darwin"* ]]; then
+            START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
+        elif [[ $OSTYPE == "msys" || $OSTYPE == "cygwin"* ]]; then
+            START_FORMATTED=$(date -d @"$START" '+%Y-%m-%d %H:%M:%S')
+        fi
+        
         echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> "$data_file"
-
         echo ""
         sh "$SCRIPT_DIR/day_summary.sh"
 
@@ -71,7 +75,7 @@ while true; do
             echo ""
             echo "Recent focus tasks"
             echo "--"
-            python3 $SCRIPT_DIR/display_all_tasks.py NO_HEADER
+            python3 "$SCRIPT_DIR/display_all_tasks.py" NO_HEADER
             echo "--"
             echo ""
             if [[ $CURRENT_TASK == "MISC" ]]; then
