@@ -2,8 +2,8 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/time_tracker_func.sh
-source $SCRIPT_DIR/time_tracker.env
+source "$SCRIPT_DIR/time_tracker_func.sh"
+source "$SCRIPT_DIR/time_tracker.env"
 
 while getopts ":a:" opt; do
   case $opt in
@@ -30,7 +30,7 @@ loop_date=$START_OF_WEEK
 while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$END_OF_WEEK" "+%Y%m%d") ]]; do
     if test -f "$SCRIPT_DIR/tracking_$loop_date.txt"; then
         file="$SCRIPT_DIR/tracking_$loop_date.txt"
-        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
+        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
         total_days=$(( total_days + 1 ))
 
@@ -39,7 +39,7 @@ while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d"
         echo "$loop_date (1)  - $HOUR hours, $MINUTE minutes"
     elif test -f "$SCRIPT_DIR/tracking_h_$loop_date.txt"; then
         file="$SCRIPT_DIR/tracking_h_$loop_date.txt"
-        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
+        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
         total_days=$(( total_days + .5 ))
 

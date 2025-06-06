@@ -4,7 +4,7 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 
 _time_tracker_task_completions()
 {
-  for OUTPUT in $(python3 $SCRIPT_DIR/../time_tracker/display_all_tasks.py NO_HEADER)
+  for OUTPUT in $(python3 "$SCRIPT_DIR/../time_tracker/display_all_tasks.py" NO_HEADER)
   do
     COMPREPLY+=("$OUTPUT")
   done

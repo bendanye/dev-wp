@@ -6,11 +6,11 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/env/pomodoro_timer.env
+source "$SCRIPT_DIR/env/pomodoro_timer.env"
 
 TIMER_FILE="$SOURCE_DIR/../timer"
 if test -f "$TIMER_FILE"; then
-    START=$(cat $TIMER_FILE | cut -d ',' -f1)
+    START=$(cat "$TIMER_FILE" | cut -d ',' -f1)
     END=$(date +%s)
     DURATION=$((END-START))
     MINUTES=$(($DURATION / 60))
@@ -23,8 +23,8 @@ if test -f "$TIMER_FILE"; then
     fi
     
     echo "---"
-    START=$(cat $TIMER_FILE | cut -d ',' -f1)
-    CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
+    START=$(cat "$TIMER_FILE" | cut -d ',' -f1)
+    CURRENT_TASK=$(cat "$TIMER_FILE" | cut -d ',' -f2)
     END=$(date +%s)
     DURATION=$((END-START))
     if [[ $CURRENT_TASK == "MISC" ]]; then

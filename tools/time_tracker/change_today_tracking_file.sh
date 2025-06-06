@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/time_tracker_func.sh
+source "$SCRIPT_DIR/time_tracker_func.sh"
 
 TYPE=$1
 if [[ -z $TYPE ]]; then
@@ -19,9 +19,9 @@ if ! test -f "$data_file"; then
 fi
 
 if [ $TYPE == "EDIT" ]; then
-    vi $data_file
+    vi "$data_file"
 else
-    rename_to=$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt
+    rename_to="$SCRIPT_DIR/tracking_h_$CURRENT_DATE.txt"
     echo "Rename from $data_file to $rename_to"
-    mv $data_file $rename_to
+    mv "$data_file" "$rename_to"
 fi

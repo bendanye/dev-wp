@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/time_tracker_func.sh
+source "$SCRIPT_DIR/time_tracker_func.sh"
 
 while getopts ":a:d:" opt; do
   case $opt in
@@ -29,7 +29,7 @@ if ! test -f "$FILE"; then
     exit 1
 fi
 
-TOTAL_MINUTES=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $FILE)
+TOTAL_MINUTES=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$FILE")
 
 HOUR=$(( TOTAL_MINUTES/60 ))
 MINUTE=$(( TOTAL_MINUTES-$HOUR*60 ))

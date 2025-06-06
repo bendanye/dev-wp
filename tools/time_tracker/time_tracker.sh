@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/time_tracker_func.sh
+source "$SCRIPT_DIR/time_tracker_func.sh"
 
 while getopts ":a:t:d:" opt; do
   case $opt in
@@ -45,15 +45,15 @@ if ! test -f "$data_file"; then
     else
         data_file="$SCRIPT_DIR/tracking_$CURRENT_DATE.txt"
     fi
-    echo "start_date,task,desk_minutes" > $data_file
+    echo "start_date,task,desk_minutes" > "$data_file"
 fi
 
 TIMER_FILE="$SCRIPT_DIR/../pomodoro_timer/timer"
 while true; do
     data_file=$(get_file $CURRENT_DATE)
     if test -f "$TIMER_FILE"; then
-        START=$(cat $TIMER_FILE | cut -d ',' -f1)
-        CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
+        START=$(cat "$TIMER_FILE" | cut -d ',' -f1)
+        CURRENT_TASK=$(cat "$TIMER_FILE" | cut -d ',' -f2)
         END=$(date +%s)
 
         python3 "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.py" $task
@@ -62,7 +62,7 @@ while true; do
         DESK_TIME=$(( SECS/60 ))
         
         START_FORMATTED=$(date -r $START '+%Y-%m-%d %H:%M:%S')
-        echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> $data_file
+        echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> "$data_file"
 
         echo ""
         sh "$SCRIPT_DIR/day_summary.sh"

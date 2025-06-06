@@ -6,8 +6,8 @@ function open_freq_used_apps() {
     open ~/Desktop/MacPass.app
     open -a "Notes"
 
-    if test -d $SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools; then
-        cd $SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools
+    if test -d "$SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools"; then
+        cd "$SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools"
         nohup sh run.sh &
     fi
 }
@@ -15,7 +15,7 @@ function open_freq_used_apps() {
 function open_ide() {
     open -a "IntelliJ IDEA CE"
 
-    cd $SCRIPT_DIR
+    cd "$SCRIPT_DIR"
     cd ../../
     code .
 }

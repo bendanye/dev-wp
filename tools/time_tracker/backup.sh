@@ -3,7 +3,7 @@ BKUP_FOLDER="bkup"
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-cd $SCRIPT_DIR
+cd "$SCRIPT_DIR"
 
 if [ ! -d $BKUP_FOLDER ]; then
     mkdir $BKUP_FOLDER

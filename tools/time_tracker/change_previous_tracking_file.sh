@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=$( dirname -- "$0"; )
 
-source $SCRIPT_DIR/time_tracker_func.sh
+source "$SCRIPT_DIR/time_tracker_func.sh"
 
 CURRENT_DATE=$(date -v-1d '+%Y-%m-%d')
 
