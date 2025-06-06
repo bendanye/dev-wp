@@ -56,7 +56,7 @@ while true; do
         CURRENT_TASK=$(cat $TIMER_FILE | cut -d ',' -f2)
         END=$(date +%s)
 
-        sh "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.sh"
+        python3 "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.py" $task
         
         SECS=$((END-START))
         DESK_TIME=$(( SECS/60 ))
