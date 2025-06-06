@@ -5,7 +5,7 @@ kata-daily-schedule:
 	./katas/daily_schedule.sh
 
 kata-all-daily-summary:
-	./katas/all_daily_summary.sh
+	python3 ./katas/all_daily_summary.py
 
 kata-all-weekly-summary:
 	./katas/all_weekly_summary.sh
