@@ -12,7 +12,8 @@
             "name": "<<name of the kata>>",
             "day-of-week": "<<day of week. For example Monday>>",
             "contains-multiple-kata": <<true|false>>,
-            "repo_dir": "<<the location of the kata>>"
+            "repo_dir": "<<the location of the kata>>",
+            "exclude_katas": "<<optional value. Exclude kata and applicable if contains-multiple-kata = true>>"
         }
     ]
 }

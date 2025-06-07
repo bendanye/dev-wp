@@ -64,9 +64,14 @@ def print_each_summary():
         kata_dir = kata["repo_dir"]
         multiple = kata.get("contains-multiple-kata", False)
         if multiple:
+            exclude_katas = kata.get("exclude_katas", "").split(",")
             for subdir in sorted(os.listdir(kata_dir)):
                 full_path = os.path.join(kata_dir, subdir)
-                if os.path.isdir(full_path) and not full_path.endswith(".git"):
+                if (
+                    subdir not in exclude_katas
+                    and os.path.isdir(full_path)
+                    and not full_path.endswith(".git")
+                ):
                     check(full_path)
         else:
             check(kata_dir)
@@ -80,9 +85,14 @@ def print_total_secs():
         kata_dir = kata["repo_dir"]
         multiple = kata.get("contains-multiple-kata", False)
         if multiple:
+            exclude_katas = kata.get("exclude_katas", "").split(",")
             for subdir in sorted(os.listdir(kata_dir)):
                 full_path = os.path.join(kata_dir, subdir)
-                if os.path.isdir(full_path):
+                if (
+                    subdir not in exclude_katas
+                    and os.path.isdir(full_path)
+                    and not full_path.endswith(".git")
+                ):
                     total_secs += time_taken(full_path)
         else:
             total_secs += time_taken(kata_dir)
