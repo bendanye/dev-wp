@@ -1,8 +1,8 @@
 kata-daily-summary:
-	./katas/daily_summary.sh
+	python3 ./katas/daily_summary.py
 
 kata-daily-schedule:
-	./katas/daily_schedule.sh
+	python3 ./katas/daily_schedule.py
 
 kata-all-daily-summary:
 	python3 ./katas/all_daily_summary.py

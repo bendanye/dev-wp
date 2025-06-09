@@ -84,7 +84,7 @@ function show_today_kata() {
         return 1
     fi
     cd "$SCRIPT_DIR"
-    sh ../../katas/daily_schedule.sh
+    python3 ../../katas/daily_schedule.py
 }
 
 function start_work_related_activity() {
