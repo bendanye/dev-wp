@@ -122,7 +122,7 @@ AVERAGE_REMAINING_HOURS=$(( remaining_minutes / 60 ))
 AVERAGE_REMAINING_MINUTES=$(( remaining_minutes % 60 ))
 
 if [[ $AVERAGE_REMAINING_HOURS -le 0 ]] && [[ $AVERAGE_REMAINING_MINUTES -le 0 ]]; then
-    echo "I have meet the average target of $TARGET_HOURS hours and $TARGET_MINUTES minutes over $total_days days!"
+    echo "I have met the average target of $TARGET_HOURS hours and $TARGET_MINUTES minutes over $total_days days!"
 else
     echo "I need to work the remaining of $AVERAGE_REMAINING_HOURS hours and $AVERAGE_REMAINING_MINUTES minutes today to meet the average target of $TARGET_HOURS hours and $TARGET_MINUTES minutes over $total_days days."
 fi
