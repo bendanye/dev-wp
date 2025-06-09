@@ -20,7 +20,7 @@ with open(env_file) as f:
             os.environ[key.strip()] = value.strip()
 
 # Get the current day of the week
-days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 day_of_week = days[datetime.datetime.today().weekday()]
 
 # Load the JSON file

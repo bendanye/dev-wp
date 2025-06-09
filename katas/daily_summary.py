@@ -30,7 +30,7 @@ else:
     specified_date = datetime.date.today().strftime("%Y-%m-%d")
 
 # Get day of week name
-days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 day_of_week = days[datetime.datetime.today().weekday()]
 
 
