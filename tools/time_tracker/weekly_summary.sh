@@ -5,6 +5,31 @@ SCRIPT_DIR=$( dirname -- "$0"; )
 source "$SCRIPT_DIR/time_tracker_func.sh"
 source "$SCRIPT_DIR/time_tracker.env"
 
+# Detect if running on macOS or Linux/Git Bash
+IS_MAC=false
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    IS_MAC=true
+fi
+
+date_add_one_day() {
+    local base="$1"
+    if $IS_MAC; then
+        echo $(date -jf "%Y-%m-%d" -v+1d "$base" "+%Y-%m-%d")
+    else
+        echo $(date -d "$base +1 day" "+%Y-%m-%d")
+    fi
+}
+
+date_fmt() {
+    local date="$1"
+    if $IS_MAC; then
+        echo $(date -j -f "%Y-%m-%d" "$date" "+%Y%m%d")
+    else
+        echo $(date -d "$date" "+%Y%m%d")
+    fi
+}
+
+# Parse arguments
 while getopts ":a:" opt; do
   case $opt in
     a) ACTION="$OPTARG"
@@ -16,47 +41,48 @@ done
 
 EXCLUDE_PATTERN=$(get_exclude_pattern $ACTION)
 
-# Get the current day of the week (1 for Monday, 2 for Tuesday, ..., 0 for Sunday)
+# Get current weekday number (1–7; Monday = 1)
 CURRENT_DATE=$(date +%u)
 
-# Calculate the date for the start of the week (Monday)
-START_OF_WEEK=$(date -v -$((CURRENT_DATE - 1))d "+%Y-%m-%d")
+if $IS_MAC; then
+    START_OF_WEEK=$(date -v -$((CURRENT_DATE - 1))d "+%Y-%m-%d")
+    END_OF_WEEK=$(date -v +$((6 - CURRENT_DATE + 1))d "+%Y-%m-%d")
+else
+    START_OF_WEEK=$(date -d "$((CURRENT_DATE - 1)) days ago" "+%Y-%m-%d")
+    END_OF_WEEK=$(date -d "$((7 - CURRENT_DATE)) days" "+%Y-%m-%d")
+fi
 
-# Calculate the date for the end of the week (Sunday)
-END_OF_WEEK=$(date -v +$((6 - CURRENT_DATE + 1))d "+%Y-%m-%d")
-
-# Loop through the dates from start to end of the week (inclusive)
 loop_date=$START_OF_WEEK
-while [[ $(date -jf "%Y-%m-%d" "$loop_date" "+%Y%m%d") -le $(date -jf "%Y-%m-%d" "$END_OF_WEEK" "+%Y%m%d") ]]; do
-    if test -f "$SCRIPT_DIR/tracking_$loop_date.txt"; then
+total_minutes=0
+total_days=0
+
+while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
+    if [[ -f "$SCRIPT_DIR/tracking_$loop_date.txt" ]]; then
         file="$SCRIPT_DIR/tracking_$loop_date.txt"
         MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
         total_days=$(( total_days + 1 ))
-
-        HOUR=$(( MINUTES_IN_LOG/60 ))
-        MINUTE=$(( MINUTES_IN_LOG-$HOUR*60 ))
+        HOUR=$(( MINUTES_IN_LOG / 60 ))
+        MINUTE=$(( MINUTES_IN_LOG % 60 ))
         echo "$loop_date (1)  - $HOUR hours, $MINUTE minutes"
-    elif test -f "$SCRIPT_DIR/tracking_h_$loop_date.txt"; then
+    elif [[ -f "$SCRIPT_DIR/tracking_h_$loop_date.txt" ]]; then
         file="$SCRIPT_DIR/tracking_h_$loop_date.txt"
         MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
-        total_days=$(( total_days + .5 ))
-
-        HOUR=$(( MINUTES_IN_LOG/60 ))
-        min=$(( MINUTES_IN_LOG-$HOUR*60 ))
-        echo "$loop_date (.5) - $HOUR hours, $min minutes"
-    elif test -f "$SCRIPT_DIR/tracking_e_$loop_date.txt"; then
+        total_days=$(( total_days + 1 / 2 ))
+        HOUR=$(( MINUTES_IN_LOG / 60 ))
+        MINUTE=$(( MINUTES_IN_LOG % 60 ))
+        echo "$loop_date (.5) - $HOUR hours, $MINUTE minutes"
+    elif [[ -f "$SCRIPT_DIR/tracking_e_$loop_date.txt" ]]; then
         file="$SCRIPT_DIR/tracking_e_$loop_date.txt"
-        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' $file)
+        MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
-        HOUR=$(( MINUTES_IN_LOG/60 ))
-        min=$(( MINUTES_IN_LOG-$HOUR*60 ))
-        echo "$loop_date (E)  - $HOUR hours, $min minutes"
+        HOUR=$(( MINUTES_IN_LOG / 60 ))
+        MINUTE=$(( MINUTES_IN_LOG % 60 ))
+        echo "$loop_date (E)  - $HOUR hours, $MINUTE minutes"
     fi
 
-    # Add one day to the current date
-    loop_date=$(date -jf "%Y-%m-%d" -v+1d "$loop_date" "+%Y-%m-%d")
+    loop_date=$(date_add_one_day "$loop_date" +1)
 done
 
 if [ -z $total_days ]; then
@@ -65,7 +91,7 @@ if [ -z $total_days ]; then
 fi
 
 if (( total_days > 1 )); then
-    average_minutes=$(( total_minutes / total_days ))
+average_minutes=$(( total_minutes / total_days ))
 else
     average_minutes=$total_minutes
 fi
