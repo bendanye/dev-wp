@@ -78,11 +78,16 @@ def print_each_summary():
         day = kata.get("day-of-week", "*")
         if day == day_of_week or day == "*":
             repo_dir = kata.get("repo_dir")
-            is_multiple = kata.get("contains-multiple-kata") == "true"
-            if is_multiple and os.path.isdir(repo_dir):
+            is_multiple = kata.get("contains-multiple-kata", False)
+            if is_multiple:
+                exclude_katas = kata.get("exclude_katas", "").split(",")
                 for subdir in sorted(os.listdir(repo_dir)):
                     full_path = os.path.join(repo_dir, subdir)
-                    if os.path.isdir(full_path):
+                    if (
+                        subdir not in exclude_katas
+                        and os.path.isdir(full_path)
+                        and not full_path.endswith(".git")
+                    ):
                         check(full_path)
             else:
                 check(repo_dir)
@@ -95,11 +100,16 @@ def print_total_secs():
         day = kata.get("day-of-week", "*")
         if day == day_of_week or day == "*":
             repo_dir = kata.get("repo_dir")
-            is_multiple = kata.get("contains-multiple-kata") == "true"
-            if is_multiple and os.path.isdir(repo_dir):
+            is_multiple = kata.get("contains-multiple-kata", False)
+            if is_multiple:
+                exclude_katas = kata.get("exclude_katas", "").split(",")
                 for subdir in os.listdir(repo_dir):
                     full_path = os.path.join(repo_dir, subdir)
-                    if os.path.isdir(full_path):
+                    if (
+                        subdir not in exclude_katas
+                        and os.path.isdir(full_path)
+                        and not full_path.endswith(".git")
+                    ):
                         total += time_taken(full_path)
             else:
                 total += time_taken(repo_dir)
