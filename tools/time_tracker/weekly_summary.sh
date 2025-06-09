@@ -85,7 +85,7 @@ while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
     loop_date=$(date_add_one_day "$loop_date" +1)
 done
 
-if [ -z $total_days ]; then
+if [[ -z "$total_days" || "$total_days" == "0" ]]; then
     echo "There is no tracking information from $START_OF_WEEK to $END_OF_WEEK"
     exit 0
 fi
