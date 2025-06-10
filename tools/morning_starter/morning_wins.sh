@@ -11,7 +11,7 @@ source "$SCRIPT_DIR/../communication/communications_func.sh"
 
 function update_katas_git_repos() {
     cd "$SCRIPT_DIR/../../katas"
-    sh update_repos.sh
+    python3 update_repos.py
 }
 
 function update_other_tools_git_repos() {
