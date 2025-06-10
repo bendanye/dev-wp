@@ -69,7 +69,7 @@ while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
         file="$SCRIPT_DIR/tracking_h_$loop_date.txt"
         MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
-        total_days=$(( total_days + 1 / 2 ))
+        total_days=$(awk "BEGIN {print $total_days + 0.5}")
         HOUR=$(( MINUTES_IN_LOG / 60 ))
         MINUTE=$(( MINUTES_IN_LOG % 60 ))
         echo "$loop_date (.5) - $HOUR hours, $MINUTE minutes"
@@ -90,8 +90,8 @@ if [[ -z "$total_days" || "$total_days" == "0" ]]; then
     exit 0
 fi
 
-if (( total_days > 1 )); then
-average_minutes=$(( total_minutes / total_days ))
+if awk "BEGIN {exit !($total_days > 1)}"; then
+    average_minutes=$(awk "BEGIN {print $total_minutes / $total_days}")
 else
     average_minutes=$total_minutes
 fi
@@ -111,7 +111,7 @@ fi
 echo "On average ($total_days days), I am on my desk for $AVERAGE_HOUR hours, $AVERAGE_MIN minutes $EXCLUDE_MSG"
 echo ""
 
-TARGET_TOTAL_MINUTES=$(( (TARGET_HOURS * 60 + TARGET_MINUTES) * total_days ))
+TARGET_TOTAL_MINUTES=$(awk "BEGIN {print ($TARGET_HOURS * 60 + $TARGET_MINUTES) * $total_days}")
 
 remaining_minutes=$(( TARGET_TOTAL_MINUTES - total_minutes ))
 
