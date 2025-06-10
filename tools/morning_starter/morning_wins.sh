@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $OSTYPE == "darwin"* ]]; then
-    SCRIPT_DIR="$(dirname "$0")"
-elif [[ "$OSTYPE" == "win32" ]]; then
-    echo "Please uncomment and set SCRIPT_DIR for windowa"
-    SCRIPT_DIR=""
-fi
+SCRIPT_DIR="$(dirname "$0")"
 
 source "$SCRIPT_DIR/../communication/communications_func.sh"
 
@@ -50,7 +45,7 @@ function open_daily_tech_note() {
     fi
 
     cd "$SCRIPT_DIR/../../other_tools/renotes"
-    sh open_random.sh tech
+    python3 open_random.py tech
 }
 
 function check_tasks() {
@@ -85,12 +80,13 @@ function start_work_related_activity() {
 
 update_katas_git_repos
 update_other_tools_git_repos
+
 start_communication
 open_daily_reading_news_tabs
 sleep 2
 
 backup_time_tracker_files
-create_work_log_file
+# create_work_log_file
 
 open_daily_tech_note
 check_tasks
