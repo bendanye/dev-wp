@@ -20,8 +20,14 @@ if [ "$yesterday" -gt 4 ]; then
 fi
 
 echo "Yesterday was mon-thurs. Proceed to check"
-    
-YESTERDAY_DATE=$(date -v -1d +%Y-%m-%d)
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  YESTERDAY_DATE=$(date -v -1d +%Y-%m-%d)
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin"* ]]; then
+  YESTERDAY_DATE=$(date -d "$base -1 day" "+%Y-%m-%d")
+else
+  echo "Unsupported operating system"
+fi
 
 data_file=$(get_file $YESTERDAY_DATE)
 if test -f "$data_file"; then
