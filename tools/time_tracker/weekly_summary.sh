@@ -82,7 +82,7 @@ while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
         echo "$loop_date (E)  - $HOUR hours, $MINUTE minutes"
     fi
 
-    loop_date=$(date_add_one_day "$loop_date" +1)
+    loop_date=$(date_add_one_day "$loop_date")
 done
 
 if [[ -z "$total_days" || "$total_days" == "0" ]]; then
