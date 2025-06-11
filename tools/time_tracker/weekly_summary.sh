@@ -61,7 +61,7 @@ while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
         file="$SCRIPT_DIR/tracking_$loop_date.txt"
         MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
-        total_days=$(( total_days + 1 ))
+        total_days=$(awk "BEGIN {print $total_days + 1}")
         HOUR=$(( MINUTES_IN_LOG / 60 ))
         MINUTE=$(( MINUTES_IN_LOG % 60 ))
         echo "$loop_date (1)  - $HOUR hours, $MINUTE minutes"
@@ -69,7 +69,7 @@ while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
         file="$SCRIPT_DIR/tracking_h_$loop_date.txt"
         MINUTES_IN_LOG=$(awk -F, ''"$EXCLUDE_PATTERN"' {if(NR==1)next;total+=$3}END{print total}' "$file")
         total_minutes=$(( total_minutes + MINUTES_IN_LOG ))
-        total_days=$(awk "BEGIN {print $total_days + 0.5}")
+       total_days=$(awk "BEGIN {print $total_days + 0.5}")
         HOUR=$(( MINUTES_IN_LOG / 60 ))
         MINUTE=$(( MINUTES_IN_LOG % 60 ))
         echo "$loop_date (.5) - $HOUR hours, $MINUTE minutes"
@@ -82,7 +82,7 @@ while [[ "$(date_fmt "$loop_date")" -le "$(date_fmt "$END_OF_WEEK")" ]]; do
         echo "$loop_date (E)  - $HOUR hours, $MINUTE minutes"
     fi
 
-    loop_date=$(date_add_one_day "$loop_date")
+    loop_date=$(date_add_one_day "$loop_date" +1)
 done
 
 if [[ -z "$total_days" || "$total_days" == "0" ]]; then
