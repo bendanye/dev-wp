@@ -104,7 +104,8 @@ alias htt="$ALIAS_SCRIPT_DIR/../time_tracker/keyword_finder/run_keyword_finder.s
 alias ha="$ALIAS_SCRIPT_DIR/../alias/keyword_finder/run_keyword_finder.sh list"
 
 alias tt="$ALIAS_SCRIPT_DIR/../time_tracker/time_tracker.sh"
-alias ttst="$ALIAS_SCRIPT_DIR/../time_tracker/status.sh"
+alias ttst="python3 $ALIAS_SCRIPT_DIR/../time_tracker/status.py SHOW"
+alias ttstl="python3 $ALIAS_SCRIPT_DIR/../time_tracker/status.py LOOP"
 alias ttds="$ALIAS_SCRIPT_DIR/../time_tracker/day_summary.sh -a EXCLUDE_TASKS"
 alias ttdsa="$ALIAS_SCRIPT_DIR/../time_tracker/day_summary.sh -a ALL_TASKS"
 alias ttdse="$ALIAS_SCRIPT_DIR/../time_tracker/day_summary.sh -a EXCLUDE_TASKS"

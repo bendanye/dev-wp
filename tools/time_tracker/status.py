@@ -10,7 +10,7 @@ else:
     import select
 
 
-def main():
+def main(type="LOOP"):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     timer_file = os.path.join(script_dir, "../pomodoro_timer/timer")
 
@@ -18,14 +18,15 @@ def main():
         print("Timer not started!")
         return
 
-    while True:
-        with open(timer_file, "r") as file:
-            start, task = file.read().strip().split(",")
-            start = int(start)
+    if type == "LOOP":
+        _loop_status(timer_file)
+    else:
+        _show_status(timer_file)
 
-        end = int(time.time())
-        duration = end - start
-        minutes, seconds = divmod(duration, 60)
+
+def _loop_status(timer_file: str):
+    while True:
+        task, minutes, seconds = _get_info(timer_file)
 
         if task == "MISC":
             message = f"\r Currently at my desk for {minutes} minutes and {seconds} seconds (press space to exit) "
@@ -40,6 +41,28 @@ def main():
                 break
         except TimeoutError:
             continue
+
+
+def _show_status(timer_file: str):
+    task, minutes, seconds = _get_info(timer_file)
+
+    if task == "MISC":
+        message = f"\r Currently at my desk for {minutes} minutes and {seconds} seconds"
+    else:
+        message = f"\r Currently at my desk focusing on {task} for {minutes} minutes and {seconds} seconds"
+
+    print(message)
+
+
+def _get_info(timer_file: str):
+    with open(timer_file, "r") as file:
+        start, task = file.read().strip().split(",")
+        start = int(start)
+
+    end = int(time.time())
+    duration = end - start
+    minutes, seconds = divmod(duration, 60)
+    return {task, minutes, seconds}
 
 
 def input_timeout(timeout):
@@ -63,4 +86,7 @@ def input_timeout(timeout):
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 2:
+        type = sys.argv[1]
+
+    main(type)
