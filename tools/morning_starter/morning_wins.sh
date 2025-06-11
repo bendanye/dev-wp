@@ -1,17 +1,18 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-SCRIPT_DIR="$(dirname "$0")"
+SCRIPT_DIR=$( dirname -- "$0"; )
 
 source "$SCRIPT_DIR/../communication/communications_func.sh"
 
-function update_katas_git_repos() {
+function katas_git_repos() {
     cd "$SCRIPT_DIR/../../katas"
     python3 update_repos.py
+    python3 daily_schedule.py
 }
 
 function update_other_tools_git_repos() {
-    if test -d "$SCRIPT_DIR/../../other_tools"; then
-        cd "$SCRIPT_DIR/../git"
+    if test -d "$SCRIPT_DIR/../other_tools"; then
+        cd "$SCRIPT_DIR/../tools/git"
         sh git_pull_all_projects.sh "$SCRIPT_DIR/../../other_tools"
     fi
 }
@@ -60,16 +61,6 @@ function check_tasks() {
     sh daily_check.sh
 }
 
-function show_today_kata() {
-    if [ ! -d "$SCRIPT_DIR/../../katas" ]; then
-        echo "katas folder does not exists."
-        return 1
-    fi
-
-    cd "$SCRIPT_DIR"
-    python3 ../../katas/daily_schedule.py
-}
-
 function start_work_related_activity() {
     # To add work related activities such as opening a page, add key
 
@@ -78,19 +69,16 @@ function start_work_related_activity() {
     sh check_all_projects_branch.sh
 }
 
-update_katas_git_repos
-update_other_tools_git_repos
-
 start_communication
 open_daily_reading_news_tabs
 sleep 2
 
-backup_time_tracker_files
-# create_work_log_file
-
-open_daily_tech_note
 check_tasks
+backup_time_tracker_files
+open_daily_tech_note
 
-show_today_kata
+katas_git_repos
+
+update_other_tools_git_repos
 
 # start_work_related_activity
