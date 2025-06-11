@@ -12,7 +12,14 @@ fi
 RED='\033[0;31m'
 RESET='\033[0m'
 
-yesterday=$(date -v -1d +%u)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  yesterday=$(date -v -1d +%u)
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin"* ]]; then
+  yesterday=$(date -d "-1 day" +%u)
+else
+  echo "Unsupported operating system"
+  exit 1
+fi
 
 if [ "$yesterday" -gt 4 ]; then
     echo "Yesterday was not Mon-Thu. Exit"
@@ -24,9 +31,10 @@ echo "Yesterday was mon-thurs. Proceed to check"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   YESTERDAY_DATE=$(date -v -1d +%Y-%m-%d)
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin"* ]]; then
-  YESTERDAY_DATE=$(date -d "$base -1 day" "+%Y-%m-%d")
+  YESTERDAY_DATE=$(date -d "-1 day" "+%Y-%m-%d")
 else
   echo "Unsupported operating system"
+  exit 1
 fi
 
 data_file=$(get_file $YESTERDAY_DATE)
