@@ -24,19 +24,14 @@ function open_daily_reading_news_tabs() {
     sleep 1
 }
 
+
+function open_ide() {
+    code "$SCRIPT_DIR/../../"
+}
+
 function backup_time_tracker_files() {
     cd "$SCRIPT_DIR"
     sh ../time_tracker/backup.sh
-}
-
-function create_work_log_file() {
-    if [ ! -d "$SCRIPT_DIR/../../work_logs" ]; then
-        echo "work_logs folder does not exists."
-        return 1
-    fi
-
-    cd "$SCRIPT_DIR/../../work_logs"
-    python3 create_work_log_file.py
 }
 
 function open_daily_tech_note() {
@@ -72,6 +67,8 @@ function start_work_related_activity() {
 start_communication
 open_daily_reading_news_tabs
 sleep 2
+
+open_ide
 
 check_tasks
 backup_time_tracker_files
