@@ -34,7 +34,7 @@ CURRENT_DATE=$(date '+%Y-%m-%d')
 function start() {
     local task=$1
     python3 "$SCRIPT_DIR/../pomodoro_timer/pomodoro_timer.py" "$task"
-    sh "$SCRIPT_DIR/day_summary.sh"
+    sh "$SCRIPT_DIR/day_summary.sh" -a "EXCLUDE_TASKS"
     python3 "$SCRIPT_DIR/status.py"
 }
 
@@ -69,7 +69,7 @@ while true; do
         
         echo "$START_FORMATTED,$CURRENT_TASK,$DESK_TIME" >> "$data_file"
         echo ""
-        sh "$SCRIPT_DIR/day_summary.sh"
+        sh "$SCRIPT_DIR/day_summary.sh"  -a "EXCLUDE_TASKS"
 
         if [[ $ACTION == "REPEAT" ]]; then
             echo ""
