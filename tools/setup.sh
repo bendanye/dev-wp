@@ -14,6 +14,16 @@ if [[ $management == "" ]]; then
     management="cards"
 fi
 
+if [[ ! -d "$HOME/IdeaProjects" ]]; then
+    mkdir "$HOME/IdeaProjects"
+    echo "Created new folder, $HOME/IdeaProjects"
+fi
+
+if [[ ! -d "$HOME/SelfExploration" ]]; then
+    mkdir "$HOME/SelfExploration"
+    echo "Created new folder, $HOME/SelfExploration"
+fi
+
 GIT_PROJECT_DIR="$HOME/IdeaProjects/$project_name"
 
 cd "$SCRIPT_PATH/../"
