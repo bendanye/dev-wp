@@ -20,6 +20,10 @@ sh ./setup.sh
 
 Installed [zsh](https://medium.com/@muh__hizbullah/install-zsh-on-os-windows-11-37e4d985ebc0) to install oh my zsh
 
+#### Make
+
+If using Make, follow this [guide](https://stackoverflow.com/questions/66525016/how-to-run-make-command-in-gitbash-in-windows)
+
 
 #### Visual Studio Code
 
