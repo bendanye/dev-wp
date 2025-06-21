@@ -58,7 +58,7 @@ def delayed_start(icon):
 
 def main():
     icon = Icon(
-        "Dynamic Icon",
+        "Time Tracker Icon",
         icon=determine(),
         menu=Menu(MenuItem("Quit", quit_action)),
     )
