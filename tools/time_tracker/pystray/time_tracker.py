@@ -11,7 +11,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 os.chdir(SCRIPT_DIR)
 
 
-def determine():
+def create_time_tracker_icon():
     timer_file = f"{SCRIPT_DIR}/../../pomodoro_timer/timer"
     if not os.path.isfile(timer_file):
         return create_icon("NO", "black")
@@ -43,7 +43,7 @@ def create_icon(text, text_color):
 
 def update_icon(icon):
     while icon.visible:
-        icon.icon = determine()
+        icon.icon = create_time_tracker_icon()
         time.sleep(UPDATE_SECONDS)
 
 
@@ -59,7 +59,7 @@ def delayed_start(icon):
 def main():
     icon = Icon(
         "Time Tracker Icon",
-        icon=determine(),
+        icon=create_time_tracker_icon(),
         menu=Menu(MenuItem("Quit", quit_action)),
     )
 
