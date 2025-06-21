@@ -86,6 +86,7 @@ def input_timeout(timeout):
 
 
 if __name__ == "__main__":
+    type = "LOOP"
     if len(sys.argv) == 2:
         type = sys.argv[1]
 
