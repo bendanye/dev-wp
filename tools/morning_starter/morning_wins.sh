@@ -64,6 +64,11 @@ function start_work_related_activity() {
     sh check_all_projects_branch.sh
 }
 
+function start_time_tracker_tray_icon() {
+    cd "$SCRIPT_DIR/../tools/time_tracker/pystray"
+    python3 time_tracker.py
+}
+
 start_communication
 open_daily_reading_news_tabs
 sleep 2
@@ -75,7 +80,7 @@ backup_time_tracker_files
 open_daily_tech_note
 
 katas_git_repos
-
 update_other_tools_git_repos
 
 # start_work_related_activity
+start_time_tracker_tray_icon
