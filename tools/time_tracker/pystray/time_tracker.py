@@ -15,22 +15,22 @@ def determine():
     timer_file = f"{SCRIPT_DIR}/../../pomodoro_timer/timer"
     if not os.path.isfile(timer_file):
         return create_icon("NO", "black")
-    else:
-        with open(timer_file, "r") as file:
-            line = file.readline().strip()
-            start_str = line.split(",")[0]
 
-            start = int(start_str)
-            end = int(time.time())
-            duration = end - start
-            minutes = duration // 60
+    with open(timer_file, "r") as file:
+        line = file.readline().strip()
+        start_str = line.split(",")[0]
 
-            if minutes < 25:
-                return create_icon(str(minutes), "black")
-            elif minutes < 50:
-                return create_icon(str(minutes), "darkgreen")
-            else:
-                return create_icon(str(minutes), "darkred")
+        start = int(start_str)
+        end = int(time.time())
+        duration = end - start
+        minutes = duration // 60
+
+        if minutes < 25:
+            return create_icon(str(minutes), "black")
+        elif minutes < 50:
+            return create_icon(str(minutes), "darkgreen")
+        else:
+            return create_icon(str(minutes), "darkred")
 
 
 def create_icon(text, text_color):
