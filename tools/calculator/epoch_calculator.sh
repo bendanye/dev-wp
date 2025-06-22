@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]; then
+  echo "Usage: $0 <minutes to subtract>"
+  exit 1
+fi
+
 # Default to 0 minutes if no argument is given
 MINUTES_TO_SUBTRACT=${1:-0}
 
