@@ -43,6 +43,8 @@ alias dloi="$ALIAS_SCRIPT_DIR/../docker/docker_container_logs_by_image_name.sh"
 alias kp="$ALIAS_SCRIPT_DIR/../networking/kill_port.sh"
 
 alias datecal="python3 $ALIAS_SCRIPT_DIR/../calculator/date_calculator.py"
+alias epochcal="sh $ALIAS_SCRIPT_DIR/../calculator/epoch_calculator.sh"
+alias epochconvert="sh $ALIAS_SCRIPT_DIR/../epoch/epoch_to_date_converter.sh"
 
 alias ssif="$ALIAS_SCRIPT_DIR/../search/search_string_in_files.sh"
 alias ffn="$ALIAS_SCRIPT_DIR/../search/find_by_file_name.sh"
