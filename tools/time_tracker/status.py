@@ -59,10 +59,10 @@ def _get_info(timer_file: str):
         start, task = file.read().strip().split(",")
         start = int(start)
 
-    end = int(time.time())
-    duration = end - start
-    minutes, seconds = divmod(duration, 60)
-    return {task, minutes, seconds}
+        end = int(time.time())
+        duration = end - start
+        minutes, seconds = divmod(duration, 60)
+        return task, minutes, seconds
 
 
 def input_timeout(timeout):
