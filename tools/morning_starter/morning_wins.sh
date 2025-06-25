@@ -65,7 +65,7 @@ function start_work_related_activity() {
 }
 
 function start_time_tracker_tray_icon() {
-    cd "$SCRIPT_DIR/../tools/time_tracker/pystray"
+    cd "$SCRIPT_DIR/../../tools/time_tracker/pystray"
     python3 time_tracker.py
 }
 
