@@ -124,6 +124,7 @@ alias ttctt="$ALIAS_SCRIPT_DIR/../time_tracker/change_today_tracking_file.sh EDI
 alias ttcth="$ALIAS_SCRIPT_DIR/../time_tracker/change_today_tracking_file.sh HALF"
 alias ttptt="$ALIAS_SCRIPT_DIR/../time_tracker/change_previous_tracking_file.sh"
 alias ttstt="python3 $ALIAS_SCRIPT_DIR/../time_tracker/split_last_task.py"
+alias ttclt="python3 $ALIAS_SCRIPT_DIR/../time_tracker/change_last_task_minutes.py"
 
 alias dwp="cd $ALIAS_SCRIPT_DIR/../../"
 alias ewp="cd ~/SelfExploration"
