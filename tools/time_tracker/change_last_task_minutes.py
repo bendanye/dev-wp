@@ -56,7 +56,7 @@ def _adjust_minutes(entry: str) -> List[str]:
 
     adjust_minutes = int(
         input(
-            f"Enter number of minutes to adjust (use negative to subtract, e.g., -30; Original is {minutes}): "
+            f"Enter last task, {task}'s number of minutes to adjust (use negative to subtract, e.g., -30; Original is {minutes}): "
         )
     )
 
