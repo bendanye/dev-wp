@@ -6,7 +6,11 @@ from typing import List
 
 def main() -> None:
     last_task = _get_last_task_from_file()
-    new_entries = _subtract_minutes(last_task)
+    new_entries = _adjust_minutes(last_task)
+    if not new_entries:
+        print("No changes made.")
+        return
+
     save_to_file(new_entries)
     print("Change last Task's minutes successfully!")
 
@@ -46,25 +50,26 @@ def _get_script_dir():
     return os.path.dirname(os.path.realpath(__file__))
 
 
-def _subtract_minutes(entry: str) -> List[str]:
+def _adjust_minutes(entry: str) -> List[str]:
     timestamp, task, minutes = entry.split(",")
     minutes = int(minutes)
 
-    subtract_minutes = int(
-        input(f"What is the number of minutes to subtract? Original is {minutes}: ")
+    adjust_minutes = int(
+        input(
+            f"Enter number of minutes to adjust (use negative to subtract, e.g., -30; Original is {minutes}): "
+        )
     )
 
-    if subtract_minutes > minutes:
-        print("Error: The subtract value is more than Original minutes.")
-        return
+    new_minutes = minutes + adjust_minutes
+
+    if new_minutes < 0:
+        print("Error: Resulting minutes would be negative.")
+        return []
 
     start_time = datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
-    new_entries = []
-    new_entries.append(
-        f"{start_time.strftime('%Y-%m-%d %H:%M:%S')},{task},{minutes - subtract_minutes}"
-    )
+    new_entry = f"{start_time.strftime('%Y-%m-%d %H:%M:%S')},{task},{new_minutes}"
 
-    return new_entries
+    return [new_entry]
 
 
 if __name__ == "__main__":
