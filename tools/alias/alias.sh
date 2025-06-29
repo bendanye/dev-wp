@@ -24,10 +24,6 @@ elif [[ $OSTYPE == "msys" || $OSTYPE == "cygwin"* ]]; then
     ALIAS_SCRIPT_DIR=""
 fi
 
-# alias dpt="$ALIAS_SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
-
-alias phn="python3 $ALIAS_SCRIPT_DIR/../../other_tools/public-holiday/get_dates.py 1"
-
 alias taska="sh task-todo/add_task.sh"
 alias taskui="sh task-todo/ui.sh"
 
@@ -128,3 +124,7 @@ alias ttclt="python3 $ALIAS_SCRIPT_DIR/../time_tracker/change_last_task_minutes.
 
 alias dwp="cd $ALIAS_SCRIPT_DIR/../../"
 alias ewp="cd ~/SelfExploration"
+
+# From other_tools folder
+alias dpt="$ALIAS_SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
+alias phn="python3 $ALIAS_SCRIPT_DIR/../../other_tools/public-holiday/get_dates.py 1"
