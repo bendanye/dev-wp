@@ -17,7 +17,7 @@ command-kata-from-incorrect-answers:
 	cd katas/kata-in-terminal && python3 src/main.py --folder_path command-kata-main --question_option "incorrect_ans"
 
 shortcut-kata-exclude-ide:
-	./katas/shortcut-kata/start_all_exclude_ide
+	./katas/shortcut-kata/start_all_exclude_ide.sh
 
 code-kata:
 	cd ./katas/code-kata/ && ./start.sh -l rand -t problem-solving -d rand
