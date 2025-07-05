@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 creations = [
     {"file_name": "helloWorld_yyyymmdd.csv", "folder_path": "fakecsvfolders"},
     {"file_name": "iamtesting_dd-MMM-yyyy.log", "folder_path": "fakelogfolders"},
+    {"file_name": "iamtesting_dd-MMM-yyyy-HHMM.log", "folder_path": "fakelogfolders"},
     {"file_name": "epoch-iamtesting-uuid.log", "folder_path": "fakejsonfolders"},
 ]
 
@@ -14,6 +15,7 @@ file_content_prefix = "this is mock content"
 
 SUPPORTED_FORMATS = [
     {"file_format": "yyyymmdd", "python_date_format": "%Y%m%d"},
+    {"file_format": "dd-MMM-yyyy-HHMM", "python_date_format": "%d-%b-%Y-%H%M"},
     {"file_format": "dd-MMM-yyyy", "python_date_format": "%d-%b-%Y"},
     {"file_format": "epoch"},
     {"file_format": "uuid"},
