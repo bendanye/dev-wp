@@ -126,5 +126,14 @@ alias dwp="cd $ALIAS_SCRIPT_DIR/../../"
 alias ewp="cd ~/SelfExploration"
 
 # From other_tools folder
-alias dpt="$ALIAS_SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
-alias phn="python3 $ALIAS_SCRIPT_DIR/../../other_tools/public-holiday/get_dates.py 1"
+if [ -f "$ALIAS_SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh" ]; then
+    alias dpt="$ALIAS_SCRIPT_DIR/../../other_tools/yet-another-dev-productivity-tools/run.sh"
+else
+    alias dpt="~/IdeaProjects/yet-another-dev-productivity-tools/run.sh"
+fi
+
+if [ -f "$ALIAS_SCRIPT_DIR/../../other_tools/public-holiday/get_dates.py" ]; then
+    alias phn="python3 $ALIAS_SCRIPT_DIR/../../other_tools/public-holiday/get_dates.py 1"
+else
+    alias phn="python3 ~/IdeaProjects/public-holiday/get_dates.py 1"
+fi
