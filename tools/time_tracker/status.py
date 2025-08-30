@@ -1,6 +1,7 @@
 import os
 import time
 import sys
+import subprocess
 
 if os.name == "nt":
     import msvcrt
@@ -8,6 +9,8 @@ else:
     import termios
     import tty
     import select
+
+ALERTME_MAIN_FILE = os.getenv("ALERTME_MAIN_FILE", "")
 
 
 def main(type="LOOP"):
@@ -25,6 +28,8 @@ def main(type="LOOP"):
 
 
 def _loop_status(timer_file: str):
+    alert_for_25_mins = False
+    alert_for_50_mins = False
     while True:
         task, minutes, seconds = _get_info(timer_file)
 
@@ -34,6 +39,12 @@ def _loop_status(timer_file: str):
             message = f"\r Currently at my desk focusing on {task} for {minutes} minutes and {seconds} seconds (press space to exit) "
 
         print(message, end="", flush=True)
+
+        if int(minutes) >= 25 and alert_for_25_mins is False:
+            _alert(message="Time to take a short break")
+
+        if int(minutes) >= 50 and alert_for_50_mins is False:
+            _alert(message="Please to stop and take a break!")
 
         try:
             key = input_timeout(1)
@@ -83,6 +94,11 @@ def input_timeout(timeout):
                 raise TimeoutError
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+
+def _alert(message):
+    if ALERTME_MAIN_FILE != "":
+        subprocess.run(["sh", ALERTME_MAIN_FILE, "-m", message], check=True)
 
 
 if __name__ == "__main__":
