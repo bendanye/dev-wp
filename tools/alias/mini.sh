@@ -1,6 +1,6 @@
 # when using Git Bash and without the whole dev_wp project, use this instead
 
-alias g="g"
+alias g="git"
 alias gp="git push"
 alias gl="git pull"
 alias gcl="git clone"
