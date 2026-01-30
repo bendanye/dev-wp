@@ -20,6 +20,9 @@ alias dirm="docker rmi"
 alias drm="docker rm"
 alias dlo="docker logs"
 
+alias dcupd="docker-compose up -d"
+alias dcdn="docker-compose down"
+
 alias ..="cd .."
 
 alias cfn='basename `pwd` | clip'
