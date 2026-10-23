@@ -55,7 +55,7 @@ alias cwlc="$ALIAS_SCRIPT_DIR/../../work_logs/open_work_log.sh current"
 alias cwlp="$ALIAS_SCRIPT_DIR/../../work_logs/open_work_log.sh previous"
 
 alias cs="$ALIAS_SCRIPT_DIR/../card_management/copy_screenshots.sh"
-alias nc="$ALIAS_SCRIPT_DIR/../card_management/new_card.sh"
+alias ncc="$ALIAS_SCRIPT_DIR/../card_management/new_card.sh"
 alias od="$ALIAS_SCRIPT_DIR/../card_management/open_card_directory.sh"
 alias zcte="$ALIAS_SCRIPT_DIR/../card_management/zip_card_evidences.sh"
 alias vicm="$ALIAS_SCRIPT_DIR/../card_management/card_management_list.sh"
