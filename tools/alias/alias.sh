@@ -7,6 +7,7 @@ alias ll="ls -al"
 alias hm="cd ~"
 alias c="clear"
 alias rmf="rm -rf"
+alias cc="claude"
 alias ..="cd .."
 
 if [[ $OSTYPE == "darwin"* ]]; then

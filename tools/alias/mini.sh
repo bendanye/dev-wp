@@ -23,6 +23,8 @@ alias dlo="docker logs"
 alias dcupd="docker-compose up -d"
 alias dcdn="docker-compose down"
 
+alias cc="claude"
+
 alias ..="cd .."
 
 alias cfn='basename `pwd` | clip'
