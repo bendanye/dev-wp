@@ -8,8 +8,9 @@ alias gst="git status"
 alias gulc="git reset --soft HEAD~1"
 alias glo="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias ghm="cd \"\$(git rev-parse --show-toplevel)\""
-alias gcm="git commit -m"
+alias gcmsg="git commit -m"
 alias ga="git add"
+alias gsw="git switch"
 
 alias drma='docker rm $(docker ps -aq) --force'
 alias drmdn='docker rm $(docker ps -aq -f status=exited -f status=created -f status=dead -f status=paused) --force'
