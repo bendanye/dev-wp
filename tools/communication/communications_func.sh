@@ -20,6 +20,9 @@ function start_communication() {
         elif [[ $communication == "telegram" ]]; then
             sh "$SCRIPT_DIR/../browser/browser.sh" telegram
             sleep 1
+        elif [[ $communication == "teams" ]]; then
+            sh "$SCRIPT_DIR/../browser/browser.sh" teams
+            sleep 1
         elif [[ "$OSTYPE" == "darwin"* ]]; then
             if [[ $communication == "slack" ]]; then
                 open -a "Slack"
@@ -37,6 +40,7 @@ function stop_communication_from_browser() {
         close (tabs whose URL contain "https://mail.google.com/chat/u/0/")
         close (tabs whose URL contain "https://calendar.google.com/calendar")
         close (tabs whose URL contain "https://web.telegram.org")
+        close (tabs whose URL contain "https://teams.cloud.microsoft")
     end tell
 EOT
 } 
