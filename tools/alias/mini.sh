@@ -11,6 +11,8 @@ alias ghm="cd \"\$(git rev-parse --show-toplevel)\""
 alias gcmsg="git commit -m"
 alias ga="git add"
 alias gsw="git switch"
+alias gsta="git stash"
+alias gstp="git stash pop"
 
 alias drma='docker rm $(docker ps -aq) --force'
 alias drmdn='docker rm $(docker ps -aq -f status=exited -f status=created -f status=dead -f status=paused) --force'
