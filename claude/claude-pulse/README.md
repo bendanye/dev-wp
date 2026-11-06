@@ -1,0 +1,1 @@
+Refer to https://github.com/martinoyovo/claude-pulse to setup
