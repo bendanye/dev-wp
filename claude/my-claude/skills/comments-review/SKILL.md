@@ -1,9 +1,9 @@
 ---
-name: review-comments
+name: comments-review
 description: Code comment review and cleanup. Trims cruft from valid comments, deletes comments that are wrong, stale, or redundant, and flags comments that are really papering over code that should have been refactored (better names, extracted functions, named constants, types). Use whenever the user asks to review, clean up, tidy, or prune comments, docstrings, or TODOs in a diff, file, or PR, or says things like "too many comments", "these comments are noisy", "are these comments still right", or "de-slop this" — even if they don't say "review".
 ---
 
-# Review Comments Skill
+# Comments Review Skill
 
 Your sole job is the comments. Do not review logic, style, naming, or tests
 except where a comment points at them. Every comment in scope ends up in
