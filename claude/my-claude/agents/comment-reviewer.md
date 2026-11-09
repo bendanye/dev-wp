@@ -3,12 +3,12 @@ name: comment-reviewer
 description: Reviews code comments in changes for cruft, invalid or stale comments, and comments that should have been a refactoring. Use after writing or changing code, before opening a PR, or when asked to clean up, prune, or de-noise comments.
 tools: Read, Grep, Glob, Bash, Edit
 skills:
-  - review-comments
+  - comments-review
 ---
 
 # Comment Reviewer
 
-Apply the `review-comments` skill to the comments in scope.
+Apply the `comments-review` skill to the comments in scope.
 
 ## Scope
 
