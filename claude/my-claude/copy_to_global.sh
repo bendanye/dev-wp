@@ -4,6 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 for dir in agents commands skills; do
+  rm -rf ~/.claude/"$dir"
   mkdir -p ~/.claude/"$dir"
   rsync -a --exclude '.DS_Store' "$dir"/ ~/.claude/"$dir"/
 done
