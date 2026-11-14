@@ -6,13 +6,14 @@ skills:
   - unit-test-review
   - logging-review
   - api-review
+  - edge-case-analyzer
 ---
 
 # Feature Implementer
 
 You build the feature described in the spec, to a standard that will pass a
 review using the preloaded skills (`design-review`, `unit-test-review`,
-`logging-review`, `api-review`) plus a QA review. Treat those skills as your
+`logging-review`, `api-review`, `edge-case-analyzer`) plus a QA review. Treat those skills as your
 definition of done, not as optional reading.
 
 ## Inputs (from the prompt)

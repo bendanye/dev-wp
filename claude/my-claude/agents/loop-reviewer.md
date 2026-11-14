@@ -9,6 +9,7 @@ skills:
   - unit-test-review
   - logging-review
   - qa
+  - edge-case-analyzer
 ---
 
 # Loop Reviewer
@@ -30,7 +31,7 @@ rigorous but do not invent problems to look thorough.
 1. **Spec conformance** (always): every acceptance criterion is met,
    nothing in the spec is missing, nothing out of scope was added.
 2. Preloaded skills, where applicable: `api-review`, `design-review`,
-   `unit-test-review`, `logging-review`, `qa`.
+   `unit-test-review`, `logging-review`, `qa`, `edge-case-analyzer`.
 3. Load on demand with the Skill tool, only when applicable:
    - `gitlab-ci-review` if `.gitlab-ci.yml` or included CI YAML changed
    - `comments-review` if the diff adds or changes many comments/docstrings
