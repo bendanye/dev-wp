@@ -13,8 +13,8 @@ alias ga="git add"
 alias gsw="git switch"
 alias gsta="git stash"
 alias gstp="git stash pop"
-alias grhs="git reset --soft"
 alias grhh="git reset --hard"
+alias gulc="git reset --soft HEAD~1"
 
 alias drma='docker rm $(docker ps -aq) --force'
 alias drmdn='docker rm $(docker ps -aq -f status=exited -f status=created -f status=dead -f status=paused) --force'
