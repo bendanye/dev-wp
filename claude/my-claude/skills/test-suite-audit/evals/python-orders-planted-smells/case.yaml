@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: python-orders-planted-smells
+expected_outcome: |
+  audit.md flags the gateway stub shape ({"ok": True}) as not matching PayFastClient's real {"status": ...} response, flags repo.get stubbed to None while the real repository raises OrderNotFound, flags the no-op notifier.send.assert_called_once, flags test_total_with_tax/test_tax_rate as computing expectations with prod code, flags the private _load/_price patching as structure-sensitive, and does not flag the literal-value discount tests.
+context:
+  scaffold_script: place-files.sh

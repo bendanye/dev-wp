@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: ts-user-service-planted-smells
+expected_outcome: |
+  audit.md flags that the getUser mock returns a flat {id,name,plan} object while the real API (contracts/get-user-200.json) wraps it in {data:{...displayName...}}, flags the null-for-missing stub vs the real HttpError 404, flags the un-awaited catch assertion in 'propagates server errors', flags the self-mocked normalize test, flags spies on normalize/initials and private cache as structure-sensitive, and treats format.test.ts as fine.
+context:
+  scaffold_script: place-files.sh

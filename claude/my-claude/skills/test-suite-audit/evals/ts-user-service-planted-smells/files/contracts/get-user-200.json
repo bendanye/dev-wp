@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": "u_8f2a",
+    "displayName": "Ann Lee",
+    "email": "ann@example.com",
+    "plan": "pro",
+    "createdAt": "2024-03-01T09:15:00Z"
+  },
+  "meta": { "requestId": "req_123" }
+}
