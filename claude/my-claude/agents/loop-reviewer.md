@@ -4,7 +4,7 @@ description: Reviews an implementation against its spec using the API, design, u
 tools: Read, Grep, Glob, Bash, Skill
 skills:
   - api-review
-  - comment-review
+  - comments-review
   - design-review
   - unit-test-review
   - logging-review
