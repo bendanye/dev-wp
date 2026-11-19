@@ -6,7 +6,6 @@ skills:
   - unit-test-review
   - logging-review
   - api-review
-  - edge-case-analyzer
 ---
 
 # Feature Implementer
